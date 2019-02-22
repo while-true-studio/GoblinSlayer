@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 114165265415251082}
   - component: {fileID: 95816431601965220}
   - component: {fileID: 212884490172764548}
-  m_Layer: 0
-  m_Name: fireball
+  m_Layer: 8
+  m_Name: fireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

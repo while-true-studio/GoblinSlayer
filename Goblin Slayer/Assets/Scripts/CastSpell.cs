@@ -7,20 +7,25 @@ public class CastSpell : MonoBehaviour
 
     public GameObject projectile;
     public float impulseJump = 1.0f, throwRate = 1.5f;
+    public bool isPlayer;
+
     private Transform target;
     private Rigidbody2D rb;
-    private bool melee = false;
 
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     void Start ()
     {
-        InvokeRepeating("ShootProjectile",1f,throwRate);
-        target = GameObject.Find("Player").transform;
+        if(isPlayer)
+        {
+            Instantiate(projectile, transform.position, Quaternion.identity, gameObject.transform);
+        }
+        else//caso de ser un goblin
+        {
+            InvokeRepeating("ShootProjectile", 1f, throwRate);
+            target = GameObject.Find("Player").transform;
+            rb = GetComponent<Rigidbody2D>();
+        }
 	}
 
 
@@ -32,6 +37,10 @@ public class CastSpell : MonoBehaviour
         Instantiate(projectile, transform.position, Quaternion.identity, gameObject.transform);
     }
 
+    /// <summary>
+    /// Impulsa al goblin hacia atras cuando el personaje entra en el trigger
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player" && transform.position.x > target.position.x)
@@ -50,12 +59,11 @@ public class CastSpell : MonoBehaviour
         if (collision.tag == "Player")
         {
             print("MODO MELEE");
-            float aux = throwRate;
+            /*float aux = throwRate;
             throwRate = 0.5f;
             CancelInvoke();
             InvokeRepeating("ShootProjectile", 0.1f, throwRate);
-            throwRate = aux;
-            melee = true;
+            throwRate = aux;*/
         }
 
     }
@@ -65,18 +73,16 @@ public class CastSpell : MonoBehaviour
         if (collision.tag == "Player")
         {
             print("MODO CASTER");
-            CancelInvoke();
-            InvokeRepeating("ShootProjectile", 0.1f, throwRate);
-            melee = false;
+            /*CancelInvoke();
+            InvokeRepeating("ShootProjectile", 0.1f, throwRate);*/
         }
     }
 
-    /// <summary>
-    /// returna el actual modo de ataque 
-    /// </summary>
-    /// <returns></returns>
-    public bool AttackStatus()
+    public bool IsPlayer()
     {
-        return melee;
+        return isPlayer;
     }
+
+
+
 }

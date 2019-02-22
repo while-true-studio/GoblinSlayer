@@ -7,26 +7,28 @@ public class Thrower : MonoBehaviour
     public float timeToDestroy = 4.0f;
     public float projectileSpeed = 1.0f;
 
-    private Transform target;
+    private Vector2 target;
     private Rigidbody2D rb;
     private Vector2 shootDirection;
-    public bool modoProjectile;
 
 
-    private void Awake()
-    {
-        target = GameObject.Find("Player").transform;
-        rb = GetComponent<Rigidbody2D>();
-        modoProjectile = transform.parent.GetComponent<CastSpell>().AttackStatus();
-    }
 
     void Start()
     {
+        if (transform.parent.GetComponent<CastSpell>().IsPlayer())
+        {
+            //traer dirección desde player controller
+            print("PIM PIM FIRE");
+        }
+        else
+        {
+            target = GameObject.Find("Player").transform.position;
+            rb = GetComponent<Rigidbody2D>();
+            EstablishDirection();
+            ShootProyectile();
+            Destroy(gameObject, timeToDestroy);
+        }
 
-        EstablishDirection();
-        ShootProyectile();
-
-        Destroy(gameObject, timeToDestroy);
     }
 
     /// <summary>
@@ -34,17 +36,7 @@ public class Thrower : MonoBehaviour
     /// </summary>
     public void ShootProyectile()
     {
-        if(!modoProjectile)
-        {
-            rb.AddForceAtPosition(shootDirection * projectileSpeed, target.position, ForceMode2D.Impulse);
-
-            //rb.AddForce(shootDirection * projectileSpeed,ForceMode2D.Impulse);
-        }
-        else
-        {
-            projectileSpeed = projectileSpeed / 2;
-            rb.AddForceAtPosition(shootDirection * projectileSpeed, target.position, ForceMode2D.Impulse);
-        }
+        rb.AddForceAtPosition(shootDirection * projectileSpeed, target, ForceMode2D.Impulse);
     }
 
     /// <summary>
@@ -52,12 +44,12 @@ public class Thrower : MonoBehaviour
     /// </summary>
     public void EstablishDirection()
     {
-        if (transform.position.x > target.position.x)
+        if (transform.position.x > target.x)
         {
             shootDirection = new Vector2(-1f, 1f);
             transform.right = Vector2.left;
         }
-        else if (transform.position.x < target.position.x)
+        else if (transform.position.x < target.x)
         {
             shootDirection = Vector2.one;
         }
