@@ -16,6 +16,7 @@ public class Walker : MonoBehaviour {
     }
     public enum WalkingState { STOP = 0, RIGHT = 1, LEFT = -1};
     public enum WalkDirection { RIGHT = WalkingState.RIGHT, LEFT = WalkingState.LEFT};
+
     /// <summary>
     /// Makes the gameObject move in the given direction
     /// </summary>
@@ -23,7 +24,7 @@ public class Walker : MonoBehaviour {
     public void Walk(WalkDirection direction)
     {
         walkingState = (WalkingState)direction;
-        rb.velocity = new Vector2((float)direction, 0) * velocity;
+        rb.velocity = new Vector2((float)direction * velocity, rb.velocity.y);
     }
     public void Stop()
     {
