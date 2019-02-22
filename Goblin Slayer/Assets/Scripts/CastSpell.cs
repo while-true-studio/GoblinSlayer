@@ -72,7 +72,7 @@ public class CastSpell : MonoBehaviour
     }
 
     /// <summary>
-    /// returna el actual modo de ataque 
+    /// retorna el actual modo de ataque 
     /// </summary>
     /// <returns></returns>
     public bool AttackStatus()
