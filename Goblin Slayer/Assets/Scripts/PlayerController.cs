@@ -1,27 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [RequireComponent(typeof(Walker))]
 [RequireComponent(typeof(Jumper))]
 public class PlayerController : MonoBehaviour {
 
-    Walker walker;
-    Jumper jumper;
+    private Walker walker;
+    private Jumper jumper;
 
-    public KeyCode leftKey;
-    public KeyCode rightKey;
-    public KeyCode jumpKey;
+    public KeyCode leftKey; //Left  movement key
+    public KeyCode rightKey;//Right movement key
+    public KeyCode jumpKey; //Jump key
 
+    //The last key wich represents a direction pressed
     private KeyCode lastDirectionKeyPressed;
 
-	// Use this for initialization
-	void Start () {
+    //Get dependences
+	private void Start () {
         walker = GetComponent<Walker>();
         jumper = GetComponent<Jumper>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    //Get the input and manage it
+    private void Update ()
+    {
 
         //Walk to the left
         if (Input.GetKey(leftKey))
@@ -29,12 +32,14 @@ public class PlayerController : MonoBehaviour {
             lastDirectionKeyPressed = leftKey;
             walker.Walk(Walker.WalkDirection.LEFT);
         }
+
         //Walk to the right
         else if (Input.GetKey(rightKey))
         {
             lastDirectionKeyPressed = rightKey;
             walker.Walk(Walker.WalkDirection.RIGHT);
         }
+
         //Stop walking
         if ((Input.GetKeyUp(leftKey)  && lastDirectionKeyPressed == leftKey)
           ||(Input.GetKeyUp(rightKey) && lastDirectionKeyPressed == rightKey))
@@ -43,6 +48,5 @@ public class PlayerController : MonoBehaviour {
         //Jump
         if (Input.GetKeyDown(jumpKey))
             jumper.Jump();
-
 	}
 }

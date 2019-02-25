@@ -8,12 +8,13 @@ public class Jumper : MonoBehaviour {
 
     private Rigidbody2D rb;
 
-	void Start () {
+	void Start ()
+    {
         rb = GetComponent <Rigidbody2D> ();
 	}
+
     /// <summary>
     /// Makes the gameObject jump.
-    /// TODO: we're not checking if we're on ground, so can jump infintly
     /// </summary>
     public void Jump()
     {
