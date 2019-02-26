@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#define JOYSTICK_SUPPORTED
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,14 +10,13 @@ public class PlayerController : MonoBehaviour {
 
     private Walker walker;
     private Jumper jumper;
-
+#if !JOYSTICK_SUPPORTED
     public KeyCode leftKey; //Left  movement key
     public KeyCode rightKey;//Right movement key
     public KeyCode jumpKey; //Jump key
-
     //The last key wich represents a direction pressed
     private KeyCode lastDirectionKeyPressed;
-
+#endif
     //Get dependences
 	private void Start () {
         walker = GetComponent<Walker>();
@@ -25,7 +26,17 @@ public class PlayerController : MonoBehaviour {
     //Get the input and manage it
     private void Update ()
     {
+#if JOYSTICK_SUPPORTED
+        float horizontal = Input.GetAxis("Horizontal");
 
+        if (horizontal == 0)//Shoud we take joystick's dead zone into a count?
+            walker.Stop();
+        else
+            walker.Walk(horizontal > 0 ? Walker.WalkDirection.RIGHT : Walker.WalkDirection.LEFT);
+
+        if (Input.GetButton("Jump"))
+            jumper.Jump();
+#else
         //Walk to the left
         if (Input.GetKey(leftKey))
         {
@@ -48,5 +59,6 @@ public class PlayerController : MonoBehaviour {
         //Jump
         if (Input.GetKeyDown(jumpKey))
             jumper.Jump();
+#endif
 	}
 }
