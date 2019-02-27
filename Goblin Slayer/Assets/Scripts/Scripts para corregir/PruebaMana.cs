@@ -9,8 +9,8 @@ public class PruebaMana : MonoBehaviour {
      y que reste cuando se usa la de fuego, además de la Autoregeneración*/
 
     private Mana mana;
-    public int fuegoMana = 200; //Cantidad de maná que se gastará al usar la magia de fuego
-    public int aguaMana = 2; //Cantidad de maná que se ganará al usar la magia de agua
+    public float fuegoMana; //Cantidad de maná que se gastará al usar la magia de fuego
+    public float aguaMana; //Cantidad de maná que se ganará al usar la magia de agua
 
     void Start ()
     {
@@ -19,21 +19,15 @@ public class PruebaMana : MonoBehaviour {
 	
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && mana.GastaMana(fuegoMana))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && mana.UseMana(fuegoMana))
         {
-            mana.mana -= fuegoMana;
             print("Fuego: " + fuegoMana);
-            print("Maná Restante: " + mana.ManaRestante());
+            print("Current Mana: " + mana.currentMana);
         }
-        else if (Input.GetKey(KeyCode.Mouse1) && mana.ManaRestante() < mana.ManaMax())
-        {
-            mana.AquaMagic(aguaMana);
-            print("Agua: " + aguaMana);
-            print("Maná Restante: " + mana.ManaRestante());
-        }
-
-        mana.RegMana();
-        print("AutoReg: " + mana.AutoMana());
-        print("Mana: " + mana.ManaRestante());
+        else if (Input.GetKey(KeyCode.Mouse1) && mana.UseMana(aguaMana))
+        {            
+            print("Agua: " + -aguaMana);
+            print("Maná Restante: " + mana.currentMana);
+        }        
     }
 }
