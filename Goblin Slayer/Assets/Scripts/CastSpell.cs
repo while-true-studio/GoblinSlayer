@@ -7,24 +7,24 @@ public class CastSpell : MonoBehaviour
 
     public GameObject projectile;
     public float impulseJump = 1.0f, throwRate = 1.5f;
-    public bool isPlayer;
+    public bool isPlayer, meleeDistance;
 
     private Transform target;
     private Rigidbody2D rb;
 
 
-
+    
     void Start ()
     {
         if(isPlayer)
         {
-            Instantiate(projectile, transform.position, Quaternion.identity, gameObject.transform);
+            CreateProjectile();
         }
         else//caso de ser un goblin
         {
-            InvokeRepeating("ShootProjectile", 1f, throwRate);
             target = GameObject.Find("Player").transform;
             rb = GetComponent<Rigidbody2D>();
+            InvokeRepeating("CreateProjectile",1.0f,throwRate);
         }
 	}
 
@@ -32,7 +32,7 @@ public class CastSpell : MonoBehaviour
     /// <summary>
     /// Crea el proyectil en la posición del padre
     /// </summary>
-    public void ShootProjectile()
+    public void CreateProjectile()
     {
         Instantiate(projectile, transform.position, Quaternion.identity, gameObject.transform);
     }
@@ -46,10 +46,12 @@ public class CastSpell : MonoBehaviour
         if(collision.tag == "Player" && transform.position.x > target.position.x)
         {
             rb.AddForce(Vector2.one*impulseJump,ForceMode2D.Impulse);
+            //CreateProjectile();
         }
         else if (collision.tag == "Player" && transform.position.x < target.position.x)
         {
             rb.AddForce(new Vector2(-1f,1f)*impulseJump, ForceMode2D.Impulse);
+            //CreateProjectile();
         }
     }
 
@@ -59,11 +61,7 @@ public class CastSpell : MonoBehaviour
         if (collision.tag == "Player")
         {
             print("MODO MELEE");
-            /*float aux = throwRate;
-            throwRate = 0.5f;
-            CancelInvoke();
-            InvokeRepeating("ShootProjectile", 0.1f, throwRate);
-            throwRate = aux;*/
+            meleeDistance = true;
         }
 
     }
@@ -73,8 +71,7 @@ public class CastSpell : MonoBehaviour
         if (collision.tag == "Player")
         {
             print("MODO CASTER");
-            /*CancelInvoke();
-            InvokeRepeating("ShootProjectile", 0.1f, throwRate);*/
+            meleeDistance = false;
         }
     }
 
@@ -83,6 +80,9 @@ public class CastSpell : MonoBehaviour
         return isPlayer;
     }
 
-
+    public bool IsChamanAtMelee()
+    {
+        return meleeDistance;
+    }
 
 }

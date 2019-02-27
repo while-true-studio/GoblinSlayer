@@ -13,22 +13,31 @@ public class Thrower : MonoBehaviour
 
 
 
-    void Start()
+    void Awake()
     {
-        if (transform.parent.GetComponent<CastSpell>().IsPlayer())
-        {
-            //traer dirección desde player controller
-            print("PIM PIM FIRE");
-        }
-        else
+        if (!transform.parent.GetComponent<CastSpell>().IsPlayer())
         {
             target = GameObject.Find("Player").transform.position;
             rb = GetComponent<Rigidbody2D>();
-            EstablishDirection();
             ShootProyectile();
-            Destroy(gameObject, timeToDestroy);
         }
 
+    }
+
+    /// <summary>
+    /// Asigna la dirección a la cual disparar
+    /// </summary>
+    /// <param name="direction"> Dirección a la que se quiere apuntar. </param>
+    public void PlayerShooting(Vector2 direction)
+    {
+        shootDirection = direction;
+        AddForceToProjectile();
+    }
+
+    public void AddForceToProjectile()
+    {
+        rb.AddForceAtPosition(shootDirection * projectileSpeed, target, ForceMode2D.Impulse);
+        Destroy(gameObject, timeToDestroy);
     }
 
     /// <summary>
@@ -36,13 +45,25 @@ public class Thrower : MonoBehaviour
     /// </summary>
     public void ShootProyectile()
     {
-        rb.AddForceAtPosition(shootDirection * projectileSpeed, target, ForceMode2D.Impulse);
+        EstablishPlayerDirection();
+
+        //en caso de estar a distancia melee contra el personaje
+        if (transform.parent.GetComponent<CastSpell>().IsChamanAtMelee())
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            rb.velocity = shootDirection * projectileSpeed;
+        }
+        else
+        {
+
+            AddForceToProjectile();
+        }
     }
 
     /// <summary>
     /// Establece la dirección en función de la posición del objetivo
     /// </summary>
-    public void EstablishDirection()
+    public void EstablishPlayerDirection()
     {
         if (transform.position.x > target.x)
         {
@@ -61,11 +82,17 @@ public class Thrower : MonoBehaviour
         if(collision.tag == "Player")
         {
             Destroy(gameObject);
-            //aplicar daños
+            //aplicar daños al jugador
         }
-        else if(collision.tag!="Enemy")
+        else if(collision.tag == "Enemy" && transform.parent.GetComponent<CastSpell>().IsPlayer())
         {
             Destroy(gameObject);
+            //aplicar daños al goblin
+        }
+        else
+        {
+            Destroy(gameObject);
+            //cuando choca contra un objecto del nivel
         }
     }
 
