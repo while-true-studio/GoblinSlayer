@@ -26,7 +26,7 @@ public class MeleeAttacker : MonoBehaviour
     /// vector it is aiming to inside a range.
     /// </summary>
     /// <param name="normalVector">The normal vector the game object is aiming to.</param>
-    /// <returns>An array of RaycastHit2D</returns>
+    /// <returns>An array of RaycastHit2D.</returns>
     RaycastHit2D[] FindObjects(Vector2 normalVector)
     {
         Vector2 fromPosition = transform.position;
