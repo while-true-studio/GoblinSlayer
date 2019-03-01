@@ -19,19 +19,19 @@ public class Health : MonoBehaviour {
     }
 
     /// <summary>
-    /// Método que comprueba si el jugador esta vivo o muerto
+    /// Check if the gameObject's is alive or dead
     /// </summary>
     /// <returns></returns>
-    public bool Dead()
+    private bool Dead()
     {
         return currentHealth <= 0;
     }
 
 
     /// <summary>
-    /// Método recupera el HP, y comprueba que esté entre los parámetros
+    /// Recover HP and check if life is in the parameters
     /// </summary>
-    /// <param name="amount"> Cantidad de vida que recupera </param>
+    /// <param name="amount"> Amount of HP recovered </param>
     public void RestoreHP(int amount)
     {
         if (currentHealth < maxHealth)
@@ -42,15 +42,15 @@ public class Health : MonoBehaviour {
     }
 
     /// <summary>
-    /// Método que iguala la salud al máximo posible en caso de pasarse del límite
+    /// Equal life to the fullest if it go beyond the limits
     /// </summary>
-    public void EqualHP()
+    private void EqualHP()
     {
         if (currentHealth > maxHealth) currentHealth = maxHealth;
     }
 
     /// <summary>
-    /// Devuelve el HP actual
+    /// Get current HP
     /// </summary>
     /// <returns></returns>
     public int GetHP()
