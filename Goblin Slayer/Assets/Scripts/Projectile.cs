@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
     public float projectileSpeed = 1.0f;
     private Rigidbody2D rb;
     private Vector2 shootDirection;
+    public int damage;
 
     void Awake()
     {
@@ -36,7 +37,7 @@ public class Projectile : MonoBehaviour
         Attackable target = collision.gameObject.GetComponent<Attackable>();
         if (target && collision.tag != transform.tag)
         {
-            target.ReciveDmg(damage);
+            target.OnAttack(damage);
         }
         Destroy(gameObject);
     }

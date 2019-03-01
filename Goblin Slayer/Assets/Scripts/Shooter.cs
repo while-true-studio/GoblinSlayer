@@ -28,6 +28,8 @@ public class Shooter : MonoBehaviour
         Projectile p = CreateProjectile();
         p.SetDirection(direction);
         p.ShootYourSelf();
+        Debug.Log("Shootong");
+        Debug.DrawRay(transform.position, direction, Color.blue);
     }
 
     public bool IsPlayer()
