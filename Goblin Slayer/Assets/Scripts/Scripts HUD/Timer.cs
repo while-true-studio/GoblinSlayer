@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     Text timer; //To show up the currentTime.
     public float pausedTime = 0; //the time while the pause mode.
     public bool pause = false; //It will be true when the pause mode goes up 
+    public bool finishLevel = false; //It will be true when the level is finished
 
     void Start()
     {
@@ -18,16 +19,18 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        TotalTime();
-        CurrentTime();
-
-        if (pause)
+        if (!finishLevel)
         {
-            PausedTime();
-        }
-        else
-            timer.text = currentTime.ToString();
+            TotalTime();
+            CurrentTime();
 
+            if (pause)
+            {
+                PausedTime();
+            }
+            else
+                timer.text = currentTime.ToString();
+        }
     }
 
     /// <summary>
@@ -70,6 +73,11 @@ public class Timer : MonoBehaviour
     public void Resume ()
     {
         pause = false;
+    }
+
+    public void Finished()
+    {
+        finishLevel = true;
     }
 
 }
