@@ -1,81 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Timer : MonoBehaviour {
+public class Timer : MonoBehaviour
+{
+    public float totalTime = 0;
+    public int currentTime;
+    Text timer;
+    public float pausedTime = 0;
+    public bool pause = false;
 
-
-
-    float startTime = 0;
-    float pauseTime = 0;
-    float pausedTime = 0;
-
-    private bool paused = false;
-    private void Start()
+    void Start()
     {
-        StartTimer();
-    }
-    public void StartTimer()
-    {
-        startTime = Time.time;
+        timer = GetComponent<Text>();
     }
 
-    public float GetTime()
+    void Update()
     {
-        if (paused)
-            return pauseTime - startTime;
-        return Time.time - startTime - pausedTime;
-    }
+        TotalTime();
+        CurrentTime();
 
-    public void Pause()
-    {
-        pauseTime = Time.time;
-    }
-
-    public void Resume()
-    {
-        pausedTime += (Time.time - pauseTime);
-    }
-
-    public void Reset()
-    {
-        startTime = Time.time;
-    }
-
-    private void Update()
-    {
-        print(GetTime());
-
-        if (Input.GetMouseButtonDown(0))
+        if (pause)
         {
-            paused = !paused;
-            if (paused)
-                Resume();
-            else Pause();
+            PausedTime();
         }
+        else
+            timer.text = currentTime.ToString();
 
     }
 
-    //float currentTime { get; set; }
-    //private bool activeTime = true;
+    public void TotalTime()
+    {
+        totalTime += Time.deltaTime;        
+    }
 
-    //public void PauseTime()
-    //{
+    public void PausedTime()
+    {
+        pausedTime += Time.deltaTime;
+    }
 
-    //}
-    //private void Update()
-    //{
-    //    if(activeTime)
-    //    {
-    //        currentTime += Time.time;
-    //        print(currentTime);
-    //    }
-    //}
-    //public void ResetTime()
-    //{
+    public int CurrentTime()
+    {
+        return currentTime = (int)totalTime - (int)pausedTime;
+    }
 
-    //}
+    public void PauseMode()
+    {
+        pause = true;
+    }
 
-
+    public void Resume ()
+    {
+        pause = false;
+    }
 
 }
