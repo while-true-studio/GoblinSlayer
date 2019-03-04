@@ -8,13 +8,13 @@ public class PauseElements : MonoBehaviour {
     //or in another position to not watch them.
 
     Timer stateTimer;
-    RectTransform positionPauseScreen, positionCanvas;
+    RectTransform positionPauseScreen, positionHUD;
     Vector3 startPosition;
 
     void Start()
     {
         positionPauseScreen = GetComponent<RectTransform>();
-        positionCanvas = GameObject.Find("Canvas").GetComponent<RectTransform>();
+        positionHUD = GameObject.Find("HUD").GetComponent<RectTransform>();
         stateTimer = GameObject.Find("Timer").GetComponent<Timer>();
         startPosition = positionPauseScreen.position;
     }
@@ -23,7 +23,7 @@ public class PauseElements : MonoBehaviour {
     {
         if (stateTimer.pause)
         {
-            positionPauseScreen.position = positionCanvas.position;
+            positionPauseScreen.position = positionHUD.position;
         }
         else
             positionPauseScreen.position = startPosition;

@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class Rage : MonoBehaviour {
 
-    public int rageMax; //The maximun rage of the player
+    public float rageMax; //The maximun rage of the player
     public float currentRage;
     public float decreaseRageRate; //The rate to decrease the rage by time
    
 
     void Update()
-    {
+    {       
+        currentRage -= decreaseRageRate * Time.deltaTime;
         if (currentRage < 0) currentRage = 0;
-        currentRage -= decreaseRageRate * Time.deltaTime;        
     }
 
     /// <summary>
     /// The currentRage will be plused by plusRage.
     /// </summary>
-    public void AddRage(int plusRage)
+    public void ChangeRage(float addRage)
     {
-        currentRage += plusRage; 
+        currentRage += addRage; 
         if (currentRage > rageMax) currentRage = rageMax;
     }   
 }

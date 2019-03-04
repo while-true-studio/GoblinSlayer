@@ -7,12 +7,12 @@ public class HUDElements : MonoBehaviour {
     //or in another position to not watch them.
 
     Timer stateTimer;
-    RectTransform positionHUDScreen, positionCanvas;  
+    RectTransform positionGameScreen, positionHUD;  
 
     void Start()
     {
-        positionHUDScreen = GetComponent<RectTransform>();
-        positionCanvas = GameObject.Find("Canvas").GetComponent<RectTransform>();
+        positionGameScreen = GetComponent<RectTransform>();
+        positionHUD = GameObject.Find("HUD").GetComponent<RectTransform>();
         stateTimer = GameObject.Find("Timer").GetComponent<Timer>();
     }
 
@@ -20,9 +20,9 @@ public class HUDElements : MonoBehaviour {
     {
         if (stateTimer.pause)
         {
-            positionHUDScreen.position = new Vector3(positionCanvas.position.x + 1000, positionCanvas.position.y + 1000);
+            positionGameScreen.position = new Vector3(positionHUD.position.x + 1000, positionHUD.position.y + 1000);
         }
         else
-            positionHUDScreen.position = positionCanvas.position;
+            positionGameScreen.position = positionHUD.position;
     }
 }
