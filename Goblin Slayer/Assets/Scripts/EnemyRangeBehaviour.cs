@@ -15,6 +15,11 @@ public class EnemyRangeBehaviour : MonoBehaviour
         StartCoroutine(OnRange());
     }
 
+    /// <summary>
+    /// Coroutine method that checks if the player is in range, delaying
+    /// the loop by a second when it attacks it.
+    /// </summary>
+    /// <returns>The IEnumerator for the coroutine.</returns>
     private IEnumerator OnRange()
     {
         while (true)
@@ -32,6 +37,11 @@ public class EnemyRangeBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if the enemy can attack the player, considering both range and
+    /// visibility.
+    /// </summary>
+    /// <returns>A value specifying whether or not the enemy can attack the player.</returns>
     private bool CanAttackPlayer()
     {
         if (!HasPlayerInRange()) return false;
@@ -42,6 +52,10 @@ public class EnemyRangeBehaviour : MonoBehaviour
         return hit.collider ? hit.rigidbody.tag == "Player" : false;
     }
 
+    /// <summary>
+    /// Checks if the player is in attack range of the player.
+    /// </summary>
+    /// <returns>A value specifying whether or not the player is in range of this enemy.</returns>
     private bool HasPlayerInRange()
     {
         float distance = Mathf.Abs((transform.position - Player.transform.position).magnitude);
