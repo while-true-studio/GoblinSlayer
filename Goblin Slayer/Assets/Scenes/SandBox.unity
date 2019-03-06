@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 312792080}
   - component: {fileID: 312792079}
   - component: {fileID: 312792078}
+  - component: {fileID: 312792085}
   m_Layer: 10
   m_Name: EnemyCaster
   m_TagString: Enemy
@@ -303,6 +304,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c130b4234b6d1469e18faea9ae49f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &312792085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 312792072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c91031892b160443877fbe44cb5b286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackRange: 2
+  AttackDelay: 1
+  Player: {fileID: 1786440667}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +421,7 @@ GameObject:
   - component: {fileID: 629082938}
   - component: {fileID: 629082937}
   - component: {fileID: 629082939}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaveBlocks
   m_TagString: Blocks
   m_Icon: {fileID: 0}

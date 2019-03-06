@@ -7,10 +7,14 @@ public class Health : MonoBehaviour
     public float health     { get; private set; }
     public float maxHealth  { get; private set; }
     public bool isAlive     { get; private set; }
+
     private void Start()
     {
+        maxHealth = 100;
+        health = 100;
         isAlive = true;
     }
+
     public void ReciveDamage(float damage)
     {
         health -= damage;

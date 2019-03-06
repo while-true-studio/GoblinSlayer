@@ -36,7 +36,7 @@ public class PlayerAttackManager : MonoBehaviour
 
     public void SwitchMode()
     {
-        currentMode = (Mode)((int)++currentMode%2);
+        currentMode = (Mode)((int)++currentMode % 2);
     }
 
     public void Attack()
@@ -60,10 +60,11 @@ public class PlayerAttackManager : MonoBehaviour
                 shield.ActiveShield(true);
                 break;
             case Mode.Mage:
-                //Activate water magic
+                // TODO(sounagix): Activate water magic
                 break;
         }
     }
+
     public void StopDefending()
     {
         switch (currentMode)
