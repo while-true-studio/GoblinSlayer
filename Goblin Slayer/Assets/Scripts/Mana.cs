@@ -13,14 +13,17 @@ public class Mana : MonoBehaviour
     private void Update()
     {
         currentMana += autoManaRegenRate * Time.deltaTime;
-        if (currentMana > maxMana) currentMana = maxMana;
-        else if (currentMana < 0) currentMana = 0;
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
     }
 
-    public void UseMana(float spellCost)
+    public bool UseMana(float spellCost)
     {
-        if (spellCost <= currentMana)
-            currentMana -= spellCost;
+        if (currentMana - spellCost < 0) return false;
+        currentMana -= spellCost;
+        return true;
     }
 
 }

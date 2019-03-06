@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour
+{
 
-    public float maxHealth;
-    public float currentHealth;
+    public int maxHealth;
+    public int currentHealth;
     public bool Alive { get; private set; }
-    
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
+
     /// <summary>
     /// Applies damage and updates the gameObject's status (alive/dead)
     /// </summary>
     /// <param name="amount"> Amount of damage </param>
-    public void LoseHealth(float amount)
+    public void LoseHealth(int amount)
     {
         currentHealth -= amount;
-        EqualHP();
         Alive = !Dead();
     }
 
@@ -23,7 +28,7 @@ public class Health : MonoBehaviour {
     /// Check if the gameObject's is alive or dead
     /// </summary>
     /// <returns></returns>
-    public bool Dead()
+    private bool Dead()
     {
         return currentHealth <= 0;
     }
@@ -32,30 +37,30 @@ public class Health : MonoBehaviour {
     /// <summary>
     /// Recover HP and check if life is in the parameters
     /// </summary>
-    /// <param name="amount"> Cantidad de vida que recupera </param>
-    public void RestoreHP(float amount)
+    /// <param name="amount"> Amount of HP recovered </param>
+    public void RestoreHP(int amount)
     {
         if (currentHealth < maxHealth)
         {
             currentHealth += amount;
         }
         EqualHP();
+        print(currentHealth);
     }
 
     /// <summary>
-    /// Keep life between the bounds.
+    /// Equal life to the fullest if it go beyond the limits
     /// </summary>
-    public void EqualHP()
+    private void EqualHP()
     {
         if (currentHealth > maxHealth) currentHealth = maxHealth;
-        else if (currentHealth < 0) currentHealth = 0;
     }
 
     /// <summary>
     /// Get current HP
     /// </summary>
     /// <returns></returns>
-    public float GetHP()
+    public int GetHP()
     {
         return currentHealth;
     }
