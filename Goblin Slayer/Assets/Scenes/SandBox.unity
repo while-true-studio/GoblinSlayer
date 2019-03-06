@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 312792080}
   - component: {fileID: 312792079}
   - component: {fileID: 312792078}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: EnemyCaster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1786440668}
+  difference: 1.5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3082,7 +3083,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1632468360}
   - component: {fileID: 1632468361}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chaman_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}

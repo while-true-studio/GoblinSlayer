@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour {
                 playerAttackManager.Attack();
             }
         }
+
         if(Input.GetKeyDown(defendKey))
         {
             defending = true;
@@ -73,5 +74,5 @@ public class PlayerController : MonoBehaviour {
             defending = false;
             playerAttackManager.StopDefending();
         }
-	}
+    }
 }

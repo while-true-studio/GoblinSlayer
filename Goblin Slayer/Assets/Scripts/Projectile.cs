@@ -28,18 +28,23 @@ public class Projectile : MonoBehaviour
     /// </summary>
     public void ShootYourSelf()
     {
-        rb.velocity = shootDirection * projectileSpeed;
+        transform.right = shootDirection;
+        rb.AddForce(shootDirection * projectileSpeed,ForceMode2D.Impulse);
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == transform.parent.tag) return;
+
         Attackable target = collision.gameObject.GetComponent<Attackable>();
-        if (target && collision.tag != transform.tag)
-        {
-            target.OnAttack(damage);
-        }
+
+        if (target != null) target.OnAttack(damage);
+        print(collision.gameObject.name);
+
         Destroy(gameObject);
+
     }
+
 
 }
