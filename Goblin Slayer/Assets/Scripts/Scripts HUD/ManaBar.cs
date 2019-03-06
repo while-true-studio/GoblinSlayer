@@ -2,20 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-
-public class ManaController : MonoBehaviour
+public class ManaBar : MonoBehaviour
 {
-    //There is an error
-    /*
-     * NullReferenceException: Object reference not set to an instance of an object
-        ManaController.Start () (at Assets/Scripts/Scripts HUD/ManaController.cs:17)
-
-        NullReferenceException: Object reference not set to an instance of an object
-        ManaController.Update () (at Assets/Scripts/Scripts HUD/ManaController.cs:25)
-        
-         The manaBar works like we hope, but It stil having an unkwon error*/
-         
     Mana mana;
     float regenMana, testMana;//This testMana will be change to fireMana, aquaMana and windMana. 
     Scrollbar manaBar;
