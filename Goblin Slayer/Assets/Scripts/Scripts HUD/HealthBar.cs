@@ -15,14 +15,14 @@ public class HealthBar : MonoBehaviour {
         healthBar = GetComponent<Scrollbar>();
         health.maxHealth = healthBar.size ;
         health.currentHealth = health.maxHealth;
-        dmg = healthBar.size * 0.1f;
+        dmg = healthBar.size * 0.1f; //this variable is for testing
         restoreHP = healthBar.size * 0.05f * Time.deltaTime;
     }
 
     void Update()
     {
         healthBar.size = health.currentHealth;
-        health.RestoreHP(restoreHP);
+        if (!health.Dead()) health.RestoreHP(restoreHP);       
     }
 
     /// <summary>
