@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Health))]
-public class HealingSkill : MonoBehaviour
+public class SkillHealing : MonoBehaviour
 {
-    public int heal;
+    public int heal = 25;
     private Health hp;
 
     private void Start()
@@ -14,9 +14,8 @@ public class HealingSkill : MonoBehaviour
     /// <summary>
     /// Heal health points
     /// </summary>
-    /// <param name="heal">How much you want to heal</param>
-    public void Healing(int heal)
+    public void Healing()
     {
-        hp.Heal(heal);
+        hp.RestoreHP(heal);
     }
 }

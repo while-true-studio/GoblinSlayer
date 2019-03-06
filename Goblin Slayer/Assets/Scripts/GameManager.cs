@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instancia = null;
-    public int vida;
-    public int index;
 
 	// Use this for initialization
 	private void Awake ()
@@ -18,9 +16,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+
+        DontDestroyOnLoad(gameObject);
 	}
 
     /// <summary>
@@ -35,9 +34,9 @@ public class GameManager : MonoBehaviour
     }
    
 
-    public void ChangeScene(int index)
+    public void ChangeScene(int scene)
     {
-        SceneManager.LoadScene(index);
+        SceneManager.LoadScene(scene);
     }
 
 }

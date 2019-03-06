@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public float projectileSpeed = 1.0f;
     private Rigidbody2D rb;
     private Vector2 shootDirection;
-    public int damage;
+    public int damage = 100;
 
     void Awake()
     {
@@ -39,11 +39,12 @@ public class Projectile : MonoBehaviour
 
         Attackable target = collision.gameObject.GetComponent<Attackable>();
 
-        if (target != null) target.OnAttack(damage);
-        print(collision.gameObject.name);
-
+        if (target != null)
+        {
+            target.OnAttack(damage);
+            print(target.gameObject.tag);
+        }
         Destroy(gameObject);
-
     }
 
 

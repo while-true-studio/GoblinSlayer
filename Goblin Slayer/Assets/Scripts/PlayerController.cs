@@ -14,9 +14,11 @@ public class PlayerController : MonoBehaviour {
     public KeyCode switchModeKey;
     public KeyCode attackKey;
     public KeyCode defendKey;
+    public KeyCode menuKey;
 
     private KeyCode lastDirectionKeyPressed;
     private PlayerAttackManager playerAttackManager;
+    private PauseBehaviour pauseHUD;
     public bool defending = false;
 
 
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour {
         walker = GetComponent<Walker>();
         jumper = GetComponent<Jumper>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
+        pauseHUD = GameObject.Find("HUD").GetComponent<PauseBehaviour>();
 	}
 
 
@@ -73,6 +76,10 @@ public class PlayerController : MonoBehaviour {
         {
             defending = false;
             playerAttackManager.StopDefending();
+        }
+        if(Input.GetKeyDown(menuKey))
+        {
+            pauseHUD.ActiveButtom();
         }
     }
 }

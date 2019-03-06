@@ -7,6 +7,7 @@ public class Attackable : MonoBehaviour
 {
     private Health health;
     private IDead dead;
+
     private void Start()
     {
         health = GetComponent<Health>();
@@ -18,9 +19,13 @@ public class Attackable : MonoBehaviour
     /// <param name="damage">The amount of damage</param>
     public void OnAttack(int damage)
     {
-        health.ReciveDamage(damage);
-        if (!health.isAlive)
+        health.LoseHealth(damage);
+
+
+        if (!health.Alive)
+        {
             dead.OnDead();
-            
+        }
+
     }
 }

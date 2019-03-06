@@ -4,27 +4,64 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public float health     { get; private set; }
-    public float maxHealth  { get; private set; }
-    public bool isAlive     { get; private set; }
+
+    public int maxHealth;
+    public int currentHealth;
+    public bool Alive { get; private set; }
+
     private void Start()
     {
-        isAlive = true;
+        currentHealth = maxHealth;
     }
-    public void ReciveDamage(float damage)
+
+    /// <summary>
+    /// Applies damage and updates the gameObject's status (alive/dead)
+    /// </summary>
+    /// <param name="amount"> Amount of damage </param>
+    public void LoseHealth(int amount)
     {
-        health -= damage;
-        if (health < 0)
+        currentHealth -= amount;
+        Alive = !Dead();
+    }
+
+    /// <summary>
+    /// Check if the gameObject's is alive or dead
+    /// </summary>
+    /// <returns></returns>
+    private bool Dead()
+    {
+        return currentHealth <= 0;
+    }
+
+
+    /// <summary>
+    /// Recover HP and check if life is in the parameters
+    /// </summary>
+    /// <param name="amount"> Amount of HP recovered </param>
+    public void RestoreHP(int amount)
+    {
+        if (currentHealth < maxHealth)
         {
-            health = 0;
-            isAlive = false;
+            currentHealth += amount;
         }
+        EqualHP();
+        print(currentHealth);
     }
 
-    public void Heal(float amount)
+    /// <summary>
+    /// Equal life to the fullest if it go beyond the limits
+    /// </summary>
+    private void EqualHP()
     {
-        health += amount;
-        if (health > maxHealth) health = maxHealth;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
     }
 
+    /// <summary>
+    /// Get current HP
+    /// </summary>
+    /// <returns></returns>
+    public int GetHP()
+    {
+        return currentHealth;
+    }
 }

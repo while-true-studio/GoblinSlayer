@@ -13,6 +13,7 @@ public class PlayerAttackManager : MonoBehaviour
     private MeleeAttacker meleeAttacker;
     private Shooter shooter;
     private Shield shield;
+    private SkillHealing skillHealing;
 
 
 	// Use this for initialization
@@ -26,6 +27,8 @@ public class PlayerAttackManager : MonoBehaviour
 
         if (!(shield = GetComponent<Shield>()))
             Debug.Log("Dependence not found: shield");
+
+        skillHealing = GetComponent<SkillHealing>();
 
     }
 
@@ -60,7 +63,7 @@ public class PlayerAttackManager : MonoBehaviour
                 shield.ActiveShield(true);
                 break;
             case Mode.Mage:
-                //Activate water magic
+                
                 break;
         }
     }
@@ -72,7 +75,7 @@ public class PlayerAttackManager : MonoBehaviour
                 shield.ActiveShield(false);
                 break;
             case Mode.Mage:
-                //Deactivate water magic
+                skillHealing.Healing();
                 break;
         }
     }

@@ -6,10 +6,15 @@ public class Shooter : MonoBehaviour
 {
 
     public Projectile projectile;
+    private Mana mana;
+    public float manaCost = 20.0f;
     public bool isPlayer, meleeDistance;
 
 
-
+    private void Start()
+    {
+        mana = GetComponent<Mana>();
+    }
     /// <summary>
     /// Crea el proyectil en la posición del padre
     /// </summary>
@@ -25,12 +30,18 @@ public class Shooter : MonoBehaviour
     /// <param name="direction"></param>
     public void Shoot(Vector2 direction)
     {
-        Projectile p = CreateProjectile();
-        p.SetDirection(direction);
-        p.ShootYourSelf();
+        if(mana.UseMana(manaCost))
+        {
+            Projectile p = CreateProjectile();
+            p.SetDirection(direction);
+            p.ShootYourSelf();
+            Debug.DrawRay(transform.position, direction, Color.blue);
+        }
+        else
+        {
+            print("not enough mana");
+        }
 
-        Debug.Log("Shootong");
-        Debug.DrawRay(transform.position, direction, Color.blue);
     }
 
     public bool IsPlayer()

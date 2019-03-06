@@ -19,6 +19,6 @@ public class Shield : MonoBehaviour {
     /// <param name="status">True = Actived / False = Deactived</param>
     public void ActiveShield(bool status)
     {
-        gameObject.SetActive(status);
+        //gameObject.SetActive(status);
     }
 }
