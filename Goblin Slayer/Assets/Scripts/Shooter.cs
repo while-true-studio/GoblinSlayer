@@ -35,7 +35,7 @@ public class Shooter : MonoBehaviour
             Projectile p = CreateProjectile();
             p.SetDirection(direction);
             p.ShootYourSelf();
-            Debug.DrawRay(transform.position, direction, Color.blue);
+            Debug.DrawLine(transform.position, direction, Color.red);
         }
         else
         {

@@ -7,12 +7,34 @@ public class Projectile : MonoBehaviour
     public float projectileSpeed = 1.0f;
     private Rigidbody2D rb;
     private Vector2 shootDirection;
-    public int damage = 100;
+    public int damage = 45;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
+    public void Update()
+    {
+        ReclarecalculateTrajectory();
+    }
+
+    /// <summary>
+    /// Rotate in z if the projectile is falling
+    /// </summary>
+    public void ReclarecalculateTrajectory()
+    {
+        if (rb.velocity.y <= 0.0f && shootDirection.normalized.x > 0.0f)
+        {
+            transform.Rotate(new Vector3(0.0f, 0.0f, -1.0f));
+        }
+        else if (rb.velocity.y <= 0.0f && shootDirection.normalized.x < 0.0f)
+        {
+            transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f));
+
+        }
+    }
+
 
     /// <summary>
     /// Set the direction to shoot
@@ -22,7 +44,7 @@ public class Projectile : MonoBehaviour
     {
         this.shootDirection = direction;
     }
-    
+
     /// <summary>
     /// Activate a initial velocity 
     /// </summary>
@@ -42,7 +64,6 @@ public class Projectile : MonoBehaviour
         if (target != null)
         {
             target.OnAttack(damage);
-            print(target.gameObject.tag);
         }
         Destroy(gameObject);
     }

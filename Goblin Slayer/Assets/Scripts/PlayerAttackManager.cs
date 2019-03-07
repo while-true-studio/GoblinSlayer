@@ -8,7 +8,9 @@ public class PlayerAttackManager : MonoBehaviour
 {
     public enum Mode { Melee, Mage };
     public Mode currentMode;// { set; get; }
-
+    public enum IsPlayer { Player,Enemy};
+    public IsPlayer currentPlayer;
+    public Transform player;
 
     private MeleeAttacker meleeAttacker;
     private Shooter shooter;
@@ -34,7 +36,15 @@ public class PlayerAttackManager : MonoBehaviour
 
     private Vector2 GetLookAt()
     {
-        return (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        if(currentPlayer == IsPlayer.Player)
+        {
+            return (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        }
+        else
+        {
+            print(player.transform.position.normalized);
+            return ((player.transform.position - transform.position).normalized);
+        }
     }
 
     public void SwitchMode()

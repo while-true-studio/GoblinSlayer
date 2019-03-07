@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Walker))]
 [RequireComponent(typeof(Jumper))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     Walker walker;
     Jumper jumper;
