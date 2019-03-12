@@ -15,6 +15,6 @@ public class CameraBehabiour : MonoBehaviour
 
     void Update ()
     {
-        transform.position = new Vector3(target.position.x + difference, target.position.y + difference, distance);
+        transform.position = new Vector3(target.position.x + difference, target.position.y+difference, distance);
 	}
 }

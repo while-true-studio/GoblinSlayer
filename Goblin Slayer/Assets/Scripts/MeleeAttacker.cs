@@ -8,7 +8,7 @@ public class MeleeAttacker : MonoBehaviour
     /// The melee attack range for this component.
     /// </summary>
     public float range = 3;
-	
+    public int damage = 10;
 
     /// <summary>
     /// Make an attack on all game objects between the game object that has this component
@@ -17,10 +17,13 @@ public class MeleeAttacker : MonoBehaviour
     /// <param name="normalVector">The normal vector the game object is aiming to.</param>
     public void MakeAttack(Vector2 normalVector)
     {
-        var gameObjects = FindGameObjects(normalVector);
-
+        var targets = FindGameObjects(normalVector);
+        foreach(var target in targets )
+        {
+            target.OnAttack(damage);
+        }
 //if UNITY_EDITOR
-        bool hit = gameObjects.Count > 0;
+        bool hit = targets.Count > 0;
         Debug.DrawRay(transform.position, normalVector * range, hit ? Color.green : Color.red);
 //#endif
     }
@@ -33,17 +36,18 @@ public class MeleeAttacker : MonoBehaviour
     /// <param name="normalVector">The normal vector the game object is aiming to.</param>
     /// <returns>An array of GameObject.</returns>
     /// <!-- TODO: Change GameObject to Attackable -->
-    public List<GameObject> FindGameObjects(Vector2 normalVector)
+    private List<Attackable> FindGameObjects(Vector2 normalVector)
     {
         // Get all raycast hits between the game object and the target vector (normal vector * range).
         RaycastHit2D[] raycastHits = FindRaycastHits(normalVector);
-        List<GameObject> gameObjects = new List<GameObject>();
+        List<Attackable> gameObjects = new List<Attackable>();
 
         for (int i = 1; i < raycastHits.Length; i++)
         {
             var raycastHit = raycastHits[i];
             if (raycastHit.collider.tag == "Wall") break;
-            if (raycastHit.collider.gameObject) gameObjects.Add(raycastHit.collider.gameObject);
+            var attackable = raycastHit.collider.GetComponent<Attackable>();
+            if (attackable != null) gameObjects.Add(attackable);
         }
 
         return gameObjects;
@@ -55,7 +59,7 @@ public class MeleeAttacker : MonoBehaviour
     /// </summary>
     /// <param name="normalVector">The normal vector the game object is aiming to.</param>
     /// <returns>An array of RaycastHit2D.</returns>
-    public RaycastHit2D[] FindRaycastHits(Vector2 normalVector)
+    private RaycastHit2D[] FindRaycastHits(Vector2 normalVector)
     {
         Vector2 fromPosition = transform.position;
         Vector2 toPosition = normalVector * range;

@@ -8,31 +8,14 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 shootDirection;
     public int damage = 45;
+    public float projectileRotation = 1.5f;
+    private Animator animator;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    public void Update()
-    {
-        ReclarecalculateTrajectory();
-    }
-
-    /// <summary>
-    /// Rotate in z if the projectile is falling
-    /// </summary>
-    public void ReclarecalculateTrajectory()
-    {
-        if (rb.velocity.y <= 0.0f && shootDirection.normalized.x > 0.0f)
-        {
-            transform.Rotate(new Vector3(0.0f, 0.0f, -1.0f));
-        }
-        else if (rb.velocity.y <= 0.0f && shootDirection.normalized.x < 0.0f)
-        {
-            transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f));
-
-        }
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        animator = GetComponent<Animator>();
     }
 
 
@@ -54,7 +37,6 @@ public class Projectile : MonoBehaviour
         rb.AddForce(shootDirection * projectileSpeed,ForceMode2D.Impulse);
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == transform.parent.tag) return;
@@ -65,7 +47,9 @@ public class Projectile : MonoBehaviour
         {
             target.OnAttack(damage);
         }
-        Destroy(gameObject);
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        Destroy(gameObject,0.5f);
+        animator.SetBool("Destroy",true);
     }
 
 

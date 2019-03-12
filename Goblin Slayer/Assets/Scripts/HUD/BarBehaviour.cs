@@ -8,7 +8,6 @@ public class BarBehaviour : MonoBehaviour
 
     private Health health;
     private Mana mana;
-    //float dmg, restoreHP;
     Scrollbar healthBar;
     Scrollbar manaBar;
 
@@ -17,9 +16,8 @@ public class BarBehaviour : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         health = player.GetComponent<Health>();
         mana = player.GetComponent<Mana>();
-
-        healthBar = transform.GetChild(0).transform.GetChild(0).GetComponent<Scrollbar>();
-        manaBar = transform.GetChild(1).transform.GetChild(0).GetComponent<Scrollbar>();
+        healthBar = transform.GetChild(1).GetChild(0).GetComponent<Scrollbar>();
+        manaBar = transform.GetChild(2).GetChild(0).GetComponent<Scrollbar>();
         healthBar.size = 1;
         manaBar.size = 1;
 

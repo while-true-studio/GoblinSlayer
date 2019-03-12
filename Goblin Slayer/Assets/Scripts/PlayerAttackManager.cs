@@ -20,7 +20,6 @@ public class PlayerAttackManager : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-        currentMode = Mode.Melee;
         shooter = GetComponent<Shooter>();
         if (!shooter)
             Debug.Log("Dependence not found: shooter");
@@ -42,7 +41,6 @@ public class PlayerAttackManager : MonoBehaviour
         }
         else
         {
-            print(player.transform.position.normalized);
             return ((player.transform.position - transform.position).normalized);
         }
     }

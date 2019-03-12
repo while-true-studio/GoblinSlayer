@@ -49,4 +49,9 @@ public class Shooter : MonoBehaviour
         return isPlayer;
     }
 
+    public LayerMask SetCollisionMask()
+    {
+        return GetComponent<LayerMask>();
+    }
+
 }
