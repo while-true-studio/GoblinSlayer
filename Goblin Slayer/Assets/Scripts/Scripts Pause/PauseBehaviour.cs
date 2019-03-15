@@ -9,6 +9,9 @@ public class PauseBehaviour : MonoBehaviour
     //Script for positioning pause elements in the visual screen 
     //or in another position to not watch them.
 
+    //The order of the HUD's children in Hierarchy
+    //is the most important thing to use this script.
+    //It will activate or desactivate the GOs in function of an strict order.
 
     private void Start()
     {
@@ -19,13 +22,16 @@ public class PauseBehaviour : MonoBehaviour
     {
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(false);
-
+        transform.GetChild(2).gameObject.SetActive(false);
+        transform.GetChild(3).gameObject.SetActive(false);
     }
 
     public void DesactivePause()
     {
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(true);
+        transform.GetChild(3).gameObject.SetActive(true);
     }
 
 
