@@ -482,7 +482,6 @@ GameObject:
   m_Component:
   - component: {fileID: 312792073}
   - component: {fileID: 312792075}
-  - component: {fileID: 312792076}
   - component: {fileID: 312792074}
   - component: {fileID: 312792077}
   - component: {fileID: 312792084}
@@ -548,21 +547,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.06460583}
   m_Size: {x: 1, y: 1.3707883}
   m_Direction: 0
---- !u!58 &312792076
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 312792072}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 6
 --- !u!50 &312792077
 Rigidbody2D:
   serializedVersion: 4
@@ -4353,7 +4337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ebd30ee6e2af8946b926f1a49905f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMode: 1
+  currentMode: 0
   currentPlayer: 1
   player: {fileID: 1786440668}
 --- !u!114 &1306170766
@@ -4496,7 +4480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2949bee79c56304fa58a769a6d628a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 114165265415251082, guid: 3b2e8b8f1253c5b4e9be37e2deb025d8,
+  projectile: {fileID: 114165265415251082, guid: 14495044cd6c47c41a5a237d324c35d3,
     type: 2}
   manaCost: 20
   isPlayer: 0
@@ -4513,7 +4497,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.050000012, y: -0.1}
+  m_Offset: {x: 0, y: -0.1}
   m_Size: {x: 0.88845634, y: 1.2513232}
   m_Direction: 0
 --- !u!4 &1306170779
@@ -4609,7 +4593,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1432226263}
   - component: {fileID: 1432226262}
-  - component: {fileID: 1432226261}
   - component: {fileID: 1432226260}
   - component: {fileID: 1432226259}
   - component: {fileID: 1432226258}
@@ -4803,21 +4786,6 @@ MonoBehaviour:
   manaCost: 20
   isPlayer: 0
   meleeDistance: 0
---- !u!58 &1432226261
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1432226247}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 6
 --- !u!70 &1432226262
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

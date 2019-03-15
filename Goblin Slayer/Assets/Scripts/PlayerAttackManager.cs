@@ -35,14 +35,10 @@ public class PlayerAttackManager : MonoBehaviour
 
     private Vector2 GetLookAt()
     {
-        if(currentPlayer == IsPlayer.Player)
-        {
-            return (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-        }
-        else
-        {
-            return ((player.transform.position - transform.position).normalized);
-        }
+        Vector3 aux = currentPlayer == IsPlayer.Player
+            ? Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position
+            : player.transform.position - transform.position;
+        return new Vector2(aux.x, aux.y).normalized;
     }
 
     public void SwitchMode()

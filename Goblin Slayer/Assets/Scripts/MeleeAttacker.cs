@@ -62,7 +62,7 @@ public class MeleeAttacker : MonoBehaviour
     private RaycastHit2D[] FindRaycastHits(Vector2 normalVector)
     {
         Vector2 fromPosition = transform.position;
-        Vector2 toPosition = normalVector * range;
+        Vector2 toPosition = normalVector;
         return Physics2D.RaycastAll(fromPosition, toPosition, range);
     }
 
