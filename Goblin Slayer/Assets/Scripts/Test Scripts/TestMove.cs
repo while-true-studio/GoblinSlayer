@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestMove : MonoBehaviour {
 
     public float speed = 2.0f;
-    public float limiteLateral;
+    public float imagBound;
     PauseBehaviour pause;
     private void Start()
     {
@@ -16,7 +16,7 @@ public class TestMove : MonoBehaviour {
     {
         transform.Translate(speed * Time.deltaTime, 0f, 0);
         pause.Freeze();
-        if (transform.position.x >= limiteLateral || transform.position.x < -limiteLateral)
+        if (transform.position.x >= imagBound || transform.position.x < -imagBound)
             speed = -speed;
 	}
 }

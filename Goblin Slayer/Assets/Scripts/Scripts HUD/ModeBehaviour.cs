@@ -5,7 +5,7 @@ using UnityEngine;
 public class ModeBehaviour : MonoBehaviour {
 
     //This variable is for testing, in the merge of the game
-    //it will be changed by the real name of the script needed to this.
+    //it will be changed by the real name of the script needed for this.
     TestMode modeChanger;
 
     void Start()

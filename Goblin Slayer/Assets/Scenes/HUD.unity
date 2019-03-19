@@ -1004,17 +1004,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 947748902}
-        m_MethodName: PauseMode
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1076014723}
         m_MethodName: ActivePause
         m_Mode: 1
@@ -1488,6 +1477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc46a518ebc6b34ab0437635f1ce2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseScreen: {fileID: 456978917}
+  gameScreen: {fileID: 287772549}
 --- !u!1 &1116263455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,6 +1493,7 @@ GameObject:
   - component: {fileID: 1116263457}
   - component: {fileID: 1116263456}
   - component: {fileID: 1116263462}
+  - component: {fileID: 1116263463}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1597,7 +1589,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1116263455}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.02, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1617,6 +1609,19 @@ MonoBehaviour:
   mode: 0
   selectMode: 0
   keyMode: 113
+--- !u!114 &1116263463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1116263455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6b8da6a771e9844ad53ae101e6fa1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  imagBound: 6
 --- !u!1 &1505253975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,17 +1864,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 947748902}
-        m_MethodName: Resume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1076014723}
         m_MethodName: DesactivePause
         m_Mode: 1
