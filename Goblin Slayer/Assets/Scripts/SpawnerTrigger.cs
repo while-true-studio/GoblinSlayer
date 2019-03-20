@@ -14,9 +14,9 @@ public class SpawnerTrigger : MonoBehaviour {
             var spawner = GetComponentInParent<Spawner>();
             if (spawner) spawner.Spawn();
 
-            // Once this trigger has been activated, it has no use, destroy
-            // the GameObject and all its components to free memory.
-            Destroy(gameObject);
+            // Once this trigger has been activated, it has no use, set active
+            // to false to prevent further CPU usage.
+            gameObject.SetActive(false);
         }
     }
 

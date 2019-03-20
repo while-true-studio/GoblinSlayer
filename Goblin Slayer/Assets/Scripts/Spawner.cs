@@ -42,10 +42,8 @@ public class Spawner : MonoBehaviour {
             yield return new WaitForSeconds(spawnInterval);
         }
 
-        // Destroy the component to reduce memory usage as it has used
-        // all its slots. There is no problem with SpawnerTrigger as
-        // it gets the gameObject destroyed way before this happens.
-        Destroy(this);
+        // Set enabled to false to prevent further CPU usage.
+        enabled = false;
     }
 
 }
