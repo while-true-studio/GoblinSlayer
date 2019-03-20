@@ -4,6 +4,10 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(Walker))]
 [RequireComponent(typeof(Jumper))]
+///<summary>
+/// This component makes the agent follow the target.
+/// Ensures that we're always facing the target.
+///</summary>
 public class Follower_AI : MonoBehaviour {
 
     // The object to follow
