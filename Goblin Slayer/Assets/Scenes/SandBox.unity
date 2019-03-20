@@ -237,6 +237,11 @@ MonoBehaviour:
   rageMax: 100
   currentRage: 0
   decreaseRageRate: 2
+  percentage: 0
+  velBoost: 0
+  dmgBoost: 0
+  rageState: 0
+  rageBoost: []
 --- !u!65 &1594899719
 BoxCollider:
   m_ObjectHideFlags: 0
