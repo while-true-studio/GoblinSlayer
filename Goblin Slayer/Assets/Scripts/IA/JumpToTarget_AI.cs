@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Follower_AI))]
-public class JumpToTarget : MonoBehaviour {
+public class JumpToTarget_AI : MonoBehaviour {
 
     Follower_AI follower;
     private void Start()
