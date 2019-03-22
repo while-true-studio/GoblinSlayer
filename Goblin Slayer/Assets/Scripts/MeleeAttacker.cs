@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class MeleeAttacker : MonoBehaviour
 {
+    private Animator animator;
     /// <summary>
     /// The melee attack range for this component.
     /// </summary>
     public float range = 3;
     public int damage = 10;
+
+
+    private void Start()
+    {
+        animator = transform.GetChild(0).GetComponent<Animator>();
+    }
 
     /// <summary>
     /// Make an attack on all game objects between the game object that has this component
@@ -17,6 +24,7 @@ public class MeleeAttacker : MonoBehaviour
     /// <param name="normalVector">The normal vector the game object is aiming to.</param>
     public void MakeAttack(Vector2 normalVector)
     {
+        AttackAnimator();
         var targets = FindGameObjects(normalVector);
         foreach(var target in targets )
         {
@@ -66,4 +74,8 @@ public class MeleeAttacker : MonoBehaviour
         return Physics2D.RaycastAll(fromPosition, toPosition, range);
     }
 
+    private void AttackAnimator()
+    {
+        animator.SetTrigger("Attack");
+    }
 }

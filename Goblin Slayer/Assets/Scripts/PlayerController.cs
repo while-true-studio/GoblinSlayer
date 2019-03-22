@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 
     Walker walker;
     Jumper jumper;
-
     public KeyCode leftKey;
     public KeyCode rightKey;
     public KeyCode jumpKey;
@@ -20,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private KeyCode lastDirectionKeyPressed;
     private PlayerAttackManager playerAttackManager;
     private PauseBehaviour pauseHUD;
+    private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
     public bool defending = false;
 
 
@@ -28,9 +30,7 @@ public class PlayerController : MonoBehaviour
         jumper = GetComponent<Jumper>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
         pauseHUD = GameObject.Find("HUD").GetComponent<PauseBehaviour>();
-	}
-
-
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -83,4 +83,5 @@ public class PlayerController : MonoBehaviour
             pauseHUD.ActiveButtom();
         }
     }
+
 }

@@ -8,10 +8,12 @@ public class Health : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public bool Alive { get; private set; }
+    private Animator animator;
 
     private void Start()
     {
         currentHealth = maxHealth;
+        animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
     /// <summary>
@@ -20,6 +22,7 @@ public class Health : MonoBehaviour
     /// <param name="amount"> Amount of damage </param>
     public void LoseHealth(int amount)
     {
+        HitAnimator();
         currentHealth -= amount;
         Alive = !Dead();
     }
@@ -63,5 +66,10 @@ public class Health : MonoBehaviour
     public int GetHP()
     {
         return currentHealth;
+    }
+
+    private void HitAnimator()
+    {
+        animator.SetTrigger("Hit");
     }
 }

@@ -17,6 +17,10 @@ public class PlayerAttackManager : MonoBehaviour
     private Shield shield;
     private SkillHealing skillHealing;
 
+    public AnimatorControllerParameter warriorController;
+    public AnimatorControllerParameter mageController;
+    private Animator animator;
+
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +34,7 @@ public class PlayerAttackManager : MonoBehaviour
             Debug.Log("Dependence not found: shield");
 
         skillHealing = GetComponent<SkillHealing>();
+        animator = transform.GetChild(0).GetComponent<Animator>();
 
     }
 
@@ -67,7 +72,7 @@ public class PlayerAttackManager : MonoBehaviour
                 shield.ActiveShield(true);
                 break;
             case Mode.Mage:
-                
+                skillHealing.Healing();
                 break;
         }
     }
@@ -79,7 +84,7 @@ public class PlayerAttackManager : MonoBehaviour
                 shield.ActiveShield(false);
                 break;
             case Mode.Mage:
-                skillHealing.Healing();
+                skillHealing.EndHealing();
                 break;
         }
     }

@@ -21,7 +21,6 @@ public class Attackable : MonoBehaviour
     {
         health.LoseHealth(damage);
 
-
         if (!health.Alive)
         {
             dead.OnDead();

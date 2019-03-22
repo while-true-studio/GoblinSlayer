@@ -27,7 +27,7 @@ public class EnemyRangeBehaviour : MonoBehaviour
             if (CanAttackPlayer())
             {
                 Player.GetComponent<Attackable>().OnAttack(5);
-                gameObject.GetComponent<PlayerAttackManager>().Attack();
+                    gameObject.GetComponent<PlayerAttackManager>().Attack();
                 yield return new WaitForSeconds(AttackDelay);
             } 
             else

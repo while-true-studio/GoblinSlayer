@@ -45,11 +45,12 @@ public class Projectile : MonoBehaviour
 
         if (target != null)
         {
+            GetComponent<Collider2D>().enabled = false;
             target.OnAttack(damage);
         }
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         Destroy(gameObject,0.5f);
-        animator.SetBool("Destroy",true);
+        animator.SetTrigger("Destroy");
     }
 
 
