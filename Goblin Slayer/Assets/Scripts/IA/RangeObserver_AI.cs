@@ -21,11 +21,26 @@ public class RangeObserver_AI : MonoBehaviour {
     {
         float distance = Vector2.Distance(transform.position, target.position);
 
+        //Debug.Log(string.Format("Distance: {0}    Max: {1}    Min:{2}", distance, maxRange, minRange));
+
         if (distance > maxRange)
+        {
             onTooFar.Invoke();
+            if (maxRange == float.NegativeInfinity) { goto no_limit; }
+            return;
+        }
         else if (distance < minRange)
+        {
             onTooClose.Invoke();
-        else onInRange.Invoke();
+            if (minRange == float.PositiveInfinity) { goto no_limit; }
+            return;
+        }
+        else
+            goto no_limit;
+
+        no_limit:
+            onInRange.Invoke();
+
     }
 
 
@@ -33,8 +48,12 @@ public class RangeObserver_AI : MonoBehaviour {
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, maxRange);
+
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, minRange);
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position, target.position);
 
 
     }

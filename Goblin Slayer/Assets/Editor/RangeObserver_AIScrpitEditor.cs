@@ -16,6 +16,9 @@ public class RangeObserver_AIScrpitEditor : Editor {
 #pragma warning disable CS0618 // El tipo o el miembro están obsoletos
         EditorGUIUtility.LookLikeInspector();
 #pragma warning restore CS0618 // El tipo o el miembro están obsoletos
+        //TARGET
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("target"));
+
 
         //MAX DISTANCE//////////////////////
         bool before = rangeObserver_AI.noMaxRange;

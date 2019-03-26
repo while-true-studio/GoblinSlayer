@@ -12,13 +12,6 @@ public class Follower_AI : MonoBehaviour {
 
     // The object to follow
     public Transform target;
-   
-    // Distance at wich IA stops and is considered that doesn'tneed to go any closer to the target
-    public float minDistance;
-    /// <summary>
-    /// Callback. Will be called once reached <seealso cref="minDistance"/>
-    /// </summary>
-    public UnityEvent onGoalReached;
 
     private Walker walker;
     private Jumper jumper;
@@ -29,20 +22,20 @@ public class Follower_AI : MonoBehaviour {
         jumper = GetComponent<Jumper>();
     }
 
-    private void Update()
+    /// <summary>
+    /// Makes this agent walk to the target
+    /// </summary>
+    public void Follow()
     {
-        Vector2 dist = target.position - transform.position;
-
-        //While haven't reached the minDistance update the walking direction
-        if (dist.magnitude > minDistance)
-            walker.Walk(dist.x > 0 ? Walker.WalkDirection.RIGHT : Walker.WalkDirection.LEFT);
-
-        else//We have reached our goal
-        {
-            walker.Stop();
-            onGoalReached.Invoke();
-        }
-
+        Walker.WalkDirection dir = (target.position - transform.position).x > 0 ? Walker.WalkDirection.RIGHT : Walker.WalkDirection.LEFT;
+        walker.Walk(dir);
+    }
+    /// <summary>
+    /// Makes this agent stop following the targer
+    /// </summary>
+    public void StopFollowing()
+    {
+        walker.Stop();
     }
 
     /// <summary>
