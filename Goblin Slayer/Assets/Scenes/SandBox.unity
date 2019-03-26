@@ -530,8 +530,6 @@ MonoBehaviour:
   projectile: {fileID: 114165265415251082, guid: 14495044cd6c47c41a5a237d324c35d3,
     type: 2}
   manaCost: 20
-  isPlayer: 0
-  meleeDistance: 0
 --- !u!70 &312792075
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4483,8 +4481,6 @@ MonoBehaviour:
   projectile: {fileID: 114165265415251082, guid: 14495044cd6c47c41a5a237d324c35d3,
     type: 2}
   manaCost: 20
-  isPlayer: 0
-  meleeDistance: 0
 --- !u!70 &1306170778
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4592,7 +4588,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1432226263}
-  - component: {fileID: 1432226261}
   - component: {fileID: 1432226262}
   - component: {fileID: 1432226260}
   - component: {fileID: 1432226259}
@@ -4785,26 +4780,6 @@ MonoBehaviour:
   projectile: {fileID: 114165265415251082, guid: 14495044cd6c47c41a5a237d324c35d3,
     type: 2}
   manaCost: 20
-  isPlayer: 0
-  meleeDistance: 0
---- !u!114 &1432226261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1432226247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a23dfdde79df97941a4b76f5f8889213, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  minDistance: 0
-  onGoalReached:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!70 &1432226262
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -5128,8 +5103,6 @@ MonoBehaviour:
   projectile: {fileID: 114165265415251082, guid: 3b2e8b8f1253c5b4e9be37e2deb025d8,
     type: 2}
   manaCost: 5
-  isPlayer: 1
-  meleeDistance: 0
 --- !u!114 &1786440672
 MonoBehaviour:
   m_ObjectHideFlags: 0

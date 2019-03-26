@@ -10,7 +10,7 @@ public class AttackOnRange_AI : MonoBehaviour {
     private void Start()
     {
         attacker_AI = GetComponent<IAttacker_AI>();
-        Assert.IsNotNull(attacker_AI, "ERROR: This GameObject does not contain any component of type Attacker_AI, and is REQUIRED!");
+        Assert.IsNotNull(attacker_AI, "ERROR: This GameObject does NOT contain any component of type Attacker_AI, and is REQUIRED!");
     }
 
     private void Update()

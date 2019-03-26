@@ -8,7 +8,6 @@ public class Shooter : MonoBehaviour
     public Projectile projectile;
     private Mana mana;
     public float manaCost = 20.0f;
-    public bool isPlayer, meleeDistance;
 
 
     private void Start()
@@ -25,9 +24,9 @@ public class Shooter : MonoBehaviour
 
 
     /// <summary>
-    /// Create a proyectile in transform position
+    /// Shoots a <seealso cref="Projectile"/> in the given direction
     /// </summary>
-    /// <param name="direction"></param>
+    /// <param name="direction">The direction in wich the proyectile should shooted</param>
     public void Shoot(Vector2 direction)
     {
         if(mana.UseMana(manaCost))
@@ -44,14 +43,9 @@ public class Shooter : MonoBehaviour
 
     }
 
-    public bool IsPlayer()
-    {
-        return isPlayer;
-    }
-
     public LayerMask SetCollisionMask()
     {
-        return GetComponent<LayerMask>();
+        return GetComponent<LayerMask>();//???
     }
 
 }
