@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Follower_AI))]
+[RequireComponent(typeof(AutoJumper_AI))]
 public class JumpToTarget_AI : MonoBehaviour {
 
-    Follower_AI follower;
+    AutoJumper_AI autoJumper;
     private void Start()
     {
-        follower = GetComponent<Follower_AI>();
+        autoJumper = GetComponent<AutoJumper_AI>();
     }
 
     public void OnRange()
     {
-        follower.MakeMeJump();
+        autoJumper.MakeJump();
     }
 }

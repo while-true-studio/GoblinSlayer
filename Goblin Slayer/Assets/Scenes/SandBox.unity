@@ -3991,11 +3991,13 @@ GameObject:
   - component: {fileID: 1306170766}
   - component: {fileID: 1306170765}
   - component: {fileID: 1306170764}
+  - component: {fileID: 1306170770}
   - component: {fileID: 1306170778}
   - component: {fileID: 1306170775}
   - component: {fileID: 1306170774}
   - component: {fileID: 1306170771}
   - component: {fileID: 1306170767}
+  - component: {fileID: 1306170769}
   m_Layer: 10
   m_Name: Test Melee Enemy
   m_TagString: Enemy
@@ -4027,7 +4029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noMaxRange: 0
-  maxRange: 6
+  maxRange: 7.71
   noMinRange: 0
   minRange: 2
   target: {fileID: 1786440668}
@@ -4066,6 +4068,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 1306170770}
+        m_MethodName: OnRange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1306170766
@@ -4105,6 +4118,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+--- !u!114 &1306170769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1306170763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae8d5445cd2c1748bd5cfd3202da792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1306170770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1306170763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11c45e1293f449489a6cc548c3d6402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1306170771
 MonoBehaviour:
   m_ObjectHideFlags: 0

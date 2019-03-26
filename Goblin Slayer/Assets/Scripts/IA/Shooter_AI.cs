@@ -38,7 +38,7 @@ public class Shooter_AI : MonoBehaviour, IAttacker_AI
             angle = float.NaN;
             return false;
         }
-        float x = target.position.x - transform.position.x;
+        //float x = target.position.x - transform.position.x;
         //TODO: this shit paso de hacer las cuentas estas ahora
         angle = Mathf.Deg2Rad * 45;
         return true;

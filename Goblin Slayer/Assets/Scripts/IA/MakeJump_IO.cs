@@ -9,10 +9,10 @@ using UnityEngine;
 public class MakeJump_IO : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Follower_AI follower = collision.GetComponent<Follower_AI>();
+        AutoJumper_AI autoJumper = collision.GetComponent<AutoJumper_AI>();
         //TODO: This problably needs a revision to make sure the jumping works
-        if (follower)
-            follower.MakeMeJump();
+        if (autoJumper)
+            autoJumper.MakeJump();
         
     }
 }

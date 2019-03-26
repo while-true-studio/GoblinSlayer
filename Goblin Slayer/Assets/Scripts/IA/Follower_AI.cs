@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
-
 
 [RequireComponent(typeof(Walker))]
 [RequireComponent(typeof(Jumper))]
@@ -14,12 +12,10 @@ public class Follower_AI : MonoBehaviour {
     public Transform target;
 
     private Walker walker;
-    private Jumper jumper;
 
     private void Start()
     {
         walker = GetComponent<Walker>();
-        jumper = GetComponent<Jumper>();
     }
 
     /// <summary>
@@ -37,9 +33,4 @@ public class Follower_AI : MonoBehaviour {
     {
         walker.Stop();
     }
-
-    /// <summary>
-    /// Makes this agent jump
-    /// </summary>
-    public void MakeMeJump() { jumper.Jump(); }
 }
