@@ -21,9 +21,9 @@ public class RangeObserver_AI : MonoBehaviour {
     {
         float distance = Vector2.Distance(transform.position, target.position);
 
-        if (!noMaxRange && distance > maxRange)
+        if (distance > maxRange)
             onTooFar.Invoke();
-        else if (!noMinRange && distance < minRange)
+        else if (distance < minRange)
             onTooClose.Invoke();
         else onInRange.Invoke();
     }
