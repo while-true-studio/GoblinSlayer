@@ -3813,6 +3813,48 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 25, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1015118328
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4921504874275814, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 295.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921504874275814, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 223.90457
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921504874275814, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -7.443105
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921504874275814, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921504874275814, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921504874275814, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921504874275814, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921504874275814, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1118511131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3989,6 +4031,7 @@ GameObject:
   - component: {fileID: 1306170773}
   - component: {fileID: 1306170772}
   - component: {fileID: 1306170766}
+  - component: {fileID: 1306170776}
   - component: {fileID: 1306170765}
   - component: {fileID: 1306170764}
   - component: {fileID: 1306170770}
@@ -4029,58 +4072,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noMaxRange: 0
-  maxRange: 7.71
+  maxRange: 1.5
   noMinRange: 0
-  minRange: 2
+  minRange: 1
   target: {fileID: 1786440668}
-  onTooFar:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onInRange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1306170764}
-        m_MethodName: Follow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onTooClose:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1306170764}
-        m_MethodName: StopFollowing
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-      - m_Target: {fileID: 1306170770}
-        m_MethodName: OnRange
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1306170766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4092,7 +4087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bb6cb91de616e4fb15a22b897265de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
+  range: 0.5
   damage: 10
 --- !u!114 &1306170767
 MonoBehaviour:
@@ -4140,6 +4135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11c45e1293f449489a6cc548c3d6402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 1786440668}
 --- !u!114 &1306170771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4174,7 +4170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243fb4573069a594082132335d592bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 2
+  jumpForce: 5
 --- !u!114 &1306170774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4206,6 +4202,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1306170776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1306170763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef89217c3f53754fa9217c70d47547d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!70 &1306170778
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

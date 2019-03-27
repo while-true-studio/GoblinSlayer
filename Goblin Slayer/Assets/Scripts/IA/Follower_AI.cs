@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-
 [RequireComponent(typeof(Walker))]
-[RequireComponent(typeof(Jumper))]
 ///<summary>
 /// This component makes the agent follow the target.
 /// Ensures that we're always facing the target.

@@ -54,13 +54,10 @@ public class RangeObserver_AIScrpitEditor : Editor {
             if(minValueChanged)
                 rangeObserver_AI.minRange = lastValueMinRange;
             rangeObserver_AI.minRange = EditorGUILayout.FloatField("Min Range", rangeObserver_AI.minRange);
+            if (rangeObserver_AI.minRange > rangeObserver_AI.maxRange)
+                rangeObserver_AI.minRange = rangeObserver_AI.maxRange -0.01f;
         }
 
-        //CallBacks////////////////////////
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("onTooFar"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("onInRange"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("onTooClose"));
-        
         //Update gui
         if (GUI.changed) serializedObject.ApplyModifiedProperties();
     }

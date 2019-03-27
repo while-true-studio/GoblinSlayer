@@ -4,7 +4,8 @@ using UnityEngine;
 public class MeleeAttacker_AI : MonoBehaviour, IAttacker_AI
 {
     private MeleeAttacker attacker;
-    void Start () {
+    void Start ()
+    {
         attacker = GetComponent<MeleeAttacker>();
 	}
 

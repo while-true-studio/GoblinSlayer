@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(IDead))]
 public class Attackable : MonoBehaviour
@@ -12,6 +13,7 @@ public class Attackable : MonoBehaviour
     {
         health = GetComponent<Health>();
         dead = GetComponent<IDead>();
+        Assert.IsNotNull(dead);
     }
     /// <summary>
     /// Called to deal damage to the gameObject

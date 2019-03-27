@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class RangeObserver_AI : MonoBehaviour {
 
@@ -12,10 +12,22 @@ public class RangeObserver_AI : MonoBehaviour {
     public float minRange;
 
     public Transform target;
+    
+    private List<Action> tooFarCallbacks    = new List<Action>();
+    private List<Action> tooCloseCallbacks  = new List<Action>();
+    private List<Action> inRangeCallbacks   = new List<Action>();
 
-    public UnityEvent onTooFar;
-    public UnityEvent onInRange;
-    public UnityEvent onTooClose;
+
+
+    public void AddTooFarCallback(Action callback) { tooFarCallbacks.Add(callback);}
+    public void AddTooCloseCallback(Action callback) { tooCloseCallbacks.Add(callback); }
+    public void AddInRangeCallback(Action callback) { inRangeCallbacks.Add(callback); }
+
+    public void RemoveTooFarCallback(Action callback) { tooFarCallbacks.Remove(callback); }
+    public void RemoveTooCloseCallback(Action callback) { tooCloseCallbacks.Remove(callback); }
+    public void RemoveInRangeCallback(Action callback) { inRangeCallbacks.Remove(callback); }
+
+    private void CallCallbacks(List<Action> list) { foreach(Action callback in list) callback(); }
 
     private void Update()
     {
@@ -25,21 +37,16 @@ public class RangeObserver_AI : MonoBehaviour {
 
         if (distance > maxRange)
         {
-            onTooFar.Invoke();
-            if (maxRange == float.NegativeInfinity) { goto no_limit; }
-            return;
+            CallCallbacks(tooFarCallbacks);
+            if (maxRange == float.NegativeInfinity) { CallCallbacks(inRangeCallbacks); }
         }
         else if (distance < minRange)
         {
-            onTooClose.Invoke();
-            if (minRange == float.PositiveInfinity) { goto no_limit; }
-            return;
+            CallCallbacks(tooCloseCallbacks);
+            if (minRange == float.PositiveInfinity) { CallCallbacks(inRangeCallbacks); }
         }
         else
-            goto no_limit;
-
-        no_limit:
-            onInRange.Invoke();
+            CallCallbacks(inRangeCallbacks);
 
     }
 
@@ -54,7 +61,6 @@ public class RangeObserver_AI : MonoBehaviour {
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position, target.position);
-
 
     }
 }
