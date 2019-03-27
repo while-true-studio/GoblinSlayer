@@ -22,6 +22,7 @@ public class SkillHealing : MonoBehaviour
     {
         if(healingMode)
         {
+            healingMode = false;
             StartCoroutine("HealingDoing");
         }
     }
@@ -42,11 +43,8 @@ public class SkillHealing : MonoBehaviour
     /// <returns></returns>
     private IEnumerator HealingDoing()
     {
-        healingMode = false;
         yield return new WaitForSecondsRealtime(healingTime);
         hp.RestoreHP(heal);
-        healingMode = true;
-
     }
 
     /// <summary>
