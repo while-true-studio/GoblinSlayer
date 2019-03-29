@@ -19,7 +19,7 @@ public class Rage : MonoBehaviour {
     /// The currentRage will be plused by plusRage.
     /// </summary>
     public void ChangeRage(float addRage)
-    {
+    { 
         currentRage += addRage; 
         if (currentRage > rageMax) currentRage = rageMax;
     }   
