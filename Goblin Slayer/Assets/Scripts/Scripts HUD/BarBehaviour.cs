@@ -3,32 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(Mana))]
+[RequireComponent(typeof(Rage))]
 public class BarBehaviour : MonoBehaviour
 {
 
-    private Health health, healthBoss;
+    private Health health;
     private Mana mana;
     private Rage rage;
     public Scrollbar healthBar;
     public Scrollbar manaBar;
     public Transform rageBar;
-    public Transform ragetext;
+    public Text ragetext;
+
+    //private Health healthBoss;
     //Scrollbar healthBossBar;
     void Start()
     {
         GameObject player = GameObject.Find("Player");
         health = player.GetComponent<Health>();
         mana = player.GetComponent<Mana>();
-        rage = player.GetComponent < Rage>();
+        rage = player.GetComponent <Rage>();
 
         //Falta la barra de vida del Boss
+        //healthBoss = GameObject.Find("Boos").GetComponent<Health>();
     }
 
     void Update()
     {
         healthBar.size = (float)health.currentHealth / (float)health.maxHealth;
         manaBar.size = (float)mana.currentMana / (float)mana.maxMana;
-        ragetext.GetComponent<Text>().text = ((int)rage.currentRage).ToString();
+        ragetext.text = (int)rage.percentage + "%";
         rageBar.GetComponent<Image>().fillAmount = rage.currentRage / rage.rageMax;
     }    
 }

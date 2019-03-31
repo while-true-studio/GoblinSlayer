@@ -2,37 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAttackManager))]
 public class ModeBehaviour : MonoBehaviour {
 
-    //This variable is for testing, in the merge of the game
-    //it will be changed by the real name of the script needed for this.
-    TestMode modeChanger;
+    PlayerAttackManager mode;
 
-    void Start()
+    private void Start()
     {
-        //The same case as before.
-        modeChanger = GameObject.Find("Player").GetComponent<TestMode>();
-    }
-    void Update()
-    {
-        currentMode(modeChanger.mode);
+        mode = GameObject.Find("Player").GetComponent<PlayerAttackManager>();
     }
 
-    /// <summary>
-    /// It is absolutely necessary to keep an sctric order for to make this method works.
-    /// </summary>
-    public void currentMode(Mode mode)
+    private void Update()
     {
-        switch (mode)
+        CurrentMode();
+    }
+    public void CurrentMode()
+    {
+        switch (mode.currentMode)
         {
-            case Mode.melee:
+            case PlayerAttackManager.Mode.Melee:
                 transform.GetChild(0).gameObject.SetActive(true);
                 transform.GetChild(1).gameObject.SetActive(false);
                 break;
-            case Mode.mage:
+            case PlayerAttackManager.Mode.Mage:
                 transform.GetChild(0).gameObject.SetActive(false);
                 transform.GetChild(1).gameObject.SetActive(true);
                 break;
         }
-    }  
+    }
 }
