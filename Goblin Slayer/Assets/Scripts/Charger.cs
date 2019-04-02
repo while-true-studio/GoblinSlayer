@@ -29,6 +29,7 @@ public class Charger : MonoBehaviour
         // animator = GetComponent<Animator>();
         enemyRB = GetComponent<Rigidbody2D>();
         walker = GetComponent<Walker>();
+        facingRight = true;
     }
 
     // Update is called once per frame
@@ -37,7 +38,7 @@ public class Charger : MonoBehaviour
         float playerX = PlayerTransform.position.x;
         float startX = transform.position.x;
 
-        bool inRange = Mathf.Abs(playerX - startX) <= Range;
+        bool inRange = facingRight ? startX - playerX < Range : playerX - startX < Range;
 
         if (inRange)
         {
@@ -48,12 +49,25 @@ public class Charger : MonoBehaviour
         }
         else if (charging)
         {
-                PlayerOnRangeExit();
+            PlayerOnRangeExit();
         }
+        else
+        {
+            PlayerRangeFlip();
+        }
+    }
+
+    private void PlayerRangeFlip()
+    {
+        if (facingRight && PlayerTransform.position.x < transform.position.x)
+            FlipFacing();
+        else if (!facingRight && PlayerTransform.position.x > transform.position.x)
+            FlipFacing();
     }
 
     private void PlayerOnRangeEnter()
     {
+        Debug.Log("PlayerOnRangeEnter");
         if (facingRight && PlayerTransform.position.x < transform.position.x)
             FlipFacing();
         else if (!facingRight && PlayerTransform.position.x > transform.position.x)
@@ -63,19 +77,22 @@ public class Charger : MonoBehaviour
         charging = true;
         startChargeTime = Time.time + chargeTime;
         walker.enabled = false;
+        enemyRB.velocity = new Vector2(0f, 0f);
     }
 
     private void PlayerOnRangeStay()
     {
-        if (startChargeTime >= Time.time)
+        Debug.Log("PlayerOnRangeStay");
+        if (startChargeTime < Time.time)
         {
-            enemyRB.AddForce(new Vector2(facingRight ? -Speed : Speed, 0f));
+            enemyRB.AddForce(new Vector2(facingRight ? Speed : -Speed, 0f), ForceMode2D.Force);
             // animator.SetBool("isCharging", true);
         }
     }
 
     private void PlayerOnRangeExit()
     {
+        Debug.Log("PlayerOnRangeExit");
         canFlip = true;
         charging = false;
         enemyRB.velocity = new Vector2(0f, 0f);
@@ -85,6 +102,7 @@ public class Charger : MonoBehaviour
 
     private void FlipFacing()
     {
+        Debug.Log("FlipFacing");
         if (!canFlip) return;
         transform.localScale.Set(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         facingRight = !facingRight;
