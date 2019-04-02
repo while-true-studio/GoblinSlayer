@@ -5,28 +5,24 @@ using UnityEditor.SceneManagement;
 
 public class PauseBehaviour : MonoBehaviour
 {
-
-    //Script for positioning pause elements in the visual screen 
-    //or in another position to not watch them.
-
-
+    
+    public GameObject pauseScreen, gameScreen;
     private void Start()
     {
-        DesactiveButtom();
+        DesactivePause();
     }
 
-    public void ActiveButtom()
+    public void ActivePause()
     {
-        transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(1).gameObject.SetActive(false);
-
+        pauseScreen.SetActive(true);
+        gameScreen.SetActive(false);
+        Time.timeScale = 0f;
     }
 
-    public void DesactiveButtom()
+    public void DesactivePause()
     {
-        transform.GetChild(0).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(true);
+        pauseScreen.SetActive(false);
+        gameScreen.SetActive(true);
+        Time.timeScale = 1f;
     }
-
-
 }

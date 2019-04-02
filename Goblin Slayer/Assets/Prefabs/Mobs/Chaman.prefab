@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackRange: 3
   AttackDelay: 1
-  Player: {fileID: 0}
+  Player: {fileID: 1982169670090708, guid: 378eb5e205fd0244685ec947341074ab, type: 2}
 --- !u!114 &114286172863495496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,7 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d71a37bcb3880d4d942c616eaea9795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTransform: {fileID: 0}
+  PlayerTransform: {fileID: 4052321682578994, guid: 378eb5e205fd0244685ec947341074ab,
+    type: 2}
 --- !u!212 &212282228432179378
 SpriteRenderer:
   m_ObjectHideFlags: 1

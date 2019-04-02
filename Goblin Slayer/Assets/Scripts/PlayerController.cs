@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode attackKey;
     public KeyCode defendKey;
     public KeyCode menuKey;
+    public KeyCode resumeKey;
 
     private KeyCode lastDirectionKeyPressed;
     private PlayerAttackManager playerAttackManager;
@@ -80,7 +81,11 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetKeyDown(menuKey))
         {
-            pauseHUD.ActiveButtom();
+            pauseHUD.ActivePause();
+        }
+        if (Input.GetKeyDown(resumeKey))
+        {
+            pauseHUD.DesactivePause();
         }
     }
 
