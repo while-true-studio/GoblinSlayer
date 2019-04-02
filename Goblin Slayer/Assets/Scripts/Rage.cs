@@ -16,10 +16,10 @@ public class Rage : MonoBehaviour
     
     Walker walker; //The script that contains the velocity of the player character
     MeleeAttacker melee; //The script that contains the dmg melee of the player character
-    //Projectile mageProjectile; //The script that contains the dmg mage of the player character
+    public Projectile mageProjectile; //The script that contains the dmg mage of the player character
     float initialVel; //The initial velocity of the script Walker
     int initialDmgMelee; //The initial dmg of the melee mode
-    //int initialDmgMage; //The initial dmg of the mage mode
+    int initialDmgMage; //The initial dmg of the mage mode
 
     public enum State { NORMAL = 0, MASACRE = 1, SLAYER = 2 };
 
@@ -39,11 +39,10 @@ public class Rage : MonoBehaviour
     {
         walker = gameObject.GetComponent<Walker>();
         melee = gameObject.GetComponent<MeleeAttacker>();
-        //mageProjectile = gameObject.GetComponent<Projectile>();
 
         initialVel = walker.velocity;
         initialDmgMelee = melee.damage;
-        //initialDmgMage = mageProjectile.damage;
+        initialDmgMage = mageProjectile.damage;
 
         rageState = State.NORMAL;
     }
@@ -78,6 +77,6 @@ public class Rage : MonoBehaviour
     {
         walker.velocity = initialVel + rageBoost[(int)rageState].vel;
         melee.damage = initialDmgMelee + rageBoost[(int)rageState].dmgMelee;
-        //mageProjectile.damage = initialDmgMage + rageBoost[(int)rageState].dmgMage;
+        mageProjectile.damage = initialDmgMage + rageBoost[(int)rageState].dmgMage;
     }
 }
