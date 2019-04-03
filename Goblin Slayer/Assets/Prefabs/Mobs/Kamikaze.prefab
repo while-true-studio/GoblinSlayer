@@ -33,9 +33,9 @@ GameObject:
   - component: {fileID: 114077076631909466}
   - component: {fileID: 114380556600337300}
   - component: {fileID: 114299992110919314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Kamikaze
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,9 +50,9 @@ GameObject:
   - component: {fileID: 4603461116539116}
   - component: {fileID: 95852982201584168}
   - component: {fileID: 212945531596314014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: KamikazeAnim
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352030705095550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.014301, y: 0.8338372, z: 0.083984375}
+  m_LocalPosition: {x: 11.01, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4603461116539116}
@@ -79,7 +79,7 @@ Transform:
   m_GameObject: {fileID: 1498557009838686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 4251795562831158}
   m_RootOrder: 0
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &70157888009207038
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -116,8 +116,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0, y: -0.002193689}
+  m_Size: {x: 1, y: 1.504387}
   m_Direction: 0
 --- !u!95 &95852982201584168
 Animator:
@@ -128,7 +128,7 @@ Animator:
   m_GameObject: {fileID: 1498557009838686}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7ca75311b0a6c444d8286314bfdf5f83, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bb6cb91de616e4fb15a22b897265de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
+  range: 1
   damage: 10
 --- !u!114 &114144810479040044
 MonoBehaviour:
@@ -321,8 +321,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -891329609
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
