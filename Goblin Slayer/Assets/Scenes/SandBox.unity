@@ -4027,20 +4027,21 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1306170779}
+  - component: {fileID: 1306170777}
   - component: {fileID: 1306170768}
   - component: {fileID: 1306170773}
   - component: {fileID: 1306170772}
   - component: {fileID: 1306170766}
-  - component: {fileID: 1306170776}
   - component: {fileID: 1306170765}
-  - component: {fileID: 1306170764}
-  - component: {fileID: 1306170770}
   - component: {fileID: 1306170778}
   - component: {fileID: 1306170775}
   - component: {fileID: 1306170774}
   - component: {fileID: 1306170771}
-  - component: {fileID: 1306170767}
   - component: {fileID: 1306170769}
+  - component: {fileID: 1306170776}
+  - component: {fileID: 1306170770}
+  - component: {fileID: 1306170767}
+  - component: {fileID: 1306170764}
   m_Layer: 10
   m_Name: Test Melee Enemy
   m_TagString: Enemy
@@ -4056,10 +4057,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1306170763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a23dfdde79df97941a4b76f5f8889213, type: 3}
+  m_Script: {fileID: 11500000, guid: b83b914926ad3184982a093acdc4e8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1786440668}
 --- !u!114 &1306170765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4097,9 +4097,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1306170763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bf21aecf15bbc4699b31b3a1eaebb3, type: 3}
+  m_Script: {fileID: 11500000, guid: e2949bee79c56304fa58a769a6d628a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
+  manaCost: 20
 --- !u!114 &1306170768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4132,10 +4134,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1306170763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c11c45e1293f449489a6cc548c3d6402, type: 3}
+  m_Script: {fileID: 11500000, guid: a23dfdde79df97941a4b76f5f8889213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1786440668}
+  target: {fileID: 0}
 --- !u!114 &1306170771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4210,7 +4212,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1306170763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fef89217c3f53754fa9217c70d47547d, type: 3}
+  m_Script: {fileID: 11500000, guid: e6a89b4a53a8a65488846fea11175784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0
+--- !u!114 &1306170777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1306170763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f035b0d7623d84ca69a223f681a73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!70 &1306170778
@@ -4494,7 +4508,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21768427, y: -0.036266565}
+  m_Offset: {x: 0.18, y: 0}
   m_Size: {x: 0.99154377, y: 1.916007}
   m_Direction: 0
 --- !u!50 &1786440670

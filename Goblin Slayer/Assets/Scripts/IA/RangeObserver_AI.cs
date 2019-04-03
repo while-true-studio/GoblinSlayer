@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 public class RangeObserver_AI : MonoBehaviour {
-
+    //TODO coment this stuff up
     public bool noMaxRange;
     public float maxRange;
 

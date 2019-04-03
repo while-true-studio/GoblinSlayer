@@ -6,9 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(AutoJumper_AI))]
 [RequireComponent(typeof(Follower_AI))]
 [RequireComponent(typeof(MeleeAttacker_AI))]
-public class JumpAttack_AI : MonoBehaviour {
+[RequireComponent(typeof(Target_AI))]
+public class JumpAttack_AI : Brain_AI {
 
-    public Transform target;
+    private Target_AI target;
 
     //Observer
     private RangeObserver_AI rangeObserver;
@@ -23,7 +24,7 @@ public class JumpAttack_AI : MonoBehaviour {
         rangeObserver   = GetComponent<RangeObserver_AI>();
         follower        = GetComponent<Follower_AI>();
         attacker        = GetComponent<MeleeAttacker_AI>();
-
+        target          = GetComponent<Target_AI>();
 
         RegisterCallbacks();
     }
@@ -31,13 +32,13 @@ public class JumpAttack_AI : MonoBehaviour {
      {
         UnRegisterCallbacks();
      }
-    private void RegisterCallbacks()
+    protected override void RegisterCallbacks() 
     {
         rangeObserver.AddTooFarCallback(OnTooFar);
         rangeObserver.AddTooCloseCallback(OnTooClose);
         rangeObserver.AddInRangeCallback(OnRange);
     }
-    private void UnRegisterCallbacks()
+    protected override void UnRegisterCallbacks()
     {
         rangeObserver.RemoveTooFarCallback(OnTooFar);
         rangeObserver.RemoveTooCloseCallback(OnTooClose);
@@ -45,7 +46,7 @@ public class JumpAttack_AI : MonoBehaviour {
     }
 
    
-    public void OnTooClose() { attacker.Attack(target); }
+    public void OnTooClose() { attacker.Attack(target.GetTarget()); }
     public void OnTooFar() { follower.Follow(); }
     public void OnRange()  { autoJumper.MakeJump(); }
 }
