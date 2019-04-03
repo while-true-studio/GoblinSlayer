@@ -1034,6 +1034,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4884710469852664, guid: bc140691802411f47af30f1e7b01cc52, type: 2}
       propertyPath: m_LocalPosition.x
       value: 59.88
@@ -1082,6 +1087,22 @@ Prefab:
         type: 2}
       propertyPath: remaining
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.data[0].GameObject
+      value: 
+      objectReference: {fileID: 1436774138156092, guid: 27fb068e02b21e542914654f619bb019,
+        type: 2}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.data[0].Amount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: spawnInterval
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc140691802411f47af30f1e7b01cc52, type: 2}
@@ -34588,6 +34609,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4884710469852664, guid: bc140691802411f47af30f1e7b01cc52, type: 2}
       propertyPath: m_LocalPosition.x
       value: 14.75
@@ -34632,6 +34658,22 @@ Prefab:
         type: 2}
       propertyPath: remaining
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.data[0].GameObject
+      value: 
+      objectReference: {fileID: 1436774138156092, guid: 27fb068e02b21e542914654f619bb019,
+        type: 2}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.data[0].Amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: spawnInterval
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc140691802411f47af30f1e7b01cc52, type: 2}
