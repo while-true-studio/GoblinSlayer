@@ -16,7 +16,7 @@ public class Rage : MonoBehaviour
     
     Walker walker; //The script that contains the velocity of the player character
     MeleeAttacker melee; //The script that contains the dmg melee of the player character
-    public Projectile mageProjectile; //The script that contains the dmg mage of the player character
+    Projectile mageProjectile; //The script that contains the dmg mage of the player character
     float initialVel; //The initial velocity of the script Walker
     int initialDmgMelee; //The initial dmg of the melee mode
     int initialDmgMage; //The initial dmg of the mage mode
@@ -39,6 +39,7 @@ public class Rage : MonoBehaviour
     {
         walker = gameObject.GetComponent<Walker>();
         melee = gameObject.GetComponent<MeleeAttacker>();
+        mageProjectile = gameObject.GetComponent<Shooter>().projectile;
 
         initialVel = walker.velocity;
         initialDmgMelee = melee.damage;

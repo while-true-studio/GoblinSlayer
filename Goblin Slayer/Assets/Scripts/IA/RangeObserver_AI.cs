@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+[RequireComponent(typeof(Target_AI))]
 public class RangeObserver_AI : MonoBehaviour {
     //TODO coment this stuff up
     public bool noMaxRange;
@@ -11,7 +11,7 @@ public class RangeObserver_AI : MonoBehaviour {
     public bool noMinRange;
     public float minRange;
 
-    public Transform target;
+    private Target_AI target;
     
     private List<Action> tooFarCallbacks    = new List<Action>();
     private List<Action> tooCloseCallbacks  = new List<Action>();
@@ -29,9 +29,14 @@ public class RangeObserver_AI : MonoBehaviour {
 
     private void CallCallbacks(List<Action> list) { foreach(Action callback in list) callback(); }
 
+    private void Start()
+    {
+        target = GetComponent<Target_AI>();
+    }
+
     private void Update()
     {
-        float distance = Vector2.Distance(transform.position, target.position);
+        float distance = Vector2.Distance(transform.position, target.GetTarget().position);
 
         //Debug.Log(string.Format("Distance: {0}    Max: {1}    Min:{2}", distance, maxRange, minRange));
 
@@ -58,9 +63,6 @@ public class RangeObserver_AI : MonoBehaviour {
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, minRange);
-
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(transform.position, target.position);
 
     }
 }

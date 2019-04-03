@@ -6,10 +6,13 @@ public class Shield : MonoBehaviour {
 
     private PlayerAttackManager playerAttackManager;
     public GameObject shieldSprite;
+    private Animator shieldAnim;
 
     void Start()
     {
         playerAttackManager = GetComponent<PlayerAttackManager>();
+        shieldAnim = transform.GetChild(0).GetComponent<Animator>();
+        ActiveShield(false);
     }
     void Update()
     {
@@ -39,5 +42,6 @@ public class Shield : MonoBehaviour {
     public void ActiveShield(bool status)
     {
         shieldSprite.SetActive(status);
+        shieldAnim.SetBool("Guard",status);
     }
 }

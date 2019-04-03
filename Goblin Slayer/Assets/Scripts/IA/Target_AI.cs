@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 public class Target_AI : MonoBehaviour
 {
-    private string targetName;
+    public string targetName;
     private GameObject target;
     private void Awake()
     {

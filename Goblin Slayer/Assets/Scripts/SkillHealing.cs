@@ -34,7 +34,7 @@ public class SkillHealing : MonoBehaviour
     {
         healingMode = true;
         healingAnim.SetBool("Healing", true);
-        playerAnim.SetTrigger("Cast");
+        playerAnim.SetBool("Healing",true);
     }
 
     /// <summary>
@@ -54,6 +54,8 @@ public class SkillHealing : MonoBehaviour
     {
         healingMode = false;
         healingAnim.SetBool("Healing", false);
+        playerAnim.SetBool("Healing", false);
+
     }
 
 }

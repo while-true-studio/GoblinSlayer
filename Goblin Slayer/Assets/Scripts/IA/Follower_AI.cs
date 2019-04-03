@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 [RequireComponent(typeof(Walker))]
+[RequireComponent(typeof(Target_AI))]
 ///<summary>
 /// This component makes the agent follow the target.
 /// Ensures that we're always facing the target.
@@ -7,13 +8,14 @@
 public class Follower_AI : MonoBehaviour {
 
     // The object to follow
-    public Transform target;
+    private Target_AI target;
 
     private Walker walker;
 
     private void Start()
     {
         walker = GetComponent<Walker>();
+        target = GetComponent<Target_AI>();
     }
 
     /// <summary>
@@ -21,7 +23,7 @@ public class Follower_AI : MonoBehaviour {
     /// </summary>
     public void Follow()
     {
-        Walker.WalkDirection dir = (target.position - transform.position).x > 0 ? Walker.WalkDirection.RIGHT : Walker.WalkDirection.LEFT;
+        Walker.WalkDirection dir = (target.GetTarget().position - transform.position).x > 0 ? Walker.WalkDirection.RIGHT : Walker.WalkDirection.LEFT;
         walker.Walk(dir);
     }
     /// <summary>

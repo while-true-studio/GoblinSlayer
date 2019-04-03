@@ -36,6 +36,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4846145966056018}
+  - component: {fileID: 114666610788961992}
+  - component: {fileID: 114883438015364416}
   - component: {fileID: 70827878764953938}
   - component: {fileID: 114439057294702584}
   - component: {fileID: 50119870167306206}
@@ -43,13 +45,11 @@ GameObject:
   - component: {fileID: 114835455707445268}
   - component: {fileID: 114473569308450340}
   - component: {fileID: 114678613646767174}
-  - component: {fileID: 114025244127432840}
-  - component: {fileID: 114918653595542398}
   - component: {fileID: 114812908137721066}
-  - component: {fileID: 114743862230054774}
-  - component: {fileID: 114286172863495496}
-  - component: {fileID: 114728843717132138}
-  - component: {fileID: 114601454889300450}
+  - component: {fileID: 114530005550026456}
+  - component: {fileID: 114153901939185490}
+  - component: {fileID: 114907538697958280}
+  - component: {fileID: 114292111254264264}
   m_Layer: 10
   m_Name: Chaman
   m_TagString: Enemy
@@ -137,7 +137,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114025244127432840
+--- !u!114 &114153901939185490
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,13 +145,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1436774138156092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c91031892b160443877fbe44cb5b286, type: 3}
+  m_Script: {fileID: 11500000, guid: a23dfdde79df97941a4b76f5f8889213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackRange: 3
-  AttackDelay: 1
-  Player: {fileID: 1982169670090708, guid: 378eb5e205fd0244685ec947341074ab, type: 2}
---- !u!114 &114286172863495496
+--- !u!114 &114292111254264264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,11 +156,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1436774138156092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7bb6cb91de616e4fb15a22b897265de, type: 3}
+  m_Script: {fileID: 11500000, guid: 365f157e16e72b343998af05176bf158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
-  damage: 10
+  noMaxRange: 0
+  maxRange: 10
+  noMinRange: 0
+  minRange: 3
 --- !u!114 &114324032641378004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -175,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c130b4234b6d1469e18faea9ae49f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rageAmount: 2
 --- !u!114 &114439057294702584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,8 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 114165265415251082, guid: 14495044cd6c47c41a5a237d324c35d3,
     type: 2}
-  manaCost: 20
-  isPlayer: 0
+  manaCost: 0
 --- !u!114 &114473569308450340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 1.5
---- !u!114 &114601454889300450
+--- !u!114 &114530005550026456
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,12 +209,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1436774138156092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90d613e6a8e3da64d8c2993f313cca33, type: 3}
+  m_Script: {fileID: 11500000, guid: 28723f0732452554daa1d7982aabd5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMana: 1000
-  currentMana: 0
-  autoManaRegenRate: 50
+  targetName: Player
+--- !u!114 &114666610788961992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436774138156092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f035b0d7623d84ca69a223f681a73d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114678613646767174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,31 +233,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92873c92cc0d9ce49ba202fe80ae6c28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114728843717132138
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1436774138156092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ebd30ee6e2af8946b926f1a49905f9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMode: 1
-  currentPlayer: 1
-  player: {fileID: 0}
---- !u!114 &114743862230054774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1436774138156092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bf21aecf15bbc4699b31b3a1eaebb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114812908137721066
@@ -277,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 2
---- !u!114 &114918653595542398
+--- !u!114 &114883438015364416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,11 +268,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1436774138156092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d71a37bcb3880d4d942c616eaea9795, type: 3}
+  m_Script: {fileID: 11500000, guid: e6a89b4a53a8a65488846fea11175784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTransform: {fileID: 4052321682578994, guid: 378eb5e205fd0244685ec947341074ab,
-    type: 2}
+  distance: 15
+--- !u!114 &114907538697958280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436774138156092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83b914926ad3184982a093acdc4e8c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212282228432179378
 SpriteRenderer:
   m_ObjectHideFlags: 1

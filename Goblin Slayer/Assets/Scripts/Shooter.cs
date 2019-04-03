@@ -8,6 +8,9 @@ public class Shooter : MonoBehaviour
     public Projectile projectile;
     private Mana mana;
     public float manaCost = 20.0f;
+    private Animator playerAnim;
+    private Animator effectAnim;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {

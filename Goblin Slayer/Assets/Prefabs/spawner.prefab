@@ -51,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1397566314055818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.200603, y: -0.22000001, z: 0.07467389}
+  m_LocalPosition: {x: -27.12, y: -0.22000001, z: 0.07467389}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4884710469852664}
@@ -64,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1646675335007228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.399398, y: -0.24, z: 3.2363281}
+  m_LocalPosition: {x: 14.75, y: -0.24, z: 3.2363281}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4539273780066506}
@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2290056ad7d44442a2531be5692e690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 1436774138156092, guid: 27fb068e02b21e542914654f619bb019, type: 2}
-  remaining: 20
-  spawnInterval: 3.5
+  unitTypes:
+  - GameObject: {fileID: 1436774138156092, guid: 27fb068e02b21e542914654f619bb019,
+      type: 2}
+    Amount: 3
+  spawnInterval: 1
