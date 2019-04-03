@@ -38,7 +38,7 @@ public class PlayerAttackManager : MonoBehaviour
 
     }
 
-    private Vector2 GetLookAt()
+    public Vector2 GetLookAt()
     {
         Vector3 aux = currentPlayer == IsPlayer.Player
             ? Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position
