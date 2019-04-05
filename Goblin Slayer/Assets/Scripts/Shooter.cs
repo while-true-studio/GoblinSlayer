@@ -6,11 +6,13 @@ public class Shooter : MonoBehaviour
 {
 
     public Projectile projectile;
-    private Mana mana;
     public float manaCost = 20.0f;
+    public float cooldownTime = 0.8f;
+    private Mana mana;
     private Animator playerAnim;
     private Animator effectAnim;
     private SpriteRenderer spriteRenderer;
+    private Cooldown cooldown;
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class Shooter : MonoBehaviour
         }
 
         spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        cooldown = new Cooldown(cooldownTime);
     }
     /// <summary>
     /// Crea el proyectil en la posición del padre
@@ -39,8 +42,8 @@ public class Shooter : MonoBehaviour
     /// <param name="direction">The direction in wich the proyectile should shooted</param>
     public void Shoot(Vector2 direction)
     {
-        
-        if(mana.UseMana(manaCost))
+        if (!cooldown.CanUse()) return;
+        if (mana.UseMana(manaCost))
         {
             CastAnimator(direction);
             Projectile p = CreateProjectile();
