@@ -3,8 +3,17 @@
 /// <summary> 
 /// The Cooldown class utility. 
 /// </summary> 
-public class Cooldown : MonoBehaviour
+public class Cooldown
 {
+    /// <summary> 
+    /// Constructs a new Cooldown instance with a given cooldown. 
+    /// </summary> 
+    /// <param name="cooldown">The amount of time in seconds the cooldown should last.</param> 
+    public Cooldown(float cooldown)
+    {
+        this.cooldown = cooldown;
+    }
+
     /// <summary> 
     /// The amount of time in seconds the cooldown is applied for. 
     /// </summary> 

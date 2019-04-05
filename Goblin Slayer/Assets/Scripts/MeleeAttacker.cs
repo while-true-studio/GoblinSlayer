@@ -16,10 +16,7 @@ public class MeleeAttacker : MonoBehaviour
     private void Start()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
-        cooldown = new Cooldown
-        {
-            cooldown = cooldownTime
-        };
+        cooldown = new Cooldown(cooldownTime);
     }
 
     /// <summary>

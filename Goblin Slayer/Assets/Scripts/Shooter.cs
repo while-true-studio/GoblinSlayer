@@ -25,10 +25,7 @@ public class Shooter : MonoBehaviour
         }
 
         spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
-        cooldown = new Cooldown
-        {
-            cooldown = cooldownTime
-        };
+        cooldown = new Cooldown(cooldownTime);
     }
     /// <summary>
     /// Crea el proyectil en la posición del padre
