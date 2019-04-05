@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Walker))]
-[RequireComponent(typeof(Jumper))]
 public class PlayerController : MonoBehaviour
 {
 
     Walker walker;
-    Jumper jumper;
     public KeyCode leftKey;
     public KeyCode rightKey;
     public KeyCode jumpKey;
@@ -28,7 +26,6 @@ public class PlayerController : MonoBehaviour
 
 	void Start () {
         walker = GetComponent<Walker>();
-        jumper = GetComponent<Jumper>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
         pauseHUD = GameObject.Find("HUD").GetComponent<PauseBehaviour>();
     }
@@ -56,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
             //Jump
             if (Input.GetKeyDown(jumpKey))
-                jumper.Jump();
+                playerAttackManager.JumpController();
 
             if (Input.GetKeyDown(switchModeKey))
             {

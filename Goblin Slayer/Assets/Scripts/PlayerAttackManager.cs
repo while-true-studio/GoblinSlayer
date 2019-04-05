@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(MeleeAttacker))]
 [RequireComponent(typeof(Shooter))]
 [RequireComponent(typeof(Shield))]
+[RequireComponent(typeof(Jumper))]
+
 public class PlayerAttackManager : MonoBehaviour
 {
     public enum Mode { Melee, Mage };
@@ -20,7 +22,7 @@ public class PlayerAttackManager : MonoBehaviour
     public AnimatorControllerParameter warriorController;
     public AnimatorControllerParameter mageController;
     private Animator animator;
-
+    private Jumper jumper;
 
 	// Use this for initialization
 	void Start () {
@@ -35,7 +37,7 @@ public class PlayerAttackManager : MonoBehaviour
 
         skillHealing = GetComponent<SkillHealing>();
         animator = transform.GetChild(0).GetComponent<Animator>();
-
+        jumper = GetComponent<Jumper>();
     }
 
     public Vector2 GetLookAt()
@@ -88,5 +90,18 @@ public class PlayerAttackManager : MonoBehaviour
                 break;
         }
     }
+    public void JumpController()
+    {
+        switch (currentMode)
+        {
+            case Mode.Mage:
+                jumper.SkillJump(GetLookAt());
+                break;
+            case Mode.Melee:
+                jumper.Jump();
+                break;
+        }
+    }
+
 
 }
