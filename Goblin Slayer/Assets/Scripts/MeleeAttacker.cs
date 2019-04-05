@@ -10,11 +10,16 @@ public class MeleeAttacker : MonoBehaviour
     /// </summary>
     public float range = 3;
     public int damage = 10;
-
+    public float cooldownTime = 0.8f;
+    private Cooldown cooldown;
 
     private void Start()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
+        cooldown = new Cooldown
+        {
+            cooldown = cooldownTime
+        };
     }
 
     /// <summary>
@@ -24,6 +29,7 @@ public class MeleeAttacker : MonoBehaviour
     /// <param name="normalVector">The normal vector the game object is aiming to.</param>
     public void MakeAttack(Vector2 normalVector)
     {
+        if (!cooldown.CanUse()) return;
         AttackAnimator();
         var targets = FindGameObjects(normalVector);
         foreach(var target in targets )
