@@ -5,34 +5,26 @@ using UnityEditor.SceneManagement;
 
 public class PauseBehaviour : MonoBehaviour
 {
-    
-    public GameObject pauseScreen, gameScreen;
-    public bool pauseActive;
-    public GameManager gamemanager;
-    public KeyCode exitKey;
-    public int scene;
 
+    public GameObject pauseScreen, gameScreen;
+    public PlayerController player;
     private void Start()
     {
         DesactivePause();
     }
-    private void Update()
-    {
-        if (pauseActive && Input.GetKeyDown(exitKey)) gamemanager.ChangeScene(scene);
-    }
     public void ActivePause()
     {
+        player.enabled = false;
         pauseScreen.SetActive(true);
         gameScreen.SetActive(false);
         Time.timeScale = 0f;
-        pauseActive = true;
     }
 
     public void DesactivePause()
     {
+        player.enabled = true;
         pauseScreen.SetActive(false);
         gameScreen.SetActive(true);
         Time.timeScale = 1f;
-        pauseActive = false;
     }
 }
