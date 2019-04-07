@@ -27,12 +27,7 @@ public class Shield : MonoBehaviour {
     {
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Vector3 move = new Vector3(direction.x, direction.y, 0);
-        if (direction.x > 0.2)
-        {
-            shieldSprite.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            shieldSprite.transform.position = transform.localPosition + move;
-        }
-        
+        if (direction.y > -0.4) shieldSprite.transform.SetPositionAndRotation(transform.localPosition + move, Quaternion.AngleAxis(angle, Vector3.forward));
     }
 
     /// <summary>

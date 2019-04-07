@@ -1302,6 +1302,7 @@ GameObject:
   - component: {fileID: 964782623}
   - component: {fileID: 964782622}
   - component: {fileID: 964782621}
+  - component: {fileID: 964782628}
   - component: {fileID: 964782620}
   - component: {fileID: 964782619}
   - component: {fileID: 964782618}
@@ -1622,6 +1623,18 @@ MonoBehaviour:
   jumpForce: 1
   onGround: 1
   toes: {fileID: 553181809}
+--- !u!114 &964782628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 964782610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6281fcd732b814eb828ffd3c17db71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldTransform: {fileID: 357675397}
 --- !u!1 &1059880122
 GameObject:
   m_ObjectHideFlags: 0
