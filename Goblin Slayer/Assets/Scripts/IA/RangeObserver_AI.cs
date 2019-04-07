@@ -37,7 +37,7 @@ public class RangeObserver_AI : MonoBehaviour {
     private void Update()
     {
         float distance = Vector2.Distance(transform.position, target.GetTarget().position);
-
+        Debug.DrawLine(transform.position, target.GetTarget().position, Color.magenta);
         //Debug.Log(string.Format("Distance: {0}    Max: {1}    Min:{2}", distance, maxRange, minRange));
 
         if (distance > maxRange)

@@ -5,10 +5,13 @@ using UnityEngine;
 public class Mana : MonoBehaviour {
 
     
-    public float maxMana; 
+    public float maxMana = 100; 
     public float currentMana;
     public float autoManaRegenRate;
-
+    private void Start()
+    {
+        currentMana = maxMana;
+    }
     private void Update()
     {
         currentMana += autoManaRegenRate * Time.deltaTime;

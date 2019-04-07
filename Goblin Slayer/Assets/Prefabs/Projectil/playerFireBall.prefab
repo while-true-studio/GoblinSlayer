@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4714682991358984}
   - component: {fileID: 58777209356405296}
   - component: {fileID: 50689611650357960}
-  - component: {fileID: 114165265415251082}
+  - component: {fileID: 114448255413102026}
   - component: {fileID: 95816431601965220}
   - component: {fileID: 212884490172764548}
   m_Layer: 9
@@ -126,7 +126,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114165265415251082
+--- !u!114 &114448255413102026
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,12 +134,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1644953834737342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9661fa5877585e4ba8c035fcefcf426, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dd2036865d4aab4ea01c5fb06e17470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 5
+  projectileSpeed: 7
   damage: 45
-  projectileRotation: 2.5
+  projectileRotation: 1.5
+  manaCost: 0
 --- !u!212 &212884490172764548
 SpriteRenderer:
   m_ObjectHideFlags: 1

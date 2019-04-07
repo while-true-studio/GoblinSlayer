@@ -21,7 +21,6 @@ public class PlayerAttackManager : MonoBehaviour
 
     public AnimatorControllerParameter warriorController;
     public AnimatorControllerParameter mageController;
-    private Animator animator;
     private Jumper jumper;
 
 	// Use this for initialization
@@ -36,7 +35,6 @@ public class PlayerAttackManager : MonoBehaviour
             Debug.Log("Dependence not found: shield");
 
         skillHealing = GetComponent<SkillHealing>();
-        animator = transform.GetChild(0).GetComponent<Animator>();
         jumper = GetComponent<Jumper>();
     }
 

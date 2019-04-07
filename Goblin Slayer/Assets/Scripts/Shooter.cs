@@ -6,27 +6,30 @@ public class Shooter : MonoBehaviour
 {
 
     public Projectile projectile;
-    public float manaCost = 20.0f;
+
     public float cooldownTime = 0.8f;
-    private Mana mana;
     private Animator playerAnim;
-    private Animator effectAnim;
-    private SpriteRenderer spriteRenderer;
+  
+    //private SpriteRenderer spriteRenderer;??
     private Cooldown cooldown;
 
     private void Start()
     {
-        mana = GetComponent<Mana>();
-        playerAnim = transform.GetChild(0).GetComponent<Animator>();
+        Init();
+    }
 
-        if (GetComponent<PlayerController>())
+    protected virtual void Init()
+    {
+        if (transform.childCount >= 1)
         {
-            effectAnim = transform.GetChild(1).GetComponent<Animator>();
+            playerAnim = transform.GetChild(0).GetComponent<Animator>();
+
+            //spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();??
         }
 
-        spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         cooldown = new Cooldown(cooldownTime);
     }
+
     /// <summary>
     /// Crea el proyectil en la posición del padre
     /// </summary>
@@ -40,47 +43,21 @@ public class Shooter : MonoBehaviour
     /// Shoots a <seealso cref="Projectile"/> in the given direction
     /// </summary>
     /// <param name="direction">The direction in wich the proyectile should shooted</param>
-    public void Shoot(Vector2 direction)
+    public virtual void Shoot(Vector2 direction)
     {
         if (!cooldown.CanUse()) return;
-        if (mana.UseMana(manaCost))
-        {
-            CastAnimator(direction);
-            Projectile p = CreateProjectile();
-            p.SetDirection(direction);
-            p.ShootYourSelf();
-            Debug.DrawLine(transform.position, direction, Color.red);
-        }
-        else
-        {
-            print("not enough mana");
-        }
-
+        
+        CastAnimator(direction);
+        Projectile p = CreateProjectile();
+        p.SetDirection(direction);
+        p.ShootYourSelf();
+        Debug.DrawLine(transform.position, direction, Color.red);
     }
 
-    public LayerMask SetCollisionMask()
+    protected virtual void CastAnimator(Vector2 dir)
     {
-        return GetComponent<LayerMask>();//???
-    }
-
-    private void CastAnimator(Vector2 dir)
-    {
-        if (dir.normalized.x > 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if(dir.normalized.x < 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-
-        playerAnim.SetTrigger("Cast");
-
-        if(GetComponent<PlayerController>())
-        {
-            effectAnim.SetTrigger("Casting");
-        }
-
+        if(playerAnim)
+            playerAnim.SetTrigger("Cast");
     }
 
 }

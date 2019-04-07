@@ -36,10 +36,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4846145966056018}
-  - component: {fileID: 114666610788961992}
+  - component: {fileID: 114292111254264264}
   - component: {fileID: 114883438015364416}
   - component: {fileID: 70827878764953938}
-  - component: {fileID: 114439057294702584}
+  - component: {fileID: 114379858907337692}
   - component: {fileID: 50119870167306206}
   - component: {fileID: 114324032641378004}
   - component: {fileID: 114835455707445268}
@@ -49,7 +49,8 @@ GameObject:
   - component: {fileID: 114530005550026456}
   - component: {fileID: 114153901939185490}
   - component: {fileID: 114907538697958280}
-  - component: {fileID: 114292111254264264}
+  - component: {fileID: 114089134969740650}
+  - component: {fileID: 114666610788961992}
   m_Layer: 10
   m_Name: Chaman
   m_TagString: Enemy
@@ -137,6 +138,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114089134969740650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436774138156092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d613e6a8e3da64d8c2993f313cca33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 0
+  currentMana: 0
+  autoManaRegenRate: 0
 --- !u!114 &114153901939185490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -175,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rageAmount: 2
---- !u!114 &114439057294702584
+--- !u!114 &114379858907337692
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,12 +198,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1436774138156092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2949bee79c56304fa58a769a6d628a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d21c3d35842116438d8a04d901b746f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 114165265415251082, guid: 14495044cd6c47c41a5a237d324c35d3,
+  projectile: {fileID: 114690903619220756, guid: 14495044cd6c47c41a5a237d324c35d3,
     type: 2}
-  manaCost: 0
+  cooldownTime: 0.8
 --- !u!114 &114473569308450340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,7 +274,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243fb4573069a594082132335d592bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manaCost: 20
   jumpForce: 2
+  onGround: 0
+  toes: {fileID: 0}
 --- !u!114 &114883438015364416
 MonoBehaviour:
   m_ObjectHideFlags: 1

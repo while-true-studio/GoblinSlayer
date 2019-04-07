@@ -14,6 +14,6 @@ public class Shooter_AI : MonoBehaviour, IAttacker_AI
 
     public void Attack(Transform target)
     {
-        shooter.Shoot(new Vector2(0.5f, ((transform.position - target.position).x > 0) ? 0.5f : -0.5f));
+        shooter.Shoot(new Vector2(((transform.position - target.position).x < 0) ? 0.5f : -0.5f, 0.5f));
     }
 }

@@ -17,8 +17,8 @@ public class KeepDistanceWith : MonoBehaviour {
     {
         Vector2 v = target.position - transform.position;
 
-        if(v.magnitude > distance)
-            walker.Walk((v.normalized.x < 0)? Walker.WalkDirection.LEFT : Walker.WalkDirection.RIGHT);
+        if(v.magnitude < distance)
+            walker.Walk((v.normalized.x > 0)? Walker.WalkDirection.LEFT : Walker.WalkDirection.RIGHT);
     }
 
 

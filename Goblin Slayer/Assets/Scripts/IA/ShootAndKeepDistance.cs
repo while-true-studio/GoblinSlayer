@@ -14,12 +14,18 @@ public class ShootAndKeepDistance : Brain_AI {
     private Shooter_AI shooter;
     private Follower_AI follower;
     private KeepDistanceWith keepDistance;
+
     void Start () {
         rangeObserver = GetComponent<RangeObserver_AI>();
         shooter = GetComponent<Shooter_AI>();
         follower = GetComponent<Follower_AI>();
         keepDistance = GetComponent<KeepDistanceWith>();
         target = GetComponent<Target_AI>();
+
+        /*Config*/
+        keepDistance.distance = rangeObserver.minRange;
+
+        RegisterCallbacks();
 	}
     protected override void RegisterCallbacks()
     {
