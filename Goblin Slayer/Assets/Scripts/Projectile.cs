@@ -41,17 +41,31 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.tag == transform.parent.tag) return;
 
+
         Attackable target = collision.gameObject.GetComponent<Attackable>();
+
 
         if (target != null)
         {
+            print(collision.transform.GetChild(2));
             GetComponent<Collider2D>().enabled = false;
             target.OnAttack(damage);
         }
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        Destroy(gameObject,0.5f);
-        animator.SetTrigger("Destroy");
+        DestroyProjectil();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Shield")
+        {
+            DestroyProjectil();
+        }
+    }
 
+    private void DestroyProjectil()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        Destroy(gameObject, 0.5f);
+        animator.SetTrigger("Destroy");
+    }
 }
