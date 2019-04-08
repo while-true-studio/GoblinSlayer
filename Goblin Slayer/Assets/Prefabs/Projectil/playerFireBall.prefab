@@ -140,7 +140,7 @@ MonoBehaviour:
   projectileSpeed: 7
   damage: 45
   projectileRotation: 1.5
-  manaCost: 0
+  manaCost: 10
 --- !u!212 &212884490172764548
 SpriteRenderer:
   m_ObjectHideFlags: 1

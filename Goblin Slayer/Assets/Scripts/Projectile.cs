@@ -18,6 +18,17 @@ public class Projectile : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        if(shootDirection.x > 0.0f)
+        {
+            transform.Rotate(new Vector3(0.0f,0.0f,-0.7f));
+        }
+        else
+        {
+            transform.Rotate(new Vector3(0.0f, 0.0f, 0.7f));
+        }
+    }
 
     /// <summary>
     /// Set the direction to shoot
@@ -47,7 +58,6 @@ public class Projectile : MonoBehaviour
 
         if (target != null)
         {
-            print(collision.transform.GetChild(2));
             GetComponent<Collider2D>().enabled = false;
             target.OnAttack(damage);
         }

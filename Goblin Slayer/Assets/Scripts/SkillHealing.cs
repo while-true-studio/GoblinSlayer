@@ -45,6 +45,7 @@ public class SkillHealing : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(healingTime);
         hp.RestoreHP(heal);
+        healingMode = true;
     }
 
     /// <summary>
@@ -55,7 +56,6 @@ public class SkillHealing : MonoBehaviour
         healingMode = false;
         healingAnim.SetBool("Healing", false);
         playerAnim.SetBool("Healing", false);
-
     }
 
 }

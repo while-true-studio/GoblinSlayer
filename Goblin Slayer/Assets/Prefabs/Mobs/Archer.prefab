@@ -77,7 +77,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1704966900866466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.8, y: 6.06, z: -0.06640625}
+  m_LocalPosition: {x: -3.04, y: 3.03, z: -0.06640625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4388643389451888}
@@ -253,8 +253,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2949bee79c56304fa58a769a6d628a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  manaCost: 0
+  projectile: {fileID: 114165265415251082, guid: 81ee16640bde4f14ba30d2042ff38fd8,
+    type: 2}
+  cooldownTime: 0.8
 --- !u!114 &114739875184754154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,7 +267,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243fb4573069a594082132335d592bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manaCost: 20
   jumpForce: 2
+  onGround: 0
+  toes: {fileID: 0}
 --- !u!114 &114781402467982416
 MonoBehaviour:
   m_ObjectHideFlags: 1

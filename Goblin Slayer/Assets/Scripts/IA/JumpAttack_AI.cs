@@ -46,7 +46,7 @@ public class JumpAttack_AI : Brain_AI {
     }
 
    
-    public void OnTooClose() { attacker.Attack(target.GetTarget()); }
+    public void OnTooClose(){attacker.Attack(target.GetTarget());}
     public void OnTooFar() { follower.Follow(); }
     public void OnRange()  { autoJumper.MakeJump(); }
 }
