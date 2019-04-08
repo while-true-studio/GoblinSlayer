@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour {
+public class Spawner : MonoBehaviour
+{
+    public DoorKeeper doorKeeper; 
 
     [System.Serializable]
     public struct UnitType
@@ -48,6 +50,8 @@ public class Spawner : MonoBehaviour {
 
         // Set enabled to false to prevent further CPU usage.
         enabled = false;
+        doorKeeper.RemoveSpawn();
+
     }
 
 }

@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114991743319837276}
   m_Layer: 0
   m_Name: spawner
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2290056ad7d44442a2531be5692e690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorKeeper: {fileID: 0}
   unitTypes:
   - GameObject: {fileID: 1436774138156092, guid: 27fb068e02b21e542914654f619bb019,
       type: 2}
