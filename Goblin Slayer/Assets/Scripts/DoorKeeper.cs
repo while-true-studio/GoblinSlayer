@@ -38,9 +38,4 @@ public class DoorKeeper : MonoBehaviour
     {
         GameManager.instancia.ChangeScene(0);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        print("You must kill all goblins before go to the next lvl ");
-    }
 }

@@ -26,13 +26,15 @@ GameObject:
   - component: {fileID: 114959600867184390}
   - component: {fileID: 114772718186984572}
   - component: {fileID: 114654057345570788}
-  - component: {fileID: 114689762809012626}
-  - component: {fileID: 114144810479040044}
   - component: {fileID: 114546223154368724}
-  - component: {fileID: 114188842975187276}
   - component: {fileID: 114077076631909466}
-  - component: {fileID: 114380556600337300}
   - component: {fileID: 114299992110919314}
+  - component: {fileID: 114844515397046540}
+  - component: {fileID: 114147006803398514}
+  - component: {fileID: 114098998922012770}
+  - component: {fileID: 114574032825297374}
+  - component: {fileID: 114333239828531482}
+  - component: {fileID: 114383790516698286}
   m_Layer: 10
   m_Name: Kamikaze
   m_TagString: Enemy
@@ -57,6 +59,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1644884717233148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4799693595993074}
+  - component: {fileID: 61469442938128342}
+  - component: {fileID: 114542829528642308}
+  m_Layer: 9
+  m_Name: Toes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4251795562831158
 Transform:
   m_ObjectHideFlags: 1
@@ -68,6 +87,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4603461116539116}
+  - {fileID: 4799693595993074}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -83,6 +103,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4251795562831158}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4799693595993074
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644884717233148}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4251795562831158}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50249231497470972
 Rigidbody2D:
@@ -104,6 +137,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &61469442938128342
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644884717233148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0033044815, y: -0.7866781}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.31578827, y: 0.08177376}
+  m_EdgeRadius: 0
 --- !u!70 &70157888009207038
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -116,7 +174,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.002193689}
+  m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1.504387}
   m_Direction: 0
 --- !u!95 &95852982201584168
@@ -150,7 +208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 1
   damage: 10
---- !u!114 &114144810479040044
+  cooldownTime: 0.8
+--- !u!114 &114098998922012770
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,12 +217,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1352030705095550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d71a37bcb3880d4d942c616eaea9795, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ae8d5445cd2c1748bd5cfd3202da792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTransform: {fileID: 4052321682578994, guid: 378eb5e205fd0244685ec947341074ab,
-    type: 2}
---- !u!114 &114188842975187276
+--- !u!114 &114147006803398514
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,9 +228,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1352030705095550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bf21aecf15bbc4699b31b3a1eaebb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 365f157e16e72b343998af05176bf158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noMaxRange: 0
+  maxRange: 2
+  noMinRange: 0
+  minRange: 1
 --- !u!114 &114299992110919314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,7 +249,7 @@ MonoBehaviour:
   maxMana: 1000
   currentMana: 0
   autoManaRegenRate: 50
---- !u!114 &114380556600337300
+--- !u!114 &114333239828531482
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,12 +257,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1352030705095550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ebd30ee6e2af8946b926f1a49905f9e, type: 3}
+  m_Script: {fileID: 11500000, guid: fef89217c3f53754fa9217c70d47547d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMode: 0
-  currentPlayer: 1
-  player: {fileID: 0}
+--- !u!114 &114383790516698286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352030705095550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28723f0732452554daa1d7982aabd5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetName: Player
+--- !u!114 &114542829528642308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644884717233148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f12bfd108c67cb4bb9d31515bb61d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114546223154368724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,6 +296,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+--- !u!114 &114574032825297374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352030705095550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23dfdde79df97941a4b76f5f8889213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114654057345570788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,20 +318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92873c92cc0d9ce49ba202fe80ae6c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114689762809012626
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1352030705095550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c91031892b160443877fbe44cb5b286, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackRange: 3
-  AttackDelay: 1
-  Player: {fileID: 1982169670090708, guid: 378eb5e205fd0244685ec947341074ab, type: 2}
 --- !u!114 &114772718186984572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,6 +330,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 2
+--- !u!114 &114844515397046540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352030705095550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11c45e1293f449489a6cc548c3d6402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114858040940368780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c130b4234b6d1469e18faea9ae49f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rageAmount: 2
 --- !u!114 &114889055293318946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,8 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
-  manaCost: 20
-  isPlayer: 0
+  cooldownTime: 0.8
 --- !u!114 &114959600867184390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243fb4573069a594082132335d592bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 3
+  jumpForce: 2
 --- !u!212 &212945531596314014
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -329,7 +418,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 9, y: 9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

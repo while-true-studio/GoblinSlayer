@@ -18,7 +18,7 @@ public class PlayerAttackManager : MonoBehaviour
     private Shooter shooter;
     private Shield shield;
     private SkillHealing skillHealing;
-
+    private SkillJumper skillJumper;
     public AnimatorControllerParameter warriorController;
     public AnimatorControllerParameter mageController;
     private Jumper jumper;
@@ -35,6 +35,7 @@ public class PlayerAttackManager : MonoBehaviour
             Debug.Log("Dependence not found: shield");
 
         skillHealing = GetComponent<SkillHealing>();
+        skillJumper = GetComponent<SkillJumper>();
         jumper = GetComponent<Jumper>();
     }
 
@@ -93,7 +94,8 @@ public class PlayerAttackManager : MonoBehaviour
         switch (currentMode)
         {
             case Mode.Mage:
-                jumper.SkillJump(GetLookAt());
+                if (jumper.toes.onGound) jumper.Jump();
+                else skillJumper.MakeADoubleJump(GetLookAt());
                 break;
             case Mode.Melee:
                 jumper.Jump();

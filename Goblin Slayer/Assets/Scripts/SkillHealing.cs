@@ -45,6 +45,7 @@ public class SkillHealing : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(healingTime);
         hp.RestoreHP(heal);
+        print("HEALING!");
         healingMode = true;
     }
 
