@@ -8,8 +8,9 @@ public class SkillHealing : MonoBehaviour
     private Health hp;
     private Animator healingAnim;
     private Animator playerAnim;
-    private bool healingMode { get ; set; }
-    public float healingTime = 1.0f;
+    public bool healingMode;
+    public float healingTime;
+    public float timerHeal = 0.0f;
 
     private void Start()
     {
@@ -20,21 +21,27 @@ public class SkillHealing : MonoBehaviour
 
     private void Update()
     {
+
         if(healingMode)
         {
-            healingMode = false;
-            StartCoroutine("HealingDoing");
+            timerHeal = Time.deltaTime * healingTime;
+            hp.RestoreHP((int)timerHeal);
         }
+        else
+        {
+            timerHeal = 0.0f;
+        }
+        print(timerHeal);
     }
 
     /// <summary>
     /// Heal health points
     /// </summary>
-    public void Healing()
+    public void Healing(bool status)
     {
-        healingMode = true;
-        healingAnim.SetBool("Healing", true);
-        playerAnim.SetBool("Healing",true);
+        healingMode = status;
+        healingAnim.SetBool("Healing", status);
+        playerAnim.SetBool("Healing",status);
     }
 
     /// <summary>
@@ -46,17 +53,8 @@ public class SkillHealing : MonoBehaviour
         yield return new WaitForSecondsRealtime(healingTime);
         hp.RestoreHP(heal);
         print("HEALING!");
-        healingMode = true;
     }
 
-    /// <summary>
-    /// Stop of heal and finish the healing animation
-    /// </summary>
-    public void EndHealing()
-    {
-        healingMode = false;
-        healingAnim.SetBool("Healing", false);
-        playerAnim.SetBool("Healing", false);
-    }
+
 
 }

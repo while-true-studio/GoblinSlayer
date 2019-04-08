@@ -1142,7 +1142,7 @@ RectTransform:
   - {fileID: 2067781323}
   - {fileID: 907557694}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2012,7 +2012,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &726725016
 GameObject:
@@ -2277,7 +2277,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4921504874275814, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
@@ -2343,7 +2343,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heal: 100
-  healingTime: 2
+  healingMode: 0
+  healingTime: 1000
+  timerHeal: 0
 --- !u!114 &964782613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37002,7 +37004,7 @@ Transform:
   m_Children:
   - {fileID: 1160802898}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1921129547
 Prefab:
