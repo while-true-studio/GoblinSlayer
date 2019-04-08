@@ -7,14 +7,16 @@ public class PauseBehaviour : MonoBehaviour
 {
 
     public GameObject pauseScreen, gameScreen;
-    public PlayerController player;
+    public PlayerController playerController;
+    public LookingMouse playerLook;
     private void Start()
     {
         DesactivePause();
     }
     public void ActivePause()
     {
-        player.enabled = false;
+        playerController.enabled = false;
+        playerLook.enabled = false;
         pauseScreen.SetActive(true);
         gameScreen.SetActive(false);
         Time.timeScale = 0f;
@@ -22,7 +24,8 @@ public class PauseBehaviour : MonoBehaviour
 
     public void DesactivePause()
     {
-        player.enabled = true;
+        playerController.enabled = true;
+        playerLook.enabled = true;
         pauseScreen.SetActive(false);
         gameScreen.SetActive(true);
         Time.timeScale = 1f;
