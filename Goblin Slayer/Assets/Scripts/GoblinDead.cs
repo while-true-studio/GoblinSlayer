@@ -6,11 +6,11 @@ public class GoblinDead : MonoBehaviour, IDead
 {
     private Animator animator;
     private Rage playerRage;
-    private float timeAnim = 1.0f;
+    private float timeAnim = 0.4f;
     public int rageAmount = 2;
+
     void IDead.OnDead()
     {
-        Debug.Log("Imma Goblin and i'm ded. I'd like to keep raping but I need to go, bye");
         DyingAnimator();
         playerRage.AddRage(rageAmount);
         Destroy(gameObject,timeAnim);

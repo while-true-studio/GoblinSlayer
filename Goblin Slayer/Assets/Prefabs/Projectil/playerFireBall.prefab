@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 212884490172764548}
   m_Layer: 9
   m_Name: playerFireBall
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd2036865d4aab4ea01c5fb06e17470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 7
-  damage: 45
+  projectileSpeed: 5
+  damage: 75
   projectileRotation: 1.5
   manaCost: 10
 --- !u!212 &212884490172764548

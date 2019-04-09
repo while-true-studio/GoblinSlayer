@@ -7,15 +7,11 @@ public class SkillJumper :  Jumper
     public int manaCost;
     private Mana mana;
     private Animator fallingAnimator;
-    private Toes toes;
-    private Rigidbody2D rb;
 
 	void Start ()
     {
         mana = GetComponent<Mana>();
         fallingAnimator = transform.GetChild(0).GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
-        toes = GetComponentInChildren<Toes>();
     }
 	
 

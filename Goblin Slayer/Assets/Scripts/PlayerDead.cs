@@ -27,6 +27,6 @@ public class PlayerDead : MonoBehaviour, IDead
     private IEnumerator TimeAnimation()
     {
         yield return new WaitForSecondsRealtime(timeAnim);
-        GameManager.instancia.ResetScene(0);
+        GameManager.instancia.ResetScene(1);
     }
 }

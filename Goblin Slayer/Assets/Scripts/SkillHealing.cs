@@ -31,7 +31,6 @@ public class SkillHealing : MonoBehaviour
         {
             timerHeal = 0.0f;
         }
-        print(timerHeal);
     }
 
     /// <summary>

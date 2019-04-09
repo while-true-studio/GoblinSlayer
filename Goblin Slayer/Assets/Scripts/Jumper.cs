@@ -5,7 +5,7 @@ using UnityEngine;
 public class Jumper : MonoBehaviour
 {
     public float jumpForce;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb { get; set; }
     public Toes toes {  get; private set; }
     private Animator animator;
 

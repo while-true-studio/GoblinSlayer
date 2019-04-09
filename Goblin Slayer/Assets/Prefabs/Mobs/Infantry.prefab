@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4205846166848458}
   - component: {fileID: 212148152948504944}
   - component: {fileID: 95736360926357776}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: infantryAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4746843901374628}
   - component: {fileID: 61919926234450334}
   - component: {fileID: 114014058609263952}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Toes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,21 +56,19 @@ GameObject:
   - component: {fileID: 70267183101554754}
   - component: {fileID: 50611174700875932}
   - component: {fileID: 114921213477947158}
-  - component: {fileID: 114485850072585076}
   - component: {fileID: 114103675427645874}
   - component: {fileID: 114591756146098146}
   - component: {fileID: 114720443148438166}
   - component: {fileID: 114079333309462234}
-  - component: {fileID: 114563448073476278}
   - component: {fileID: 114908029497029878}
   - component: {fileID: 114649770787149400}
   - component: {fileID: 114419827996466792}
   - component: {fileID: 114146484921208526}
   - component: {fileID: 114785111896184390}
   - component: {fileID: 114627076535033224}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Infantry
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,9 +214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bb6cb91de616e4fb15a22b897265de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
-  damage: 10
-  cooldownTime: 0.8
+  range: 2
+  damage: 25
+  cooldownTime: 1
 --- !u!114 &114103675427645874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,36 +251,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noMaxRange: 0
-  maxRange: 3
+  maxRange: 1.5
   noMinRange: 0
   minRange: 1
---- !u!114 &114485850072585076
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1238520512336728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49415591d7f7b25498b2a7a2bc5b993b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
---- !u!114 &114563448073476278
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1238520512336728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90d613e6a8e3da64d8c2993f313cca33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMana: 0
-  currentMana: 0
-  autoManaRegenRate: 0
 --- !u!114 &114591756146098146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdbca9b207fb3bf489af68e772c797c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 0
+  velocity: 2.5
 --- !u!114 &114627076535033224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -329,9 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243fb4573069a594082132335d592bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 0
-  rb: {fileID: 0}
-  toes: {fileID: 0}
+  jumpForce: 2
 --- !u!114 &114785111896184390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,8 +323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49415591d7f7b25498b2a7a2bc5b993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
+  maxHealth: 400
+  currentHealth: 185
 --- !u!114 &114921213477947158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c130b4234b6d1469e18faea9ae49f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rageAmount: 2
+  rageAmount: 10
 --- !u!212 &212148152948504944
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -403,7 +372,7 @@ SpriteRenderer:
   m_SortingLayerID: -891329609
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a00c3f561665bf44a9912ef3c622cbe4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 367a3bfd106caf248a44bae25ccedd15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

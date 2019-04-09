@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 114631596337901710}
   - component: {fileID: 114360667863335666}
   - component: {fileID: 114781402467982416}
+  - component: {fileID: 114688919229673796}
   m_Layer: 10
   m_Name: Archer
   m_TagString: Enemy
@@ -82,7 +83,7 @@ Transform:
   m_GameObject: {fileID: 1863183179609102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 4690772621137138}
   m_RootOrder: 0
@@ -94,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1704966900866466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.37, y: 0.15, z: -0.06640625}
+  m_LocalPosition: {x: -16.33, y: 0.15, z: -0.06640625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4388643389451888}
@@ -204,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a89b4a53a8a65488846fea11175784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
+  distance: 7
 --- !u!114 &114212502057645372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdbca9b207fb3bf489af68e772c797c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 3
+  velocity: 2.5
 --- !u!114 &114421559754693632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -251,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c130b4234b6d1469e18faea9ae49f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rageAmount: 1
+  rageAmount: 8
 --- !u!114 &114515521384816886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49415591d7f7b25498b2a7a2bc5b993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 250
   currentHealth: 0
 --- !u!114 &114672735439121694
 MonoBehaviour:
@@ -298,6 +299,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f035b0d7623d84ca69a223f681a73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114688919229673796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704966900866466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243fb4573069a594082132335d592bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 3
 --- !u!114 &114731552198672176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -323,9 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243fb4573069a594082132335d592bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 2
-  rb: {fileID: 0}
-  toes: {fileID: 0}
+  jumpForce: 3
 --- !u!114 &114781402467982416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noMaxRange: 0
-  maxRange: 6
+  maxRange: 5
   noMinRange: 0
   minRange: 3
 --- !u!114 &114929563777324032
