@@ -17,7 +17,7 @@ public class SkillJumper :  Jumper
 
     public void MakeADoubleJump(Vector2 dir)
     {
-        if ( mana.UseMana(manaCost) && !toes.onGound)
+        if ( mana.UseMana(manaCost) && !toes.IsOverGround())
         {
             rb.AddForce(dir * jumpForce * 2, ForceMode2D.Impulse);
             AnimatorFalling();

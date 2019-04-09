@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Toes : MonoBehaviour
 {
-    public bool onGound { get; private set; }
+    public bool onGound;
     private Animator fallingAnimator;
 
     private void Start(){fallingAnimator = transform.parent.GetChild(0).GetComponent<Animator>();}
@@ -19,4 +19,8 @@ public class Toes : MonoBehaviour
         fallingAnimator.SetBool("OnGround",onGound);
     }
 
+    public bool IsOverGround()
+    {
+        return onGound;
+    }
 }

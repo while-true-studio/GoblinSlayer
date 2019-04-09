@@ -1866,6 +1866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f12bfd108c67cb4bb9d31515bb61d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onGound: 0
 --- !u!1 &605255212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,7 +2667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 5
-  manaCost: 5
+  manaCost: 20
 --- !u!114 &964782628
 MonoBehaviour:
   m_ObjectHideFlags: 0

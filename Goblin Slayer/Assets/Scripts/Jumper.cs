@@ -5,11 +5,11 @@ using UnityEngine;
 public class Jumper : MonoBehaviour
 {
     public float jumpForce;
-    public Rigidbody2D rb { get; set; }
-    public Toes toes {  get; private set; }
+    public Rigidbody2D rb {  get; set; }
+    public Toes toes { get; set; }
     private Animator animator;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         toes = GetComponentInChildren<Toes>();
