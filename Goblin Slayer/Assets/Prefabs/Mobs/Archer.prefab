@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114402870359940218}
   - component: {fileID: 114515521384816886}
   - component: {fileID: 114655752228138820}
+  - component: {fileID: 114034100860232060}
   - component: {fileID: 114212502057645372}
   - component: {fileID: 114631596337901710}
   - component: {fileID: 114360667863335666}
@@ -194,6 +195,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114034100860232060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704966900866466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc8b3d0e9cb86b4c9a645e3af2bc290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.5
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114038139949415070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49415591d7f7b25498b2a7a2bc5b993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 250
+  maxHealth: 150
   currentHealth: 0
 --- !u!114 &114672735439121694
 MonoBehaviour:
@@ -363,6 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f12bfd108c67cb4bb9d31515bb61d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onGound: 0
 --- !u!212 &212599367383297632
 SpriteRenderer:
   m_ObjectHideFlags: 1

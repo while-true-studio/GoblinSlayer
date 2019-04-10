@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(TintSprite))]
 public class Health : MonoBehaviour
 {
 
@@ -9,11 +9,16 @@ public class Health : MonoBehaviour
     public int currentHealth;
     public bool Alive { get; private set; }
     private Animator animator;
+    private TintSprite tintSprite;
 
     private void Start()
     {
         currentHealth = maxHealth;
-        animator = transform.GetChild(0).GetComponent<Animator>();
+        //animator = transform.GetChild(0).GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
+
+        tintSprite = GetComponent<TintSprite>();
+
     }
 
     /// <summary>
@@ -71,5 +76,7 @@ public class Health : MonoBehaviour
     private void HitAnimator()
     {
         animator.SetTrigger("Hit");
+        tintSprite.Tint();
+
     }
 }

@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114678613646767174}
   - component: {fileID: 114812908137721066}
   - component: {fileID: 114530005550026456}
+  - component: {fileID: 114409913935960214}
   - component: {fileID: 114153901939185490}
   - component: {fileID: 114907538697958280}
   - component: {fileID: 114089134969740650}
@@ -260,6 +261,19 @@ MonoBehaviour:
   projectile: {fileID: 114690903619220756, guid: 14495044cd6c47c41a5a237d324c35d3,
     type: 2}
   cooldownTime: 1.5
+--- !u!114 &114409913935960214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436774138156092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc8b3d0e9cb86b4c9a645e3af2bc290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.5
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114438340955992968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -271,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f12bfd108c67cb4bb9d31515bb61d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onGound: 0
 --- !u!114 &114473569308450340
 MonoBehaviour:
   m_ObjectHideFlags: 1

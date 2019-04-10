@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 114720443148438166}
   - component: {fileID: 114079333309462234}
   - component: {fileID: 114908029497029878}
+  - component: {fileID: 114522992825595720}
   - component: {fileID: 114649770787149400}
   - component: {fileID: 114419827996466792}
   - component: {fileID: 114146484921208526}
@@ -203,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f12bfd108c67cb4bb9d31515bb61d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onGound: 0
 --- !u!114 &114079333309462234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,6 +256,19 @@ MonoBehaviour:
   maxRange: 1.5
   noMinRange: 0
   minRange: 1
+--- !u!114 &114522992825595720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238520512336728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc8b3d0e9cb86b4c9a645e3af2bc290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.5
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114591756146098146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -323,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49415591d7f7b25498b2a7a2bc5b993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 400
+  maxHealth: 200
   currentHealth: 185
 --- !u!114 &114921213477947158
 MonoBehaviour:
