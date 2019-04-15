@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4690772621137138}
   - component: {fileID: 114672735439121694}
   - component: {fileID: 114038139949415070}
+  - component: {fileID: 114781402467982416}
   - component: {fileID: 114731552198672176}
   - component: {fileID: 70904472303314996}
   - component: {fileID: 50774656256378524}
@@ -32,8 +33,9 @@ GameObject:
   - component: {fileID: 114212502057645372}
   - component: {fileID: 114631596337901710}
   - component: {fileID: 114360667863335666}
-  - component: {fileID: 114781402467982416}
   - component: {fileID: 114688919229673796}
+  - component: {fileID: 114708982628148240}
+  - component: {fileID: 114075611437547676}
   m_Layer: 10
   m_Name: Archer
   m_TagString: Enemy
@@ -206,6 +208,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 7
+--- !u!114 &114075611437547676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704966900866466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d61ede4e44787645a8af3c0bcb3e991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114212502057645372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -311,6 +324,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 3
+--- !u!114 &114708982628148240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704966900866466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d61ede4e44787645a8af3c0bcb3e991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114731552198672176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,6 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f12bfd108c67cb4bb9d31515bb61d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onGound: 0
 --- !u!212 &212599367383297632
 SpriteRenderer:
   m_ObjectHideFlags: 1

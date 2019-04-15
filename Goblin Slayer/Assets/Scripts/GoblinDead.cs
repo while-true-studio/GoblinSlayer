@@ -6,22 +6,28 @@ public class GoblinDead : MonoBehaviour, IDead
 {
     private Animator animator;
     private Rage playerRage;
-    private float timeAnim = 0.4f;
+    private Rigidbody2D rb;
+    private Collider2D collider2D;
     public int rageAmount = 2;
-
-    void IDead.OnDead()
-    {
-        DyingAnimator();
-        playerRage.AddRage(rageAmount);
-        Destroy(gameObject,timeAnim);
-    }
 
     private void Start()
     {
-        animator = transform.GetChild(0).GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         playerRage = GameObject.Find("Player").GetComponent<Rage>();
+        rb = GetComponent<Rigidbody2D>();
+        collider2D = GetComponent<Collider2D>();
     }
 
+    void IDead.OnDead()
+    {
+        GetComponent<GoblinState>().GoblinIsDead();
+        DyingAnimator();
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        collider2D.enabled = false;
+        playerRage.AddRage(rageAmount);
+        Destroy(gameObject,1f);
+    }
+    
     private void DyingAnimator()
     {
         animator.SetTrigger("Die");

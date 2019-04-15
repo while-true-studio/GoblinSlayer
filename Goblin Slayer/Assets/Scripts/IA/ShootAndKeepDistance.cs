@@ -55,5 +55,4 @@ public class ShootAndKeepDistance : Brain_AI {
         follower.StopFollowing();
         shooter.Attack(target.GetTarget());
     }
-
 }

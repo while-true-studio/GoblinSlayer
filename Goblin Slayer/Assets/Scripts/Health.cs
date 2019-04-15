@@ -48,7 +48,6 @@ public class Health : MonoBehaviour
             currentHealth += amount;
         }
         EqualHP();
-        print(currentHealth);
     }
 
     /// <summary>

@@ -8,6 +8,7 @@ public class Caster : Shooter
 {
     private Animator effectAnim;
     private Mana mana;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class Caster : Shooter
     }
     private void Start()
     {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         Init();
     }
     protected override void Init()
@@ -28,7 +30,10 @@ public class Caster : Shooter
     public override void Shoot(Vector2 direction)
     {
         if (mana.UseMana(((MagicProjectile)projectile).manaCost))
+        {
             base.Shoot(direction);
+        }
+
     }
 
     protected override void CastAnimator(Vector2 dir)
@@ -36,7 +41,6 @@ public class Caster : Shooter
         base.CastAnimator(dir);
         if(effectAnim)
             effectAnim.SetTrigger("Casting");
-
     }
 
 }

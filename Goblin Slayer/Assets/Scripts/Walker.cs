@@ -33,7 +33,6 @@ public class Walker : MonoBehaviour {
 
         walkingState = (WalkingState)direction;
         rb.velocity = new Vector2((float)direction * velocity, rb.velocity.y);
-
         CheckAnimator();
     }
     public void Stop()

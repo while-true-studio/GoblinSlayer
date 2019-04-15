@@ -8,6 +8,7 @@ TagManager:
   - Blocks
   - Shield
   - Spawn
+  - Chaman
   layers:
   - Default
   - TransparentFX
