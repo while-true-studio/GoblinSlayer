@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 114688919229673796}
   - component: {fileID: 114708982628148240}
   - component: {fileID: 114075611437547676}
+  - component: {fileID: 114755468346811730}
   m_Layer: 10
   m_Name: Archer
   m_TagString: Enemy
@@ -361,6 +362,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 3
+--- !u!114 &114755468346811730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704966900866466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c8974dbad688047a36e5ea5703adab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForceImpulse: 10
 --- !u!114 &114781402467982416
 MonoBehaviour:
   m_ObjectHideFlags: 1

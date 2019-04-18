@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public DoorKeeper doorKeeper; 
-
     [System.Serializable]
     public struct UnitType
     {
         public GameObject GameObject;
         public uint Amount;
     }
+
 
     /// <summary>
     /// The list of GameObjects with their amounts this Spawner should instantiate. 
@@ -32,6 +31,14 @@ public class Spawner : MonoBehaviour
         StartCoroutine(OnSpawn());
     }
 
+    private void Start()
+    {
+        for(int i = 0;i<unitTypes.Count;i++)
+        {
+            GameManager.instancia.AddTotalEnemy((int)unitTypes[i].Amount);
+        }
+    }
+
     /// <summary>
     /// Coroutine that spawns a `unit` object every `spawnInterval` seconds using
     /// its bucket until it empties, then it gets self destroyed.
@@ -41,6 +48,7 @@ public class Spawner : MonoBehaviour
     {
         foreach (UnitType unitType in unitTypes)
         {
+
             for (int i = 0; i < unitType.Amount; i++)
             {
                 Instantiate(unitType.GameObject, transform.position, Quaternion.identity, transform);
@@ -50,8 +58,6 @@ public class Spawner : MonoBehaviour
 
         // Set enabled to false to prevent further CPU usage.
         enabled = false;
-        doorKeeper.RemoveSpawn();
-
     }
 
 }

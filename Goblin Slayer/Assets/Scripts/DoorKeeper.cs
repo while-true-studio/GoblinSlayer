@@ -4,28 +4,11 @@ using UnityEngine;
 
 public class DoorKeeper : MonoBehaviour
 {
-    public int spawnsNum;
-    private GameObject[] spawns;
-
-	void Start ()
-    {
-        spawns = GameObject.FindGameObjectsWithTag("Spawn");
-        spawnsNum = spawns.Length;
-	}
-
-    /// <summary>
-    /// Remove when player destroy a spawner
-    /// </summary>
-    public void RemoveSpawn()
-    {
-        spawnsNum -= 1;
-        if(spawnsNum==0){OpenNextLvl();}
-    }
 
     /// <summary>
     /// Disable collider and sprite of the gate
     /// </summary>
-    private void OpenNextLvl()
+    public void OpenNextLvl()
     {
         transform.GetChild(0).gameObject.SetActive(false);
     }

@@ -21,6 +21,7 @@ public class GoblinDead : MonoBehaviour, IDead
     void IDead.OnDead()
     {
         GetComponent<GoblinState>().GoblinIsDead();
+        GameManager.instancia.AddEnemy();
         DyingAnimator();
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         collider2D.enabled = false;

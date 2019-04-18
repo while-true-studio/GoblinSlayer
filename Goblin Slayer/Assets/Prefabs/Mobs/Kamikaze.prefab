@@ -33,6 +33,8 @@ GameObject:
   - component: {fileID: 114574032825297374}
   - component: {fileID: 114333239828531482}
   - component: {fileID: 114383790516698286}
+  - component: {fileID: 114886445582720698}
+  - component: {fileID: 114144767672504204}
   m_Layer: 10
   m_Name: Kamikaze
   m_TagString: Enemy
@@ -218,6 +220,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae8d5445cd2c1748bd5cfd3202da792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114144767672504204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352030705095550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c8974dbad688047a36e5ea5703adab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForceImpulse: 10
 --- !u!114 &114147006803398514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,6 +352,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rageAmount: 7
+--- !u!114 &114886445582720698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352030705095550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d61ede4e44787645a8af3c0bcb3e991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114959600867184390
 MonoBehaviour:
   m_ObjectHideFlags: 1
