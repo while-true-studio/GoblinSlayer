@@ -18,14 +18,13 @@ public class LevelSelect : MonoBehaviour
         else time = 0.0f;
 	}
 
+    /// <summary>
+    /// Activate the lerp movement 
+    /// </summary>
+    /// <param name="goalDir"></param>
     public void ActiveLerp(Vector2 goalDir)
     {
         goal = goalDir;
         allow = true;
-    }
-
-    public void DisarmLerp()
-    {
-        allow = false;
     }
 }

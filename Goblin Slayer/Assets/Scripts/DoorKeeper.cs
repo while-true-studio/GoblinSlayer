@@ -17,8 +17,11 @@ public class DoorKeeper : MonoBehaviour
     /// Load next level
     /// </summary>
     /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        GameManager.instancia.ChangeScene(0);
+        GameManager.instancia.OnWinLevel();
     }
+
+
+
 }

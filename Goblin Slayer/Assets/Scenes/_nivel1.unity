@@ -441,6 +441,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4884710469852664, guid: bc140691802411f47af30f1e7b01cc52, type: 2}
       propertyPath: m_LocalPosition.x
       value: 6.83
@@ -472,6 +477,43 @@ Prefab:
     - target: {fileID: 4884710469852664, guid: bc140691802411f47af30f1e7b01cc52, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646675335007228, guid: bc140691802411f47af30f1e7b01cc52, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.data[1].GameObject
+      value: 
+      objectReference: {fileID: 1352030705095550, guid: 1004b7c26816f184e80aeec8fbc09273,
+        type: 2}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.data[1].Amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.data[2].GameObject
+      value: 
+      objectReference: {fileID: 1704966900866466, guid: 9e60bf622f10cc04dac6446708cbe904,
+        type: 2}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.data[2].Amount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.data[0].GameObject
+      value: 
+      objectReference: {fileID: 1238520512336728, guid: f894b24e3e543a54194e70ad99c67961,
+        type: 2}
+    - target: {fileID: 114991743319837276, guid: bc140691802411f47af30f1e7b01cc52,
+        type: 2}
+      propertyPath: unitTypes.Array.data[0].Amount
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc140691802411f47af30f1e7b01cc52, type: 2}
@@ -2464,7 +2506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
-  damage: 50
+  damage: 65
   cooldownTime: 0.8
 --- !u!114 &964782616
 MonoBehaviour:
@@ -39242,7 +39284,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalTime: 0
-  currentTime: 0
   pausedTime: 0
   pause: 0
   finishLevel: 0
@@ -39523,7 +39564,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 964782610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.33, y: 14.59, z: 0}
+  m_LocalPosition: {x: -19.99, y: 17.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1449988554}
