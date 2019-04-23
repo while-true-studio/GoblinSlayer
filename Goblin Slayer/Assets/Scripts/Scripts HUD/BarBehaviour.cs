@@ -33,8 +33,8 @@ public class BarBehaviour : MonoBehaviour
 
     void Update()
     {
-        healthBar.size = (float)health.currentHealth / (float)health.maxHealth;
-        manaBar.size = (float)mana.currentMana / (float)mana.maxMana;
+        healthBar.size = ((float)health.currentHealth / (float)health.maxHealth) + 0.13f;
+        manaBar.size = ((float)mana.currentMana / (float)mana.maxMana) + 0.13f;
         ragetext.text = (int)rage.percentage + "%";
         rageBar.GetComponent<Image>().fillAmount = rage.currentRage / rage.rageMax;
         if (rage.rageState == Rage.State.NORMAL) rageModeText.text = "NORMAL MODE";
