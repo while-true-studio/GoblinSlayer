@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     public int damage = 45;
     public float projectileRotation = 1.5f;
     private Animator animator;
+    private string ownerTag;
 
     void Awake()
     {
@@ -20,6 +21,7 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        //?????Por qué está esto en el update??????????
         if(shootDirection.x > 0.0f)
         {
             transform.Rotate(new Vector3(0.0f,0.0f,-0.7f));
@@ -36,7 +38,7 @@ public class Projectile : MonoBehaviour
     /// <param name="direction"></param>
     public void SetDirection(Vector2 direction)
     {
-        this.shootDirection = direction;
+        shootDirection = direction;
     }
 
     /// <summary>
@@ -48,9 +50,13 @@ public class Projectile : MonoBehaviour
         rb.AddForce(shootDirection * projectileSpeed,ForceMode2D.Impulse);
     }
 
+    public void SetShooterTag(string tag)
+    {
+        ownerTag = tag;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == transform.parent.tag) return;
+        if (collision.gameObject.tag == ownerTag) return;
 
 
         Attackable target = collision.gameObject.GetComponent<Attackable>();

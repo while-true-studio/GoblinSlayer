@@ -9,7 +9,7 @@ public class Shooter : MonoBehaviour
 
     public float cooldownTime = 0.8f;
     private Animator playerAnim;
-    public Transform fireBallPlayer;
+    //public Transform fireBallPlayer;?????????????????
 
     //private SpriteRenderer spriteRenderer;??
     private Cooldown cooldown;
@@ -23,7 +23,7 @@ public class Shooter : MonoBehaviour
     {
         if (transform.childCount >= 1)
         {
-            playerAnim = transform.GetChild(0).GetComponent<Animator>();
+            playerAnim = GetComponentInChildren<Animator>();//transform.GetChild(0).GetComponent<Animator>();
 
             //spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();??
         }
@@ -36,10 +36,11 @@ public class Shooter : MonoBehaviour
     /// </summary>
     private Projectile CreateProjectile()
     {
-        if (gameObject.tag == "Player")
-            return Instantiate(projectile, transform.position, Quaternion.identity, fireBallPlayer);
-        else
-            return Instantiate(projectile, transform.position, Quaternion.identity, gameObject.transform);
+
+        //if (gameObject.tag == "Player")
+        //    return Instantiate(projectile, transform.position, Quaternion.identity, fireBallPlayer);
+        //else
+        return Instantiate(projectile, transform.position, Quaternion.identity);
     }
 
 
@@ -57,6 +58,7 @@ public class Shooter : MonoBehaviour
     {
         CastAnimator(direction);
         Projectile p = CreateProjectile();
+        p.SetShooterTag(gameObject.tag);
         p.SetDirection(direction);
         p.ShootYourSelf();
         Debug.DrawLine(transform.position, direction, Color.red);
