@@ -9,7 +9,8 @@ public class Shooter : MonoBehaviour
 
     public float cooldownTime = 0.8f;
     private Animator playerAnim;
-  
+    public Transform fireBallPlayer;
+
     //private SpriteRenderer spriteRenderer;??
     private Cooldown cooldown;
 
@@ -35,7 +36,10 @@ public class Shooter : MonoBehaviour
     /// </summary>
     private Projectile CreateProjectile()
     {
-        return Instantiate(projectile, transform.position, Quaternion.identity, gameObject.transform);
+        if (gameObject.tag == "Player")
+            return Instantiate(projectile, transform.position, Quaternion.identity, fireBallPlayer);
+        else
+            return Instantiate(projectile, transform.position, Quaternion.identity, gameObject.transform);
     }
 
 
