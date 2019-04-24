@@ -6,7 +6,7 @@ public class Shooter : MonoBehaviour
 {
 
     public Projectile projectile;
-
+    public GameObject fireBallPool;
     public float cooldownTime = 0.8f;
     private Animator playerAnim;
   
@@ -35,7 +35,14 @@ public class Shooter : MonoBehaviour
     /// </summary>
     private Projectile CreateProjectile()
     {
-        return Instantiate(projectile, transform.position, Quaternion.identity, gameObject.transform);
+        if (gameObject.tag == "Player")
+        {
+            return Instantiate(projectile, transform.position, Quaternion.identity, fireBallPool.transform);
+        }
+        else
+        {
+            return Instantiate(projectile, transform.position, Quaternion.identity, gameObject.transform);
+        }
     }
 
 

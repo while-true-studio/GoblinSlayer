@@ -26,7 +26,6 @@ public class Caster : Shooter
         if (transform.childCount >= 2)
             effectAnim = transform.GetChild(1).GetComponent<Animator>();
     }
-
     public override void Shoot(Vector2 direction)
     {
         if (mana.UseMana(((MagicProjectile)projectile).manaCost))
@@ -35,12 +34,10 @@ public class Caster : Shooter
         }
 
     }
-
     protected override void CastAnimator(Vector2 dir)
     {
         base.CastAnimator(dir);
         if(effectAnim)
             effectAnim.SetTrigger("Casting");
     }
-
 }
