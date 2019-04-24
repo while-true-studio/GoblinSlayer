@@ -98,10 +98,15 @@ public class GameManager : MonoBehaviour
     /// Indica qué escena se va a reiniciar
     /// </param
     public void ResetScene(int index)
-    { 
+    {
         SceneManager.LoadScene(index);
     }
    
+
+    public void ResetSceneInSeconds(int index, float time)
+    {
+        Invoke("ResetScane", time);
+    }
     /// <summary>
     /// Change scene
     /// </summary>

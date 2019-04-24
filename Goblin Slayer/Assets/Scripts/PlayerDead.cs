@@ -8,30 +8,21 @@ public class PlayerDead : MonoBehaviour, IDead
     private Rigidbody2D rb;
     private Collider2D coll;
     private float timeAnim = 2.0f;
+    public RageDoll rageDoll;
 
     private void Start()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
-        coll = GetComponent<Collider2D>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
-    void IDead.OnDead() 
+    void IDead.OnDead()
     {
-        DeadAnimator();
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        coll.enabled = false;
+        Instantiate(rageDoll, transform.position, transform.rotation);
+        GameManager.instancia.ResetSceneInSeconds(1,1);
+        Destroy(gameObject);
     }
 
-    private void DeadAnimator()
-    {
-        animator.SetBool("Die",true);
-        StartCoroutine("TimeAnimation");
-    }
 
-    private IEnumerator TimeAnimation()
-    {
-        yield return new WaitForSecondsRealtime(timeAnim);
-        GameManager.instancia.ResetScene(1);
-    }
+
 }
+

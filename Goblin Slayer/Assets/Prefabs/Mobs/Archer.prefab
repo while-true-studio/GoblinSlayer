@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rageAmount: 8
+  rageDoll: {fileID: 114907964140389322, guid: 36af645110a988a43b9fb902a711509e, type: 2}
 --- !u!114 &114515521384816886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -434,7 +435,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -891329609
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
