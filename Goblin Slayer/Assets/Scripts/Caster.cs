@@ -29,11 +29,8 @@ public class Caster : Shooter
 
     public override void Shoot(Vector2 direction)
     {
-        if (mana.UseMana(((MagicProjectile)projectile).manaCost))
-        {
-            base.Shoot(direction);
-        }
-
+        if (CanShoot() && mana.UseMana(((MagicProjectile)projectile).manaCost))
+            ShootWork(direction);
     }
 
     protected override void CastAnimator(Vector2 dir)

@@ -29,6 +29,7 @@ public class Walker : MonoBehaviour {
     /// <param name="state">The direction in wich the gameObject should move</param>
     public void Walk(WalkDirection direction)
     {
+        //ESTO ES UN PUTA CERDADA Y HAY QUE QUITARLO A LA DE YA DE AQUÍ
         if (gameObject.tag == "Enemy") { FlipSprite(direction); }
 
         walkingState = (WalkingState)direction;

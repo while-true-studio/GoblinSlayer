@@ -49,14 +49,19 @@ public class Shooter : MonoBehaviour
     /// <param name="direction">The direction in wich the proyectile should shooted</param>
     public virtual void Shoot(Vector2 direction)
     {
-        if (!cooldown.CanUse()) return;
+        if (CanShoot())
+            ShootWork(direction);
         
+    }
+    protected void ShootWork(Vector2 direction)
+    {
         CastAnimator(direction);
         Projectile p = CreateProjectile();
         p.SetDirection(direction);
         p.ShootYourSelf();
         Debug.DrawLine(transform.position, direction, Color.red);
     }
+    protected bool CanShoot() { return cooldown.CanUse(); }
 
     protected virtual void CastAnimator(Vector2 dir)
     {
