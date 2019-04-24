@@ -42,7 +42,7 @@ public class MeleeAttacker : MonoBehaviour
     /// <summary>
     /// Find all game objects between the game object that has this component and the vector
     /// it is aiming to inside a range, filtering the game object itself and all the objects
-    /// between the first wall (if found) until the end.
+    /// between the first wall or the shield (if found) until the end.
     /// </summary>
     /// <param name="normalVector">The normal vector the game object is aiming to.</param>
     /// <returns>An array of GameObject.</returns>
@@ -57,6 +57,7 @@ public class MeleeAttacker : MonoBehaviour
         {
             var raycastHit = raycastHits[i];
             if (raycastHit.collider.tag == "Wall") break;
+            if (raycastHit.collider.tag == "Shield") break;
             var attackable = raycastHit.collider.GetComponent<Attackable>();
             if (attackable != null) gameObjects.Add(attackable);
         }
