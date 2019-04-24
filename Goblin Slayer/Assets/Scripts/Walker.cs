@@ -7,7 +7,7 @@ using UnityEngine;
 public class Walker : MonoBehaviour {
 
     public float velocity;
-
+    public float distanceToWall;
     public WalkingState walkingState { get; private set; }
     private Rigidbody2D rb;
     private Animator animator;
@@ -32,7 +32,11 @@ public class Walker : MonoBehaviour {
         if (gameObject.tag == "Enemy") { FlipSprite(direction); }
 
         walkingState = (WalkingState)direction;
-        rb.velocity = new Vector2((float)direction * velocity, rb.velocity.y);
+        if (HitsWall(direction))
+            Stop();
+        else
+            rb.velocity = new Vector2((float)direction * velocity, rb.velocity.y);
+
         CheckAnimator();
     }
     public void Stop()
@@ -46,18 +50,40 @@ public class Walker : MonoBehaviour {
     {
         animator.SetFloat("speedWalk", Mathf.Abs(rb.velocity.x));
     }
+    private bool HitsWall(WalkDirection direction)
+    {
+        /* Uncomment for debug
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, new Vector2((float)direction, 0), distanceToWall);
+        bool hited = false;
+        foreach (var hit in hits)
+            if (hit.collider.tag == "Blocks")
+            {
+                hited = true;
+                break;
+            }
 
+        Debug.DrawLine(transform.position, transform.position + (new Vector3((float)direction, 0, 0) * distanceToWall), hited ? Color.green: Color.red);
+        return hited;
+        */
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, new Vector2((float)direction, 0), distanceToWall);
+        foreach (var hit in hits) if (hit.collider.tag == "Blocks") return true;
+        return false;
+    }
     private void FlipSprite(WalkDirection direction)
     {
         ///version provisional
-        if ( direction == WalkDirection.LEFT)
+        /*if ( direction == WalkDirection.LEFT)
         {
             spriteRenderer.flipX = true;
         }
         else
         {
             spriteRenderer.flipX = false;
-        }
+        }*/
+
+        //pls los booleanos xD
+        spriteRenderer.flipX = direction == WalkDirection.LEFT;
     }
     
 }
