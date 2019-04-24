@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 50119870167306206}
   - component: {fileID: 114324032641378004}
   - component: {fileID: 114835455707445268}
-  - component: {fileID: 114473569308450340}
+  - component: {fileID: 114705624707336954}
   - component: {fileID: 114678613646767174}
   - component: {fileID: 114812908137721066}
   - component: {fileID: 114530005550026456}
@@ -42,7 +42,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1642064610222776
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +263,7 @@ MonoBehaviour:
   projectile: {fileID: 114690903619220756, guid: 14495044cd6c47c41a5a237d324c35d3,
     type: 2}
   cooldownTime: 1.5
+  fireBallPlayer: {fileID: 0}
 --- !u!114 &114438340955992968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,18 +276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGound: 0
---- !u!114 &114473569308450340
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1436774138156092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdbca9b207fb3bf489af68e772c797c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 5
 --- !u!114 &114530005550026456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,6 +310,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92873c92cc0d9ce49ba202fe80ae6c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114705624707336954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436774138156092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30571de69c47ba344a72ee8f2b4b5016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 5
+  distanceToWall: 0.5
 --- !u!114 &114772256630729778
 MonoBehaviour:
   m_ObjectHideFlags: 1

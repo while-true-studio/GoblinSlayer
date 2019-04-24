@@ -1,24 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Walker : MonoBehaviour {
 
     public float velocity;
     public float distanceToWall;
+
     public WalkingState walkingState { get; private set; }
     private Rigidbody2D rb;
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = transform.GetChild(0).GetComponent<Animator>();
-        spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        SetupDependences();
     }
+
+    protected void SetupDependences()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();//transform.GetChild(0).GetComponent<Animator>();
+        Assert.IsNotNull(animator, "ERROR: Couldn't find component of type 'Animator' in object \"" + gameObject.name + "\" or any of its childs");
+    }
+
     public enum WalkingState { STOP = 0, RIGHT = 1, LEFT = -1};
     public enum WalkDirection { RIGHT = WalkingState.RIGHT, LEFT = WalkingState.LEFT};
 
@@ -27,11 +31,8 @@ public class Walker : MonoBehaviour {
     /// Makes the gameObject move in the given direction
     /// </summary>
     /// <param name="state">The direction in wich the gameObject should move</param>
-    public void Walk(WalkDirection direction)
+    public virtual void Walk(WalkDirection direction)
     {
-        //ESTO ES UN PUTA CERDADA Y HAY QUE QUITARLO A LA DE YA DE AQUÍ
-        if (gameObject.tag == "Enemy") { FlipSprite(direction); }
-
         walkingState = (WalkingState)direction;
         if (HitsWall(direction))
             Stop();
@@ -71,20 +72,20 @@ public class Walker : MonoBehaviour {
         foreach (var hit in hits) if (hit.collider.tag == "Blocks") return true;
         return false;
     }
-    private void FlipSprite(WalkDirection direction)
-    {
-        ///version provisional
-        /*if ( direction == WalkDirection.LEFT)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-        }*/
+    //private void FlipSprite(WalkDirection direction)
+    //{
+    //    ///version provisional
+    //    /*if ( direction == WalkDirection.LEFT)
+    //    {
+    //        spriteRenderer.flipX = true;
+    //    }
+    //    else
+    //    {
+    //        spriteRenderer.flipX = false;
+    //    }*/
 
-        //pls los booleanos xD
-        spriteRenderer.flipX = direction == WalkDirection.LEFT;
-    }
+    //    //pls los booleanos xD
+    //    spriteRenderer.flipX = direction == WalkDirection.LEFT;
+    //}
     
 }
