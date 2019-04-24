@@ -18,8 +18,11 @@ public class PlayerDead : MonoBehaviour, IDead
     void IDead.OnDead()
     {
         Instantiate(rageDoll, transform.position, transform.rotation);
-        GameManager.instancia.ResetSceneInSeconds(1,1);
-        Destroy(gameObject);
+        transform.GetChild(0).gameObject.SetActive(false);
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        GetComponent<Collider2D>().enabled = false;
+        DamageScreen Go = GameObject.Find("HUD").GetComponent<DamageScreen>();
+        Go.gameOver = true;
     }
 
 

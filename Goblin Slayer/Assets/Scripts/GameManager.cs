@@ -99,13 +99,14 @@ public class GameManager : MonoBehaviour
     /// </param
     public void ResetScene(int index)
     {
-        SceneManager.LoadScene(index);
+        StartCoroutine(ResetSceneInSeconds(index));
     }
    
 
-    public void ResetSceneInSeconds(int index, float time)
+    public IEnumerator ResetSceneInSeconds(int index)
     {
-        Invoke("ResetScane", time);
+        yield return new WaitForSecondsRealtime(1);
+        ChangeScene(index);
     }
     /// <summary>
     /// Change scene

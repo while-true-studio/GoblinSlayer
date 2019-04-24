@@ -14,14 +14,15 @@ public class RageDoll : MonoBehaviour
 
 	void Start ()
     {
+        //provicional
+        if (tag == "Player")
+        {
+            GameManager.instancia.ResetScene(0);
+        }
         animator = GetComponent<Animator>();
         animator.SetTrigger("Die");
 	}
     
-    public void ResetLvl()
-    {
-
-    }
 	
 
 }
