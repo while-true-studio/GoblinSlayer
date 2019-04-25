@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Tracker;
 
 public class GoblinDead : MonoBehaviour, IDead
 {
-    private Animator animator;
-    private Rage playerRage;
-    private Rigidbody2D rb;
-    private Collider2D collider2D;
     public int rageAmount = 2;
     public RageDoll rageDoll;
+
+    private Animator animator;
+    private Rage playerRage;
+    //private Rigidbody2D rb;??
 
     private void Start()
     {
