@@ -84,4 +84,11 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, 0.5f);
         animator.SetTrigger("Destroy");
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Debug.LogFormat("Collision of {0} with {1}", gameObject.name, collision.gameObject.name);
+
+    }
+
 }

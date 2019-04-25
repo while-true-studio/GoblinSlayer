@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 50611174700875932}
   - component: {fileID: 114921213477947158}
   - component: {fileID: 114103675427645874}
-  - component: {fileID: 114057341484580124}
   - component: {fileID: 114720443148438166}
   - component: {fileID: 114079333309462234}
   - component: {fileID: 114908029497029878}
@@ -68,13 +67,14 @@ GameObject:
   - component: {fileID: 114627076535033224}
   - component: {fileID: 114050062687519966}
   - component: {fileID: 114603350842774402}
+  - component: {fileID: 114625950989284654}
   m_Layer: 10
   m_Name: Infantry
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4205846166848458
 Transform:
   m_ObjectHideFlags: 1
@@ -217,19 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d61ede4e44787645a8af3c0bcb3e991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114057341484580124
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1238520512336728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30571de69c47ba344a72ee8f2b4b5016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 2.5
-  distanceToWall: 0.5
 --- !u!114 &114079333309462234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,6 +280,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ForceImpulse: 10
+--- !u!114 &114625950989284654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238520512336728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da47b4f9b70a49d42ad98514a63bd565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 3.2
+  distanceToWall: 0.5
 --- !u!114 &114627076535033224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rageAmount: 10
-  rageDoll: {fileID: 114838856853747300, guid: c070dbf5e98ae0945990bcb9719068f1, type: 2}
+  rageDoll: {fileID: 114621548711393978, guid: 554d4e69bafb4764a8d71c088be15947, type: 2}
 --- !u!212 &212148152948504944
 SpriteRenderer:
   m_ObjectHideFlags: 1

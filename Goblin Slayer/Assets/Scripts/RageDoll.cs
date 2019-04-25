@@ -19,6 +19,7 @@ public class RageDoll : MonoBehaviour
         {
             GameManager.instancia.ResetScene(0);
         }
+
         animator = GetComponent<Animator>();
         animator.SetTrigger("Die");
 	}

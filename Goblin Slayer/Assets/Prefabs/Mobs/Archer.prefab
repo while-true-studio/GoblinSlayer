@@ -27,23 +27,22 @@ GameObject:
   - component: {fileID: 50774656256378524}
   - component: {fileID: 114421559754693632}
   - component: {fileID: 114739875184754154}
-  - component: {fileID: 114249452327044258}
   - component: {fileID: 114515521384816886}
   - component: {fileID: 114655752228138820}
   - component: {fileID: 114212502057645372}
   - component: {fileID: 114631596337901710}
   - component: {fileID: 114360667863335666}
   - component: {fileID: 114688919229673796}
-  - component: {fileID: 114708982628148240}
   - component: {fileID: 114075611437547676}
   - component: {fileID: 114755468346811730}
+  - component: {fileID: 114576116223739084}
   m_Layer: 10
   m_Name: Archer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1863183179609102
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,19 +231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetName: Player
---- !u!114 &114249452327044258
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1704966900866466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30571de69c47ba344a72ee8f2b4b5016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 2.5
-  distanceToWall: 0.5
 --- !u!114 &114360667863335666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rageAmount: 8
-  rageDoll: {fileID: 114907964140389322, guid: 36af645110a988a43b9fb902a711509e, type: 2}
+  rageDoll: {fileID: 114493308765992666, guid: 36af645110a988a43b9fb902a711509e, type: 2}
 --- !u!114 &114515521384816886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,6 +266,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92873c92cc0d9ce49ba202fe80ae6c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114576116223739084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704966900866466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da47b4f9b70a49d42ad98514a63bd565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 3.5
+  distanceToWall: 0.5
 --- !u!114 &114631596337901710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,17 +326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 3
---- !u!114 &114708982628148240
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1704966900866466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d61ede4e44787645a8af3c0bcb3e991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114731552198672176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -352,7 +340,6 @@ MonoBehaviour:
   projectile: {fileID: 114165265415251082, guid: 81ee16640bde4f14ba30d2042ff38fd8,
     type: 2}
   cooldownTime: 2
-  fireBallPlayer: {fileID: 0}
 --- !u!114 &114739875184754154
 MonoBehaviour:
   m_ObjectHideFlags: 1
