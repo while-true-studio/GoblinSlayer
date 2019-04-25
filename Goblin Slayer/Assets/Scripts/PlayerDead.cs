@@ -16,13 +16,11 @@ public class PlayerDead : MonoBehaviour, IDead
 
     void IDead.OnDead()
     {
+        GameManager.instancia.GameOver();
         Instantiate(rageDoll, transform.position, transform.rotation);
         transform.GetChild(0).gameObject.SetActive(false);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         GetComponent<Collider2D>().enabled = false;
     }
-
-
-
 }
 

@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
         allInfoLevels = new playerInfo[totalLevel+1];
     }
 
+
+    public void GameOver()
+    {
+        DamageScreen hud = GameObject.Find("HUD").GetComponent<DamageScreen>();
+        hud.gameOver = true;
+    }
     /// <summary>
     /// Count all Goblins
     /// </summary>
@@ -69,13 +75,11 @@ public class GameManager : MonoBehaviour
     public void OnWinLevel()
     {
         Timer Go = GameObject.Find("Timer").GetComponent<Timer>();
-        //allInfoLevels[currLevel].level = currLevel;
         allInfoLevels[currLevel].time = Go.currentTime;
         ReWritePlayerTime();
 
         if (allInfoLevels[currLevel].record < Go.currentTime)
             NewRecord(Go.currentTime);
-        //currLevel++;
         StartCoroutine(ActiveNextLvl());
         ChangeScene(0);
     }
@@ -86,7 +90,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ActiveNextLvl()
     {
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(3.0f);
         LevelController Go = GameObject.Find("Lvlpositions").GetComponent<LevelController>();
         Go.ActiveLvl(currLevel);
     }
