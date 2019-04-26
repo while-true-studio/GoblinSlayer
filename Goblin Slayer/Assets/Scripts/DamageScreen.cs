@@ -1,30 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageScreen : MonoBehaviour
 {
-    public Renderer dMG;
-    public bool gameOver { get; set; }
-    public float timeRender;
-    private float timer;
-
-	void Start ()
+    public Image image;
+    public float time;
+    public void StartAnimation()
     {
-        dMG.material.SetColor("_Color",Color.clear);
-	}
-	
-	void Update ()
-    {
-		if(gameOver)
-        {
-            timer += Time.deltaTime * timeRender;
-            dMG.material.SetColor("_Color", Color.Lerp(Color.clear, Color.white, timer));
-        }
-        else
-        {
-            timer = 0.0f;
-        }   
-	}
+        //image.color = new Color(1, 0, 0, 0);
+        image.CrossFadeAlpha(1, time, false);
+    }
 
 }

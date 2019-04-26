@@ -28,7 +28,7 @@ public class BarBehaviour : MonoBehaviour
         rage = player.GetComponent <Rage>();
 
         //Falta la barra de vida del Boss
-        //healthBoss = GameObject.Find("Boos").GetComponent<Health>();
+        //healthBoss = GameObject.Find("Boss").GetComponent<Health>();
     }
 
     void Update()
@@ -37,8 +37,18 @@ public class BarBehaviour : MonoBehaviour
         manaBar.size = ((float)mana.currentMana / (float)mana.maxMana);
         ragetext.text = (int)rage.percentage + "%";
         rageBar.GetComponent<Image>().fillAmount = rage.currentRage / rage.rageMax;
-        if (rage.rageState == Rage.State.NORMAL) rageModeText.text = "NORMAL MODE";
-        else if (rage.rageState == Rage.State.MASACRE) rageModeText.text = "MASACRE MODE";
-        else if (rage.rageState == Rage.State.SLAYER) rageModeText.text = "SLAYER MODE";
-    }    
+
+        switch (rage.rageState)
+        {
+            case Rage.State.NORMAL:
+                rageModeText.text = "NORMAL MODE";
+                break;
+            case Rage.State.MASACRE:
+                rageModeText.text = "MASACRE MODE";
+                break;
+            case Rage.State.SLAYER:
+                rageModeText.text = "SLAYER MODE";
+                break;
+        }
+    }
 }

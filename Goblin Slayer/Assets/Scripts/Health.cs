@@ -7,12 +7,15 @@ public class Health : MonoBehaviour
 
     public int maxHealth;
     public int currentHealth;
-    public bool Alive { get; private set; }
+    public bool Invencible { get; set; }
+    public void ToogleInvencible() { Invencible = !Invencible; }
+    public bool Alive { get { return currentHealth > 0; } }
     private Animator animator;
 
     private void Start()
     {
         currentHealth = maxHealth;
+        Invencible = false;
         animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
@@ -22,20 +25,10 @@ public class Health : MonoBehaviour
     /// <param name="amount"> Amount of damage </param>
     public void LoseHealth(int amount)
     {
+        if (Invencible) return;
         HitAnimator();
         currentHealth -= amount;
-        Alive = !Dead();
     }
-
-    /// <summary>
-    /// Check if the gameObject's is alive or dead
-    /// </summary>
-    /// <returns></returns>
-    private bool Dead()
-    {
-        return currentHealth <= 0;
-    }
-
 
     /// <summary>
     /// Recover HP and check if life is in the parameters
@@ -43,28 +36,8 @@ public class Health : MonoBehaviour
     /// <param name="amount"> Amount of HP recovered </param>
     public void RestoreHP(int amount)
     {
-        if (currentHealth < maxHealth)
-        {
-            currentHealth += amount;
-        }
-        EqualHP();
-    }
-
-    /// <summary>
-    /// Equal life to the fullest if it go beyond the limits
-    /// </summary>
-    private void EqualHP()
-    {
+        currentHealth += amount;
         if (currentHealth > maxHealth) currentHealth = maxHealth;
-    }
-
-    /// <summary>
-    /// Get current HP
-    /// </summary>
-    /// <returns></returns>
-    public int GetHP()
-    {
-        return currentHealth;
     }
 
     private void HitAnimator()

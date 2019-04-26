@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Mana : MonoBehaviour {
 
-    
+    public bool dontUseMana = false;
     public float maxMana = 100; 
     public float currentMana;
     public float autoManaRegenRate;
+
     private void Start()
     {
         currentMana = maxMana;
@@ -16,13 +17,13 @@ public class Mana : MonoBehaviour {
     {
         currentMana += autoManaRegenRate * Time.deltaTime;
         if (currentMana > maxMana)
-        {
             currentMana = maxMana;
-        }
+        
     }
 
     public bool UseMana(float spellCost)
     {
+        if (dontUseMana) return true;
         if (currentMana - spellCost < 0) return false;
         currentMana -= spellCost;
         return true;

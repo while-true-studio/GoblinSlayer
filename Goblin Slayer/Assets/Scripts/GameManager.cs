@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         DamageScreen hud = GameObject.Find("HUD").GetComponent<DamageScreen>();
-        hud.gameOver = true;
+        if (hud) hud.StartAnimation();
     }
     /// <summary>
     /// Count all Goblins
