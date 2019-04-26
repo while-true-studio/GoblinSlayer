@@ -62,6 +62,7 @@ public class Rage : MonoBehaviour
         if (oldState != rageState)
         {
             AddBoost();
+            Tracker.Tracker.Instance.AddEvent(new Tracker.Events.PlayerRageStatusChanged(rageState));
         }
     }
 

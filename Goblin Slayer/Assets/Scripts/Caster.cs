@@ -27,10 +27,14 @@ public class Caster : Shooter
             effectAnim = transform.GetChild(1).GetComponent<Animator>();
     }
 
-    public override void Shoot(Vector2 direction)
+    public override bool Shoot(Vector2 direction)
     {
         if (CanShoot() && mana.UseMana(((MagicProjectile)projectile).manaCost))
+        {
             ShootWork(direction);
+            return true;
+        }
+        return false;
     }
 
     protected override void CastAnimator(Vector2 dir)

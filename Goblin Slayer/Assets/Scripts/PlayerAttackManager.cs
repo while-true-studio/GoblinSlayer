@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
+using Tracker;
+using Tracker.Events;
 [RequireComponent(typeof(MeleeAttacker))]
 [RequireComponent(typeof(Shooter))]
 [RequireComponent(typeof(Shield))]
@@ -54,13 +58,17 @@ public class PlayerAttackManager : MonoBehaviour
 
     public void Attack()
     {
+        Vector2 dir = GetLookAt();
         switch(currentMode)
         {
             case Mode.Melee:
-                meleeAttacker.MakeAttack(GetLookAt());
+                if (meleeAttacker.MakeAttack(dir))
+                    Tracker.Tracker.Instance.AddEvent(new PlayerAttack(AttackType.MELEE, transform.position.x, transform.position.y, dir.x, dir.y));
+
                 break;
             case Mode.Mage:
-                shooter.Shoot(GetLookAt());
+                if(shooter.Shoot(dir))
+                    Tracker.Tracker.Instance.AddEvent(new PlayerAttack(AttackType.DISTANCE, transform.position.x, transform.position.y, dir.x, dir.y));
                 break;
         }
     }
@@ -71,9 +79,11 @@ public class PlayerAttackManager : MonoBehaviour
         {
             case Mode.Melee:
                 shield.ActiveShield(true);
+                Tracker.Tracker.Instance.AddEvent(new PlayerDefend(transform.position.x, transform.position.y, true));
                 break;
             case Mode.Mage:
                 skillHealing.Healing(true);
+                Tracker.Tracker.Instance.AddEvent(new PlayerHeal(true));
                 break;
         }
     }
@@ -82,9 +92,11 @@ public class PlayerAttackManager : MonoBehaviour
         switch (currentMode)
         {
             case Mode.Melee:
+                Tracker.Tracker.Instance.AddEvent(new PlayerDefend(transform.position.x, transform.position.y, false));
                 shield.ActiveShield(false);
                 break;
             case Mode.Mage:
+                Tracker.Tracker.Instance.AddEvent(new PlayerHeal(false));
                 skillHealing.Healing(false);
                 break;
         }

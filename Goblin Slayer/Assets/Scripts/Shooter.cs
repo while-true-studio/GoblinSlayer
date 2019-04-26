@@ -48,10 +48,15 @@ public class Shooter : MonoBehaviour
     /// Shoots a <seealso cref="Projectile"/> in the given direction
     /// </summary>
     /// <param name="direction">The direction in wich the proyectile should shooted</param>
-    public virtual void Shoot(Vector2 direction)
+    /// <returns>true if has shot, false otherwise</returns>
+    public virtual bool Shoot(Vector2 direction)
     {
         if (CanShoot())
+        { 
             ShootWork(direction);
+            return true;
+        }
+        return false;
         
     }
     protected void ShootWork(Vector2 direction)

@@ -24,9 +24,10 @@ public class MeleeAttacker : MonoBehaviour
     /// and the vector it is aiming to inside a range that has no obstacle between both.
     /// </summary>
     /// <param name="normalVector">The normal vector the game object is aiming to.</param>
-    public void MakeAttack(Vector2 normalVector)
+    /// <returns>true if has attacked, false otherwise</returns>
+    public bool MakeAttack(Vector2 normalVector)
     {
-        if (!cooldown.CanUse()) return;
+        if (!cooldown.CanUse()) return false;
         AttackAnimator();
         var targets = FindGameObjects(normalVector);
         foreach(var target in targets )
@@ -36,6 +37,7 @@ public class MeleeAttacker : MonoBehaviour
 //if UNITY_EDITOR
         bool hit = targets.Count > 0;
         Debug.DrawRay(transform.position, normalVector * range, hit ? Color.green : Color.red);
+        return true;
 //#endif
     }
 
