@@ -51,7 +51,8 @@ public class Spawner : MonoBehaviour
 
             for (int i = 0; i < unitType.Amount; i++)
             {
-                Instantiate(unitType.GameObject, transform.position, Quaternion.identity, transform);
+                var enemy = Instantiate(unitType.GameObject, transform.position, Quaternion.identity, transform);
+                enemy.SetActive(true);
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
