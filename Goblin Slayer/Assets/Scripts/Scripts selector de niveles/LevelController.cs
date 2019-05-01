@@ -21,7 +21,7 @@ public class LevelController : MonoBehaviour
     void Start ()
     {
         levels = new Nivel[transform.childCount];
-        for(int i = 1; i<levels.Length;i++)
+        for(int i = 0; i<levels.Length;i++)
         {
             levels[i].levelPass = false;
             levels[i].levelPosition = transform.GetChild(i).position;
@@ -38,16 +38,17 @@ public class LevelController : MonoBehaviour
     /// <param name="DIR"></param>
     public void MakeMovement(MOVEMENT DIR)
     {
-        if (GameManager.instancia.currLevel + (int)DIR < 0 || GameManager.instancia.currLevel + (int)DIR > levels.Length) return;
+        if (GameManager.instancia.currLevel + (int)DIR < 0 && GameManager.instancia.currLevel + (int)DIR > levels.Length) return;
 
-        if (DIR == MOVEMENT.BACK && levels[GameManager.instancia.currLevel + (int)DIR].levelPass)
+
+        if (DIR == MOVEMENT.BACK && GameManager.instancia.currLevel>0)//&& levels[GameManager.instancia.currLevel + (int)DIR].levelPass
         {
-            GameManager.instancia.currLevel += (int)DIR;
+            GameManager.instancia.NextLevel((int)DIR);
             levelSelect.ActiveLerp(levels[GameManager.instancia.currLevel].levelPosition);
         }
         else if(DIR == MOVEMENT.FORWARD && levels[GameManager.instancia.currLevel].levelPass)
         {
-            GameManager.instancia.currLevel += (int)DIR;
+            GameManager.instancia.NextLevel((int)DIR);
             levelSelect.ActiveLerp(levels[GameManager.instancia.currLevel].levelPosition);
         }
         else print("Nivel bloqueado");
@@ -60,9 +61,17 @@ public class LevelController : MonoBehaviour
     /// <param name="index"></param>
     public void ActiveLvl(int index)
     {
-        print("Activando nivel "+index);
         levels[index].levelPass = true;
-        activeLvls.ActiveSpriteLevel(index-1);
+        activeLvls.ActiveSpriteLevel(index);
+    }
+
+    public void FastActive(int index)
+    {
+        for(int i = 0; i<index;i++)
+        {
+            levels[i].levelPass = true;
+            activeLvls.FastActiveSprite(index);
+        }
     }
 
     /// <summary>
@@ -70,7 +79,7 @@ public class LevelController : MonoBehaviour
     /// </summary>
     public void SelectLevel()
     {
-        GameManager.instancia.ChangeScene(GameManager.instancia.currLevel);
+        GameManager.instancia.ChangeScene(GameManager.instancia.currLevel+1 );
     }
 
     /// <summary>

@@ -17,7 +17,7 @@ public class RageDoll : MonoBehaviour
         //provicional
         if (tag == "Player")
         {
-            GameManager.instancia.ResetScene(0);
+            GameManager.instancia.ResetScene(4);
         }
 
         animator = GetComponent<Animator>();

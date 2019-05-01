@@ -16,6 +16,7 @@ public class PlayerDead : MonoBehaviour, IDead
 
     void IDead.OnDead()
     {
+        GetComponentInChildren<PlayerBaseSounds>().PlayerDead();
         GameManager.instancia.GameOver();
         Instantiate(rageDoll, transform.position, transform.rotation);
         transform.GetChild(0).gameObject.SetActive(false);

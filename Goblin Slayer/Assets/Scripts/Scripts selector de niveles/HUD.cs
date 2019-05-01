@@ -13,6 +13,8 @@ public class HUD : MonoBehaviour
     private string playerName;
     public Button close;
 
+    public AudioClip pageBook;
+
 
     /// <summary>
     /// Writes in HUD record
@@ -51,6 +53,7 @@ public class HUD : MonoBehaviour
     /// <param name="status"></param>
     public void ActivePanel(bool status)
     {
+        Camera.main.GetComponent<SoundEffectsMenu>().PlayEffect(pageBook);
         close.gameObject.SetActive(status);
         panel.SetActive(status);
         info.gameObject.SetActive(status);

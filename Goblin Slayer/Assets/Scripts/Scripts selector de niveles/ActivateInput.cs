@@ -7,6 +7,7 @@ public class ActivateInput : MonoBehaviour
     private InputController inputController;
     private HUD hud;
     private SpriteRenderer spriteRenderer;
+    public AudioClip EnterInLevel;
 
     private void Start()
     {
@@ -22,12 +23,14 @@ public class ActivateInput : MonoBehaviour
         inputController.InputStatus(false);
         hud.ActivePanel(true);
         spriteRenderer.color = Color.white;
+        Camera.main.GetComponent<SoundEffectsMenu>().PlayEffect(EnterInLevel);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         inputController.InputStatus(true);
         hud.ActivePanel(false);
+        Camera.main.GetComponent<SoundEffectsMenu>().PlayWalkSound();
     }
 
 

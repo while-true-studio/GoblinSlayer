@@ -8,6 +8,7 @@ public class SkillHealing : MonoBehaviour
     private Health hp;
     private Animator healingAnim;
     private Animator playerAnim;
+    private AttackSounds attackSounds;
     public bool healingMode;
     public float healingTime;
     public float timerHeal = 0.0f;
@@ -17,6 +18,7 @@ public class SkillHealing : MonoBehaviour
         hp = GetComponent<Health>();
         healingAnim =transform.GetChild(1).GetComponent<Animator>();
         playerAnim = transform.GetChild(0).GetComponent<Animator>();
+        attackSounds = GetComponentInChildren<AttackSounds>();
     }
 
     private void Update()
@@ -39,6 +41,7 @@ public class SkillHealing : MonoBehaviour
     public void Healing(bool status)
     {
         healingMode = status;
+        attackSounds.PlayEffect(attackSounds.healingEffect);
         healingAnim.SetBool("Healing", status);
         playerAnim.SetBool("Healing",status);
     }

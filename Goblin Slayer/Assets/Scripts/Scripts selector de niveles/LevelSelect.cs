@@ -15,7 +15,7 @@ public class LevelSelect : MonoBehaviour
             time = +Time.deltaTime * 0.9f;
             transform.position = Vector2.Lerp(transform.position, goal, time);
         }
-        else time = 0.0f;
+        else { time = 0.0f; }
 	}
 
     /// <summary>

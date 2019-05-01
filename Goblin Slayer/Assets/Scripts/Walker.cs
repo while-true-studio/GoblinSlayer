@@ -67,8 +67,18 @@ public class Walker : MonoBehaviour {
         Debug.DrawLine(transform.position, transform.position + (new Vector3((float)direction, 0, 0) * distanceToWall), hited ? Color.green: Color.red);
         return hited;
         */
-
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, new Vector2((float)direction, 0), distanceToWall);
+        Vector2 dir = new Vector2((float)direction, 0);
+        Vector2 point = transform.position;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(point, dir, distanceToWall);
+        foreach (var hit in hits) if (hit.collider.tag == "Blocks") return true;
+        //Debug.DrawLine(point, point + (dir * distanceToWall), Color.red);
+        point.y += 0.5f;
+        //Debug.DrawLine(point, point + (dir * distanceToWall), Color.red);
+        hits = Physics2D.RaycastAll(point, dir, distanceToWall);
+        foreach (var hit in hits) if (hit.collider.tag == "Blocks") return true;
+        point.y -= 1.0f;
+        //Debug.DrawLine(point, point + (dir * distanceToWall), Color.red);
+        hits = Physics2D.RaycastAll(point, dir, distanceToWall);
         foreach (var hit in hits) if (hit.collider.tag == "Blocks") return true;
         return false;
     }

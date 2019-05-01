@@ -5,6 +5,7 @@ using UnityEngine;
 public class MeleeAttacker : MonoBehaviour
 {
     private Animator animator;
+    private Animator effects;
     /// <summary>
     /// The melee attack range for this component.
     /// </summary>
@@ -16,6 +17,7 @@ public class MeleeAttacker : MonoBehaviour
     private void Start()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
+        effects = transform.GetChild(1).GetComponent<Animator>();
         cooldown = new Cooldown(cooldownTime);
     }
 
@@ -80,5 +82,6 @@ public class MeleeAttacker : MonoBehaviour
     private void AttackAnimator()
     {
         animator.SetTrigger("Attack");
+        //effects.SetTrigger("Attack");
     }
 }

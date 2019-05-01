@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public string playerName{ get; private set; }
     public int currLevel;
     public int totalLevel = 3;
+    public int maxLevel = 0;
     private playerInfo[] allInfoLevels;
     struct playerInfo
     {
@@ -37,15 +38,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        currLevel = 1;
-        allInfoLevels = new playerInfo[totalLevel+1];
+        currLevel = 0;
+        allInfoLevels = new playerInfo[totalLevel];
     }
 
 
     public void GameOver()
     {
-        DamageScreen hud = GameObject.Find("HUD").GetComponent<DamageScreen>();
-        hud.gameOver = true;
+        DamageScreen gameOver = Camera.main.GetComponent<DamageScreen>();
+        gameOver.gameOver = true;
     }
     /// <summary>
     /// Count all Goblins
@@ -75,13 +76,19 @@ public class GameManager : MonoBehaviour
     public void OnWinLevel()
     {
         Timer Go = GameObject.Find("Timer").GetComponent<Timer>();
-        allInfoLevels[currLevel].time = Go.currentTime;
-        ReWritePlayerTime();
+        float aux = Go.currentTime;
 
-        if (allInfoLevels[currLevel].record < Go.currentTime)
-            NewRecord(Go.currentTime);
+        if (allInfoLevels[currLevel].time > aux)
+        {
+            allInfoLevels[currLevel].time = aux;
+            ReWritePlayerTime();
+        }
+
+        if (allInfoLevels[currLevel].record > allInfoLevels[currLevel].time)
+            NewRecord(aux);
         StartCoroutine(ActiveNextLvl());
-        ChangeScene(0);
+        ChangeScene(4);
+
     }
 
     /// <summary>
@@ -91,8 +98,10 @@ public class GameManager : MonoBehaviour
     private IEnumerator ActiveNextLvl()
     {
         yield return new WaitForSecondsRealtime(3.0f);
+        if (currLevel > maxLevel) { maxLevel++;  }
         LevelController Go = GameObject.Find("Lvlpositions").GetComponent<LevelController>();
         Go.ActiveLvl(currLevel);
+
     }
 
     /// <summary>
@@ -129,7 +138,7 @@ public class GameManager : MonoBehaviour
         if (!File.Exists("AllRecord.txt"))
         {
             StreamWriter Record = new StreamWriter("AllRecord.txt");
-            for(int i = 1; i<allInfoLevels.Length;i++)
+            for(int i = 0; i<allInfoLevels.Length;i++)
             {
                 Record.WriteLine("*");
                 Record.WriteLine(0);
@@ -139,7 +148,7 @@ public class GameManager : MonoBehaviour
         else
         {
             StreamReader Record = new StreamReader("AllRecord.txt");
-            int cont = 1;
+            int cont = 0;
             while(!Record.EndOfStream)
             {
                 allInfoLevels[cont].recordMan = Record.ReadLine();
@@ -160,7 +169,7 @@ public class GameManager : MonoBehaviour
         allInfoLevels[currLevel].record = currRecord;
         allInfoLevels[currLevel].recordMan = playerName;
         StreamWriter record = new StreamWriter("AllRecord.txt");
-        for(int i = 1;i<allInfoLevels.Length;i++)
+        for(int i = 0;i<allInfoLevels.Length;i++)
         {
             record.WriteLine(allInfoLevels[i].recordMan);
             record.WriteLine(allInfoLevels[i].record);
@@ -180,7 +189,7 @@ public class GameManager : MonoBehaviour
         {
             StreamWriter newPlayer = new StreamWriter(name + ".txt");
             newPlayer.WriteLine("C" + currLevel);
-            for(int i = 1; i<allInfoLevels.Length;i++)
+            for(int i = 0; i<allInfoLevels.Length;i++)
             {
                 newPlayer.WriteLine("N" + i);
                 newPlayer.WriteLine(allInfoLevels[i].time);
@@ -203,7 +212,8 @@ public class GameManager : MonoBehaviour
                         allInfoLevels[index].time = num;
                         break;
                     case 'C':
-                        //currLevel = int.Parse(cadena[1].ToString());
+                        //LevelController lvl = GameObject.Find("Lvlpositions").GetComponent<LevelController>();
+                        //lvl.FastActive((int)cadena[1]);
                         break;
                 }
             }
@@ -220,8 +230,8 @@ public class GameManager : MonoBehaviour
     public void ReWritePlayerTime()
     {
         StreamWriter newPlayer = new StreamWriter(playerName + ".txt");
-        newPlayer.WriteLine("C" + currLevel);
-        for (int i = 1; i<allInfoLevels.Length;i++)
+        newPlayer.WriteLine("C" + maxLevel);
+        for (int i = 0; i<allInfoLevels.Length;i++)
         {
             newPlayer.WriteLine("N" +i);
             newPlayer.WriteLine(allInfoLevels[i].time);
@@ -257,6 +267,11 @@ public class GameManager : MonoBehaviour
     public string BestRecordMan(int index)
     {
         return allInfoLevels[index].recordMan;
+    }
+
+    public void NextLevel(int amount)
+    {
+        currLevel += amount;
     }
 
 }
