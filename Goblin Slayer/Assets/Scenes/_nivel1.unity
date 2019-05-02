@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 63155807}
   - component: {fileID: 63155806}
   m_Layer: 5
-  m_Name: not
+  m_Name: no
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1734,10 +1734,10 @@ MonoBehaviour:
   TutorialText:
   - You can move with the a key to the left and with the d key to the right.
   - To change the mode between warrior and magician, press the w key.
-  - To jump, press the spacebar. You can perform a double jump if you are playing as
-    magician.
-  - To attack, click with the left button. This will perform a melee attack if you are
-    playing as warrior, or cast a fireball otherwise.
+  - To jump, press the spacebar. You can perform a double jump if you are playing
+    as magician.
+  - To attack, click with the left button. This will perform a melee attack if you
+    are playing as warrior, or cast a fireball otherwise.
   - With the right click you can heal yourself in magician mode or block enemy attacks
     with the shield in warrior mode.
   - Every time you kill goblin your rage increases giving you improvements in movement
@@ -4288,7 +4288,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NOT
+  m_Text: NO
 --- !u!222 &965847210
 CanvasRenderer:
   m_ObjectHideFlags: 0
