@@ -1273,7 +1273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698deafbb8de11642b1382efa391cc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageToActive: 0
+  ImageToActive: 0
   TextToActive: 0
 --- !u!1 &201309432
 GameObject:
@@ -1616,7 +1616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698deafbb8de11642b1382efa391cc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageToActive: 3
+  ImageToActive: 3
   TextToActive: 4
 --- !u!61 &259224006
 BoxCollider2D:
@@ -1722,26 +1722,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5518756135c75408d29b18c7aeb9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keys:
+  Keys:
   - {fileID: 885965608}
   - {fileID: 1186508059}
   - {fileID: 672576162}
   - {fileID: 338386113}
   - {fileID: 932635104}
   TextInCanvas: {fileID: 1184145837}
-  yes: {fileID: 2073253703}
-  not: {fileID: 63155806}
-  tutorialText:
-  - ' You can move with a to the left and with the d to the right.'
-  - You can change the mode with the w key.
-  - ' You can jump with the spacebar and double jump if you are in magician mode.'
-  - ' With the left mouse click you can cast a fireball in magician mode or a melee
-    attack in warrior mode.'
-  - With the right click of the mouse you can heal yourself in magician mode or block
-    enemy attacks with the shield in warrior mode.
-  - ' Every time you kill goblin your rage increases giving you improvements in movement
-    and damage.'
-  cont: 0
+  Yes: {fileID: 2073253703}
+  Not: {fileID: 63155806}
+  TutorialText:
+  - You can move with the a key to the left and with the d key to the right.
+  - To change the mode between warrior and magician, press the w key.
+  - To jump, press the spacebar. You can perform a double jump if you are playing as
+    magician.
+  - To attack, click with the left button. This will perform a melee attack if you are
+    playing as warrior, or cast a fireball otherwise.
+  - With the right click you can heal yourself in magician mode or block enemy attacks
+    with the shield in warrior mode.
+  - Every time you kill goblin your rage increases giving you improvements in movement
+    and damage.
 --- !u!61 &287229538
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698deafbb8de11642b1382efa391cc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageToActive: 4
+  ImageToActive: 4
   TextToActive: 5
 --- !u!61 &550453831
 BoxCollider2D:
@@ -3223,7 +3223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698deafbb8de11642b1382efa391cc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageToActive: 1
+  ImageToActive: 1
   TextToActive: 1
 --- !u!1 &726725016
 GameObject:
@@ -41419,7 +41419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698deafbb8de11642b1382efa391cc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageToActive: 3
+  ImageToActive: 3
   TextToActive: 3
 --- !u!1 &1974475883
 GameObject:
@@ -41553,7 +41553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698deafbb8de11642b1382efa391cc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageToActive: 2
+  ImageToActive: 2
   TextToActive: 2
 --- !u!1 &2067781322
 GameObject:

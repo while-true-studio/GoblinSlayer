@@ -1,43 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
     private GameObject[] activators;
-    public SpriteRenderer[] keys;
+    
+    public SpriteRenderer[] Keys;
     public Text TextInCanvas;
-    public Button yes,not;
+    public Button Yes;
+    public Button Not;
 
-    public string[] tutorialText;
-    public int cont = 0;
+    public string[] TutorialText;
 
-	void Start ()
+    private void Start()
     {
         activators = new GameObject[transform.childCount];
-        for (int i = 0; i<activators.Length;i++)
+        for (var i = 0; i < activators.Length; i++)
         {
             activators[i] = transform.GetChild(i).gameObject;
         }
-	}
-	
-    public void SetActiveTutorial(int image,int text)
+    }
+
+    public void SetActiveTutorial(int image, int text)
     {
         TextInCanvas.gameObject.SetActive(true);
-        keys[image].gameObject.SetActive(true);
-        TextInCanvas.text = tutorialText[text];
+        Keys[image].gameObject.SetActive(true);
+        TextInCanvas.text = TutorialText[text];
 
-        if (image > 0)
-        {
-            keys[image - 1].gameObject.SetActive(false);
-            activators[image - 1].GetComponent<Collider2D>().enabled = false;
-        }
-            
+        if (image <= 0) return;
+        Keys[image - 1].gameObject.SetActive(false);
+        activators[image - 1].GetComponent<Collider2D>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // This should ignore anything that is not the Player, nor is named "Player" (fireballs have the Player tag).
+        if (!collision.CompareTag("Player") || collision.name != "Player") return;
+
         SetHUD(true);
         TextInCanvas.text = "Do you want to see a tutorial ? ";
         Time.timeScale = 0;
@@ -49,20 +48,19 @@ public class Tutorial : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         Time.timeScale = 1;
         SetHUD(false);
-        if (!status)
+        
+        if (status) return;
+        foreach (var activator in activators)
         {
-            for (int i = 0; i<activators.Length;i++)
-            {
-                activators[i].GetComponent<Collider2D>().gameObject.SetActive(false);
-            }
+            activator.GetComponent<Collider2D>().gameObject.SetActive(false);
         }
     }
 
     private void SetHUD(bool status)
     {
         TextInCanvas.gameObject.SetActive(status);
-        yes.gameObject.SetActive(status);
-        not.gameObject.SetActive(status);
+        Yes.gameObject.SetActive(status);
+        Not.gameObject.SetActive(status);
     }
 
     private void StartGame()
@@ -72,10 +70,9 @@ public class Tutorial : MonoBehaviour
 
     public void EndTutorial()
     {
-        activators[activators.Length-1].GetComponent<Collider2D>().gameObject.SetActive(false);
-        keys[keys.Length-1].gameObject.SetActive(false);
+        activators[activators.Length - 1].GetComponent<Collider2D>().gameObject.SetActive(false);
+        Keys[Keys.Length - 1].gameObject.SetActive(false);
         TextInCanvas.text = "Now check your abilities killing goblins, do not leave any alive!";
-        Invoke("StartGame",5);
+        Invoke("StartGame", 5);
     }
-
 }
