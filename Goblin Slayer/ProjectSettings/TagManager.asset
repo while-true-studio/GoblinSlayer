@@ -9,6 +9,7 @@ TagManager:
   - Shield
   - Spawn
   - Chaman
+  - Final
   layers:
   - Default
   - TransparentFX

@@ -19,6 +19,7 @@ public class SkillJumper :  Jumper
     {
         if ( mana.UseMana(manaCost) && !toes.IsOverGround())
         {
+            rb.velocity = Vector2.zero;
             rb.AddForce(dir * jumpForce * 2, ForceMode2D.Impulse);
             AnimatorFalling();
         }
@@ -28,5 +29,6 @@ public class SkillJumper :  Jumper
     {
         fallingAnimator.SetFloat("Falling",rb.velocity.y);
     }
+
 
 }
