@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int totalLevel = 3;
     public int maxLevel = 0;
     private playerInfo[] allInfoLevels;
+    public bool IsGateOpen { get; private set; }
     struct playerInfo
     {
         public string recordMan;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        IsGateOpen = false;
         currLevel = 0;
         allInfoLevels = new playerInfo[totalLevel];
     }
@@ -65,9 +67,11 @@ public class GameManager : MonoBehaviour
         EnemyDefeated++;
         if(EnemyDefeated==TotalEnemy)
         {
+            IsGateOpen = true;
             GameObject Go = GameObject.Find("DoorLvl");
             Go.GetComponent<DoorKeeper>().OpenNextLvl();
         }
+
     }
 
     /// <summary>

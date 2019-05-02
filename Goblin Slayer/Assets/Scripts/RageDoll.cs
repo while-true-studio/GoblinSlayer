@@ -21,7 +21,7 @@ public class RageDoll : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
-        animator.SetTrigger("Die");
+        //animator.SetTrigger("Die");
 	}
     
 	

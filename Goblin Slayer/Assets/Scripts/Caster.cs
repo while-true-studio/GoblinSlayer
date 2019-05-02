@@ -9,6 +9,7 @@ public class Caster : Shooter
     private Animator effectAnim;
     private Mana mana;
     private SpriteRenderer spriteRenderer;
+    private AttackSounds attackSounds;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class Caster : Shooter
     private void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        attackSounds = GetComponentInChildren<AttackSounds>();
         Init();
     }
     protected override void Init()
@@ -35,6 +37,7 @@ public class Caster : Shooter
 
     protected override void CastAnimator(Vector2 dir)
     {
+        attackSounds.PlayEffect(attackSounds.cast);
         base.CastAnimator(dir);
         if(effectAnim)
             effectAnim.SetTrigger("Casting");

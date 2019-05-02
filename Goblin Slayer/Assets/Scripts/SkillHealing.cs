@@ -40,23 +40,10 @@ public class SkillHealing : MonoBehaviour
     /// </summary>
     public void Healing(bool status)
     {
+        if (status){ attackSounds.PlayEffect(attackSounds.healingEffect); }
         healingMode = status;
-        attackSounds.PlayEffect(attackSounds.healingEffect);
         healingAnim.SetBool("Healing", status);
         playerAnim.SetBool("Healing",status);
+   
     }
-
-    /// <summary>
-    /// Timer for between heals
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator HealingDoing()
-    {
-        yield return new WaitForSecondsRealtime(healingTime);
-        hp.RestoreHP(heal);
-        print("HEALING!");
-    }
-
-
-
 }

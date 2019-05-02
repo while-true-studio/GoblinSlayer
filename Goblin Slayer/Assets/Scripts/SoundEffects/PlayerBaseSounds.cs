@@ -9,6 +9,7 @@ public class PlayerBaseSounds : MonoBehaviour {
     public AudioClip playerDead;
     public AudioClip Walk;
     public AudioClip Run;
+    public AudioClip jump;
 
 
     void Start()
@@ -16,27 +17,17 @@ public class PlayerBaseSounds : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayerDead()
+    public void PlayEffect(AudioClip currCLip)
     {
-        audioSource.clip = playerDead;
+        audioSource.clip = currCLip;
         audioSource.Play();
     }
 
-    public void PlayerWalk()
-    {
-        audioSource.clip = Walk;
-        audioSource.Play();
-    }
 
-    public void PlayerRun()
+    public void StopSounds(bool state)
     {
-        audioSource.clip = Run;
-        audioSource.Play();
-    }
-
-    public void StopAllSounds()
-    {
-        audioSource.Stop();
+        if (state) { audioSource.Stop(); }
+        else { audioSource.Play(); }
     }
 
 
