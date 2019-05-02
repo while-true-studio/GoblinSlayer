@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Shooter))]
 public class Shooter_AI : MonoBehaviour, IAttacker_AI
@@ -16,8 +14,9 @@ public class Shooter_AI : MonoBehaviour, IAttacker_AI
 
     public void Attack(Transform target)
     {
-        shooter.Shoot(new Vector2(((transform.position - target.position).x < 0) ? 0.5f : -0.5f, 0.5f));
-        FlipCast(target.position);
+        var position = target.position;
+        shooter.Shoot(new Vector2((transform.position - position).x < 0 ? 0.5f : -0.5f, 0.5f));
+        FlipCast(position);
     }
 
     /// <summary>
@@ -26,13 +25,6 @@ public class Shooter_AI : MonoBehaviour, IAttacker_AI
     /// <param name="direction"></param>
     private void FlipCast(Vector2 direction)
     {
-        if (transform.position.x > direction.x)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-        }
+        spriteRenderer.flipX = transform.position.x > direction.x;
     }
 }

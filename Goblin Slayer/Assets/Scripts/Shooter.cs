@@ -1,17 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-
     public Projectile projectile;
-
     public float cooldownTime = 0.8f;
-    private Animator playerAnim;
-    //public Transform fireBallPlayer;?????????????????
 
-    //private SpriteRenderer spriteRenderer;??
+    private Animator playerAnim;
     private Cooldown cooldown;
 
     private void Start()
@@ -23,7 +17,7 @@ public class Shooter : MonoBehaviour
     {
         if (transform.childCount >= 1)
         {
-            playerAnim = GetComponentInChildren<Animator>();//transform.GetChild(0).GetComponent<Animator>();
+            playerAnim = GetComponentInChildren<Animator>(); //transform.GetChild(0).GetComponent<Animator>();
 
             //spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();??
         }
@@ -36,13 +30,11 @@ public class Shooter : MonoBehaviour
     /// </summary>
     private Projectile CreateProjectile()
     {
-
         //if (gameObject.tag == "Player")
         //    return Instantiate(projectile, transform.position, Quaternion.identity, fireBallPlayer);
         //else
         return Instantiate(projectile, transform.position, Quaternion.identity);
     }
-
 
     /// <summary>
     /// Shoots a <seealso cref="Projectile"/> in the given direction
@@ -52,8 +44,8 @@ public class Shooter : MonoBehaviour
     {
         if (CanShoot())
             ShootWork(direction);
-        
     }
+
     protected void ShootWork(Vector2 direction)
     {
         CastAnimator(direction);
@@ -63,12 +55,15 @@ public class Shooter : MonoBehaviour
         p.ShootYourSelf();
         Debug.DrawLine(transform.position, direction, Color.red);
     }
-    protected bool CanShoot() { return cooldown.CanUse(); }
+
+    protected bool CanShoot()
+    {
+        return cooldown.CanUse();
+    }
 
     protected virtual void CastAnimator(Vector2 dir)
     {
-        if(playerAnim)
+        if (playerAnim)
             playerAnim.SetTrigger("Cast");
     }
-
 }
