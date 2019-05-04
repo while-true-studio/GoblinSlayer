@@ -5,21 +5,25 @@ using UnityEngine.Assertions;
 public class Walker : MonoBehaviour {
 
     public float velocity;
+    private float velocityStart;
     public float distanceToWall;
 
     public WalkingState walkingState { get; private set; }
     private Rigidbody2D rb;
     private Animator animator;
+    private PlayerBaseSounds sounds;
 
     private void Start()
     {
+        velocityStart = velocity;
         SetupDependences();
     }
 
     protected void SetupDependences()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponentInChildren<Animator>();//transform.GetChild(0).GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
+        sounds = GetComponentInChildren<PlayerBaseSounds>();
         Assert.IsNotNull(animator, "ERROR: Couldn't find component of type 'Animator' in object \"" + gameObject.name + "\" or any of its childs");
     }
 
@@ -36,16 +40,32 @@ public class Walker : MonoBehaviour {
         walkingState = (WalkingState)direction;
         if (HitsWall(direction))
             Stop();
-        else
-            rb.velocity = new Vector2((float)direction * velocity, rb.velocity.y);
+        else rb.velocity = new Vector2((float)direction * velocity, rb.velocity.y);
+
+        if (!sounds.IsPlayingSound() && GetComponentInChildren<Toes>().onGound) 
+        PlayWallOrRunSound();
+
 
         CheckAnimator();
     }
+    private void PlayWallOrRunSound()
+    {
+        if (Mathf.Abs(rb.velocity.x) == velocityStart && Mathf.Abs(rb.velocity.x) > 0.25f)
+        {
+            sounds.PlayEffect(sounds.Walk);
+        }
+        else if(Mathf.Abs(rb.velocity.x) > velocityStart)
+        {
+            sounds.PlayEffect(sounds.Run);
+        }
+    }
+
     public void Stop()
     {
         walkingState = WalkingState.STOP;
         rb.velocity = new Vector2(0, rb.velocity.y);
-        CheckAnimator();
+        sounds.StopSounds(true);
+        animator.SetFloat("speedWalk", 0);
     }
 
     private void CheckAnimator()
@@ -82,20 +102,6 @@ public class Walker : MonoBehaviour {
         foreach (var hit in hits) if (hit.collider.tag == "Blocks") return true;
         return false;
     }
-    //private void FlipSprite(WalkDirection direction)
-    //{
-    //    ///version provisional
-    //    /*if ( direction == WalkDirection.LEFT)
-    //    {
-    //        spriteRenderer.flipX = true;
-    //    }
-    //    else
-    //    {
-    //        spriteRenderer.flipX = false;
-    //    }*/
 
-    //    //pls los booleanos xD
-    //    spriteRenderer.flipX = direction == WalkDirection.LEFT;
-    //}
     
 }

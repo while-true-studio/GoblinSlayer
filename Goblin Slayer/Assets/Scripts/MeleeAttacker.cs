@@ -81,6 +81,10 @@ public class MeleeAttacker : MonoBehaviour
 
     private void AttackAnimator()
     {
+        if (CompareTag("Player"))
+            effects.SetTrigger("Attack");
+
         animator.SetTrigger("Attack");
+
     }
 }

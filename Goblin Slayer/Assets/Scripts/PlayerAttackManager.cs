@@ -22,6 +22,7 @@ public class PlayerAttackManager : MonoBehaviour
     public AnimatorControllerParameter warriorController;
     public AnimatorControllerParameter mageController;
     private Jumper jumper;
+    public Animator aura;
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +51,8 @@ public class PlayerAttackManager : MonoBehaviour
     public void SwitchMode()
     {
         currentMode = (Mode)((int)++currentMode%2);
+        if (currentMode == Mode.Mage) { aura.gameObject.SetActive(true); }
+        else aura.gameObject.SetActive(false);
     }
 
     public void Attack()

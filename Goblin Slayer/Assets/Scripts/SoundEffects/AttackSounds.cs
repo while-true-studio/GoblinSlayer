@@ -10,6 +10,7 @@ public class AttackSounds : MonoBehaviour {
     public AudioClip meleeAttack;
     public AudioClip healingEffect;
     public AudioClip blockEffect;
+    public AudioClip doubleJump;
 
 	void Start ()
     {

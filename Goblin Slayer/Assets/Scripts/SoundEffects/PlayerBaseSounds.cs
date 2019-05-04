@@ -30,6 +30,11 @@ public class PlayerBaseSounds : MonoBehaviour {
         else { audioSource.Play(); }
     }
 
+    public bool IsPlayingSound()
+    {
+        return audioSource.isPlaying;
+    }
+
 
 
 }

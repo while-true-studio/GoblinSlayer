@@ -9,11 +9,15 @@ public class Tutorial : MonoBehaviour
     public Text TextInCanvas;
     public Button Yes;
     public Button Not;
+    public AudioClip back;
+    private AudioSource audioSource;
 
     public string[] TutorialText;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         activators = new GameObject[transform.childCount];
         for (var i = 0; i < activators.Length; i++)
         {
@@ -36,7 +40,8 @@ public class Tutorial : MonoBehaviour
     {
         // This should ignore anything that is not the Player, nor is named "Player" (fireballs have the Player tag).
         if (!collision.CompareTag("Player") || collision.name != "Player") return;
-
+;
+        audioSource.Play();
         SetHUD(true);
         TextInCanvas.text = "Do you want to see a tutorial ? ";
         Time.timeScale = 0;
@@ -45,6 +50,8 @@ public class Tutorial : MonoBehaviour
 
     public void ActiveTutorial(bool status)
     {
+        audioSource.clip = back;
+        audioSource.Play();
         GetComponent<Collider2D>().enabled = false;
         Time.timeScale = 1;
         SetHUD(false);
