@@ -52,11 +52,11 @@ public class Walker : MonoBehaviour {
     {
         if (Mathf.Abs(rb.velocity.x) == velocityStart && Mathf.Abs(rb.velocity.x) > 0.25f)
         {
-            sounds.PlayEffect(sounds.Walk);
+            sounds.PlayEffect(sounds.walk);
         }
         else if(Mathf.Abs(rb.velocity.x) > velocityStart)
         {
-            sounds.PlayEffect(sounds.Run);
+            sounds.PlayEffect(sounds.run);
         }
     }
 

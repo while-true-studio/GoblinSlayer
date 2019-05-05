@@ -9,7 +9,7 @@ public class NotLevelPAss : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !GameManager.instancia.IsGateOpen)
         {
-            collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(-0.5f,0.5f)*impulseForce,ForceMode2D.Impulse);
+            collision.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(-0.5f,0.5f)*impulseForce,ForceMode2D.Impulse);
         }
     }
 }

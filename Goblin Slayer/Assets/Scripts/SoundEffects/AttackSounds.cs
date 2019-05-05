@@ -11,6 +11,7 @@ public class AttackSounds : MonoBehaviour {
     public AudioClip healingEffect;
     public AudioClip blockEffect;
     public AudioClip doubleJump;
+    public AudioClip changeMode;
 
 	void Start ()
     {
@@ -28,6 +29,11 @@ public class AttackSounds : MonoBehaviour {
     {
         if (state) { audioSource.Stop(); }
         else { audioSource.Play(); }
+    }
+
+    public bool IsSoundActive()
+    {
+        return audioSource.isPlaying;
     }
 
 }

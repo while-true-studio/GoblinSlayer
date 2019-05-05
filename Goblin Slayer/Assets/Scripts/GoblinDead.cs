@@ -10,15 +10,18 @@ public class GoblinDead : MonoBehaviour, IDead
     private Collider2D collider2D;
     public int rageAmount = 2;
     public RageDoll rageDoll;
+    private PlayerBaseSounds sounds;
 
     private void Start()
     {
+        sounds = GetComponentInChildren<PlayerBaseSounds>();
         animator = GetComponentInChildren<Animator>();
         playerRage = GameObject.Find("Player").GetComponent<Rage>();
     }
 
     void IDead.OnDead()
     {
+        sounds.PlayEffect(sounds.dead);
         GetComponent<GoblinState>().GoblinIsDead();
         GameManager.instancia.AddEnemy();
         playerRage.AddRage(rageAmount);

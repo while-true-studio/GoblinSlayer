@@ -7,6 +7,12 @@ public class Teleport : MonoBehaviour
     public float timer;
     public float timerToTeleport;
     public Transform ToTp;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -18,6 +24,7 @@ public class Teleport : MonoBehaviour
         if (timer >= timerToTeleport && collision.tag == "Chaman")
         {
             collision.transform.position = ToTp.position;
+            audioSource.Play();
         }
     }
 

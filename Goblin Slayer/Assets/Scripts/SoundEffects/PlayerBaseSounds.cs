@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBaseSounds : MonoBehaviour {
+public class PlayerBaseSounds : MonoBehaviour
+{
 
     private AudioSource audioSource;
 
-    public AudioClip playerDead;
-    public AudioClip Walk;
-    public AudioClip Run;
+    public AudioClip dead;
+    public AudioClip walk;
+    public AudioClip run;
     public AudioClip jump;
 
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PlayDead()
+    {
+        audioSource.clip = dead;
+        audioSource.Play();
     }
 
     public void PlayEffect(AudioClip currCLip)

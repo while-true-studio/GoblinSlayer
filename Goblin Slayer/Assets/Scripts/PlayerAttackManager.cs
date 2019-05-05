@@ -23,9 +23,11 @@ public class PlayerAttackManager : MonoBehaviour
     public AnimatorControllerParameter mageController;
     private Jumper jumper;
     public Animator aura;
+    private AttackSounds sounds;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         shooter = GetComponent<Shooter>();
         if (!shooter)
             Debug.Log("Dependence not found: shooter");
@@ -38,6 +40,7 @@ public class PlayerAttackManager : MonoBehaviour
         skillHealing = GetComponent<SkillHealing>();
         skillJumper = GetComponent<SkillJumper>();
         jumper = GetComponent<Jumper>();
+        sounds = GetComponentInChildren<AttackSounds>();
     }
 
     public Vector2 GetLookAt()
@@ -50,6 +53,7 @@ public class PlayerAttackManager : MonoBehaviour
 
     public void SwitchMode()
     {
+        sounds.PlayEffect(sounds.changeMode);
         currentMode = (Mode)((int)++currentMode%2);
         if (currentMode == Mode.Mage) { aura.gameObject.SetActive(true); }
         else aura.gameObject.SetActive(false);

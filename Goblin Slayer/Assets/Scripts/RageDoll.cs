@@ -8,22 +8,15 @@ public class RageDoll : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject);
-
+        //Destroy(gameObject);
     }
 
 	void Start ()
     {
-        //provicional
-        if (tag == "Player")
+        if (CompareTag("Player"))
         {
             GameManager.instancia.ResetScene(4);
         }
 
-        animator = GetComponent<Animator>();
-        //animator.SetTrigger("Die");
 	}
-    
-	
-
 }

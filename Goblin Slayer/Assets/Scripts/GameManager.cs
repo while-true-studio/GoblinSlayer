@@ -7,8 +7,8 @@ using System.IO;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instancia = null;
-    private int EnemyDefeated;
-    private int TotalEnemy;
+    public int EnemyDefeated;
+    public int TotalEnemy;
     public string playerName{ get; private set; }
     public int currLevel;
     public int totalLevel = 3;

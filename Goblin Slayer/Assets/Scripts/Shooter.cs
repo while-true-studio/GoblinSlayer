@@ -7,9 +7,11 @@ public class Shooter : MonoBehaviour
 
     private Animator playerAnim;
     private Cooldown cooldown;
+    private AttackSounds sounds;
 
     private void Start()
     {
+        sounds = GetComponentInChildren<AttackSounds>();
         Init();
     }
 
@@ -17,9 +19,7 @@ public class Shooter : MonoBehaviour
     {
         if (transform.childCount >= 1)
         {
-            playerAnim = GetComponentInChildren<Animator>(); //transform.GetChild(0).GetComponent<Animator>();
-
-            //spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();??
+            playerAnim = GetComponentInChildren<Animator>();
         }
 
         cooldown = new Cooldown(cooldownTime);
@@ -43,7 +43,10 @@ public class Shooter : MonoBehaviour
     public virtual void Shoot(Vector2 direction)
     {
         if (CanShoot())
+        {
+            sounds.PlayEffect(sounds.cast);
             ShootWork(direction);
+        }
     }
 
     protected void ShootWork(Vector2 direction)

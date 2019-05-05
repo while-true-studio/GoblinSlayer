@@ -15,12 +15,14 @@ public class MeleeAttacker : MonoBehaviour
     public int damage = 10;
     public float cooldownTime = 0.8f;
     private Cooldown cooldown;
+    private AttackSounds sounds;
 
     private void Start()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
         effects = transform.GetChild(1).GetComponent<Animator>();
         cooldown = new Cooldown(cooldownTime);
+        sounds = GetComponentInChildren<AttackSounds>();
     }
 
     /// <summary>
@@ -31,6 +33,8 @@ public class MeleeAttacker : MonoBehaviour
     public void MakeAttack(Vector2 normalVector)
     {
         if (!cooldown.CanUse()) return;
+        //if (!sounds.IsSoundActive()) { sounds.PlayEffect(sounds.meleeAttack); }
+        sounds.PlayEffect(sounds.meleeAttack);
         AttackAnimator();
         var targets = FindGameObjects(normalVector);
         foreach (var target in targets)

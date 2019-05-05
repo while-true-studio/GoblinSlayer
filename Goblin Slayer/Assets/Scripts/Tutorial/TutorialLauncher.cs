@@ -9,5 +9,6 @@ public class TutorialLauncher : MonoBehaviour
     {
         if (!collision.CompareTag("Player") || collision.name != "Player") return;
         GetComponentInParent<Tutorial>().SetActiveTutorial(ImageToActive, TextToActive);
+        GetComponent<AudioSource>().Play();
     }
 }
