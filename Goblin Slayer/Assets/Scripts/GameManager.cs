@@ -277,5 +277,12 @@ public class GameManager : MonoBehaviour
     {
         currLevel += amount;
     }
+    /// <summary>
+    /// Quit game
+    /// </summary>
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 
 }
