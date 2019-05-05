@@ -4978,6 +4978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heal: 100
+  manaCost: 0.25
   healingMode: 0
   healingTime: 125
   timerHeal: 0

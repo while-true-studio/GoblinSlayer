@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(Mana))]
 public class SkillHealing : MonoBehaviour
 {
     public int heal = 1;
+    public float manaCost = 0.0f;
     private Health hp;
+    private Mana mn;
     private Animator healingAnim;
     private Animator playerAnim;
     private AttackSounds attackSounds;
@@ -16,7 +19,8 @@ public class SkillHealing : MonoBehaviour
     private void Start()
     {
         hp = GetComponent<Health>();
-        healingAnim =transform.GetChild(1).GetComponent<Animator>();
+        mn = GetComponent<Mana>();
+        healingAnim = transform.GetChild(1).GetComponent<Animator>();
         playerAnim = transform.GetChild(0).GetComponent<Animator>();
         attackSounds = GetComponentInChildren<AttackSounds>();
     }
@@ -24,10 +28,14 @@ public class SkillHealing : MonoBehaviour
     private void Update()
     {
 
-        if(healingMode)
+        if (healingMode)
         {
             timerHeal = Time.deltaTime * healingTime;
-            hp.RestoreHP((int)timerHeal);
+            if (hp.currentHealth < hp.maxHealth && mn.UseMana(manaCost))
+            {
+                hp.RestoreHP((int)timerHeal);
+            }
+
         }
         else
         {
@@ -40,10 +48,12 @@ public class SkillHealing : MonoBehaviour
     /// </summary>
     public void Healing(bool status)
     {
-        if (status){ attackSounds.PlayEffect(attackSounds.healingEffect); }
+        if (hp.currentHealth == hp.maxHealth) { status = false; }
+        if (status) { attackSounds.PlayEffect(attackSounds.healingEffect); }
+
         healingMode = status;
         healingAnim.SetBool("Healing", status);
-        playerAnim.SetBool("Healing",status);
-   
+        playerAnim.SetBool("Healing", status);
+
     }
 }
