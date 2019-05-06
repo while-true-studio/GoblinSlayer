@@ -5276,7 +5276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModeState: 0
-  pl: {fileID: 0}
   autoManaNormal: 10
   autoManaBattle: 5
   autoManaCritic: 15

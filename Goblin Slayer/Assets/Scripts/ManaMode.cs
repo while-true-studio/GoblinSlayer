@@ -5,7 +5,7 @@ using UnityEngine;
 public class ManaMode : MonoBehaviour
 {
     public ManaState ModeState;
-    public PlayerAttackManager pl;
+    private PlayerAttackManager pl;
 
     private Mana mn;
     private Health health;
