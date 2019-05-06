@@ -41,12 +41,14 @@ public class MouseCursor : MonoBehaviour {
             clickIzquierdo = ataqueguerrero;
             clickDerecho = defensaguerrero;
             normal = normalguerrero;
+            cursoractive = normal;
         }
         else
         {
             clickIzquierdo = ataquemago;
             clickDerecho = defensamago;
             normal = normalmago;
+            cursoractive = normal;
         }
         
     }

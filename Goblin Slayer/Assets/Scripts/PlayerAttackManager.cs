@@ -43,8 +43,12 @@ public class PlayerAttackManager : MonoBehaviour
         skillJumper = GetComponent<SkillJumper>();
         jumper = GetComponent<Jumper>();
         sounds = GetComponentInChildren<AttackSounds>();
+        cursor.ChangueCursor((int)(Mode)currentMode);
     }
-
+    public  int GetMode()
+    {
+        return (int)currentMode;
+    }
     public Vector2 GetLookAt()
     {
         Vector3 aux = currentPlayer == IsPlayer.Player
