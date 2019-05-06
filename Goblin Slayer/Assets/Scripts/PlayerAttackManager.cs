@@ -14,6 +14,7 @@ public class PlayerAttackManager : MonoBehaviour
     public IsPlayer currentPlayer;
     public Transform player;
 
+    private MouseCursor cursor;
     private MeleeAttacker meleeAttacker;
     private Shooter shooter;
     private Shield shield;
@@ -28,6 +29,7 @@ public class PlayerAttackManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        cursor = GetComponent<MouseCursor>();
         shooter = GetComponent<Shooter>();
         if (!shooter)
             Debug.Log("Dependence not found: shooter");
@@ -54,7 +56,10 @@ public class PlayerAttackManager : MonoBehaviour
     public void SwitchMode()
     {
         sounds.PlayEffect(sounds.changeMode);
-        currentMode = (Mode)((int)++currentMode%2);
+        currentMode = (Mode)((int)++currentMode % 2);
+
+        cursor.ChangueCursor((int)(Mode)currentMode);
+
         if (currentMode == Mode.Mage) { aura.gameObject.SetActive(true); }
         else aura.gameObject.SetActive(false);
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Walker))]
 public class PlayerController : MonoBehaviour
 {
-
     Walker walker;
     public KeyCode leftKey;
     public KeyCode rightKey;
@@ -17,9 +16,7 @@ public class PlayerController : MonoBehaviour
     private KeyCode lastDirectionKeyPressed;
     private PlayerAttackManager playerAttackManager;
     private PauseBehaviour pauseHUD;
-    private Rigidbody2D rb;
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
     public bool defending = false;
 
 
@@ -61,12 +58,15 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(attackKey))
             {
+               
                 playerAttackManager.Attack();
             }
         }
 
         if(Input.GetKeyDown(defendKey))
         {
+           
+
             defending = true;
             playerAttackManager.Defend();
         }

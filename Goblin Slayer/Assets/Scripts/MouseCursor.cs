@@ -4,52 +4,57 @@ using UnityEngine;
 
 
 public class MouseCursor : MonoBehaviour {
-    private SpriteRenderer rend;
-    public Sprite clickDerecho;
-    public Sprite clickIzquierdo;
-    public Sprite Normal;
-   
-	// Use this for initialization
-	void Start () {
-        
+    public int tamCursor = 32;
+    public Texture2D clickDerecho, clickIzquierdo, normal;
+    private Texture2D cursoractive;
+    public Texture2D ataquemago, defensamago, ataqueguerrero, defensaguerrero,normalmago,normalguerrero;
+    void Start()
+    {
+        Cursor.visible = false;
+        cursoractive = normal;
        
-        rend = GetComponent<SpriteRenderer>();
-	}
+    }
+    void Update()
+    {
 
-    // Update is called once per frame
-    void Update() {
-       
-            Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = cursorPos;
-
-
-            if (Input.GetMouseButtonDown(0))
-            {
-            Cursor.visible = false;
-
-            rend.sprite = clickIzquierdo;
-
-
-
-            }
-            else if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
-            Cursor.visible = false;
+            cursoractive = clickDerecho;
+        }
+      else if (Input.GetMouseButtonDown(0))
+        {
+            cursoractive = clickIzquierdo;
+           
+            
+        }
+        else if(Input.GetMouseButtonUp(1)||Input.GetMouseButtonUp(0))
+        {
+            cursoractive = normal;
+        }
+    }
+  public  void ChangueCursor(int modo)
+    {
 
 
-            rend.sprite = clickDerecho;
-            }
-            else if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
-            {
-            Cursor.visible = true;
-                rend.sprite = Normal;
-
-
-            }
-
-
+        if (modo == 0)
+        {
+            clickIzquierdo = ataqueguerrero;
+            clickDerecho = defensaguerrero;
+            normal = normalguerrero;
+        }
+        else
+        {
+            clickIzquierdo = ataquemago;
+            clickDerecho = defensamago;
+            normal = normalmago;
+        }
         
     }
-          
-    
+    void OnGUI()
+    {
+        GUI.DrawTexture(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y, tamCursor, tamCursor), cursoractive);
+    }
+
+
+
 }
