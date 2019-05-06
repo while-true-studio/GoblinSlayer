@@ -5,21 +5,24 @@ using UnityEngine;
 public class ManaMode : MonoBehaviour
 {
     public ManaState ModeState;
-
+    public PlayerAttackManager pl;
 
     private Mana mn;
     private Health health;
     public float autoManaNormal;
     public float autoManaBattle;
     public float autoManaCritic;
-
+    public float IncrementoModoGuerrero;
     void Start()
     {
+        pl = GetComponent<PlayerAttackManager>();
         mn = GetComponent<Mana>();
         health = GetComponent<Health>();
     }
+
     void Update()
     {
+        
         switch (ModeState)
         {
             case ManaState.Normal:
@@ -49,6 +52,10 @@ public class ManaMode : MonoBehaviour
                 }
 
                 break;
+        }
+        if (pl.GetMode() == 0)
+        {
+            mn.autoManaRegenRate*=IncrementoModoGuerrero;
         }
     }
 

@@ -58,7 +58,10 @@ public class PlayerAttackManager : MonoBehaviour
         if (currentMode == Mode.Mage) { aura.gameObject.SetActive(true); }
         else aura.gameObject.SetActive(false);
     }
-
+    public Mode GetMode()
+    {
+        return currentMode;
+    }
     public void Attack()
     {
         switch(currentMode)
