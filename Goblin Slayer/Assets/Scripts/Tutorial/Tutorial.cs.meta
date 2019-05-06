@@ -3,7 +3,12 @@ guid: 4e5518756135c75408d29b18c7aeb9b8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cursor: {fileID: 1254752456045654, guid: 8d7064c904c63a44ea30b84c83a21e1c, type: 2}
+  - TextInCanvas: {instanceID: 0}
+  - Yes: {instanceID: 0}
+  - Not: {instanceID: 0}
+  - back: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

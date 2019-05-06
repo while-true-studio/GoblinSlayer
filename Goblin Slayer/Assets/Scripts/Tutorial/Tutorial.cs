@@ -4,7 +4,8 @@ using UnityEngine.UI;
 public class Tutorial : MonoBehaviour
 {
     private GameObject[] activators;
-    
+
+   
     public SpriteRenderer[] Keys;
     public Text TextInCanvas;
     public Button Yes;
@@ -30,7 +31,7 @@ public class Tutorial : MonoBehaviour
         TextInCanvas.gameObject.SetActive(true);
         Keys[image].gameObject.SetActive(true);
         TextInCanvas.text = TutorialText[text];
-
+        
         if (image <= 0) return;
         Keys[image - 1].gameObject.SetActive(false);
         activators[image - 1].GetComponent<Collider2D>().enabled = false;
