@@ -8,6 +8,7 @@ public class PlayerInfo : MonoBehaviour
 {
     public InputField playerName;
     private string nameEntered = "Guest";
+    public GameObject Credits;
     public Renderer slogan;
     public float timeToRender;
     private float timerCenter;
@@ -72,4 +73,13 @@ public class PlayerInfo : MonoBehaviour
         transform.GetChild(1).gameObject.SetActive(true);
     }
 
+    public void ActiveCredits()
+    {
+        Credits.gameObject.SetActive(true);
+    }
+
+    public void DesactiveCredits()
+    {
+        Credits.gameObject.SetActive(false);
+    }
 }
