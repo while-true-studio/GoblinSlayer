@@ -33,7 +33,6 @@ public class MeleeAttacker : MonoBehaviour
     public void MakeAttack(Vector2 normalVector)
     {
         if (!cooldown.CanUse()) return;
-        //if (!sounds.IsSoundActive()) { sounds.PlayEffect(sounds.meleeAttack); }
         sounds.PlayEffect(sounds.meleeAttack);
         AttackAnimator();
         var targets = FindGameObjects(normalVector);
@@ -87,7 +86,6 @@ public class MeleeAttacker : MonoBehaviour
     {
         if (CompareTag("Player"))
             effects.SetTrigger("Attack");
-
         animator.SetTrigger("Attack");
 
     }

@@ -65,8 +65,6 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(defendKey))
         {
-           
-
             defending = true;
             playerAttackManager.Defend();
         }

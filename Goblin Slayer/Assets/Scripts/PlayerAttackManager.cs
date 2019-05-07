@@ -25,6 +25,7 @@ public class PlayerAttackManager : MonoBehaviour
     private Jumper jumper;
     public Animator aura;
     private AttackSounds sounds;
+    private Animator animator;
 
 	// Use this for initialization
 	void Start ()
@@ -43,6 +44,7 @@ public class PlayerAttackManager : MonoBehaviour
         skillJumper = GetComponent<SkillJumper>();
         jumper = GetComponent<Jumper>();
         sounds = GetComponentInChildren<AttackSounds>();
+        animator = transform.GetChild(1).GetComponent<Animator>();
         cursor.ChangueCursor((int)(Mode)currentMode);
     }
     public  int GetMode()

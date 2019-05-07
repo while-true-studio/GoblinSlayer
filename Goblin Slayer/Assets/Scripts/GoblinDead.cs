@@ -11,6 +11,7 @@ public class GoblinDead : MonoBehaviour, IDead
     public int rageAmount = 2;
     public RageDoll rageDoll;
     private PlayerBaseSounds sounds;
+    private bool goblinDead = false;
 
     private void Start()
     {
@@ -21,12 +22,20 @@ public class GoblinDead : MonoBehaviour, IDead
 
     void IDead.OnDead()
     {
-        sounds.PlayEffect(sounds.dead);
-        GetComponent<GoblinState>().GoblinIsDead();
-        GameManager.instancia.AddEnemy();
-        playerRage.AddRage(rageAmount);
-        Instantiate(rageDoll,transform.position,transform.rotation);
-        Destroy(gameObject);
+        goblinDead = true;
+
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (goblinDead && collision.GetContact(0).normal == Vector2.up)
+        {
+            sounds.PlayEffect(sounds.dead);
+            GetComponent<GoblinState>().GoblinIsDead();
+            GameManager.instancia.AddEnemy();
+            playerRage.AddRage(rageAmount);
+            Instantiate(rageDoll, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+    }
 }
