@@ -18,22 +18,12 @@ public class Rage : MonoBehaviour
     MeleeAttacker melee; //The script that contains the dmg melee of the player character
     Projectile mageProjectile; //The script that contains the dmg mage of the player character
     float initialVel; //The initial velocity of the script Walker
-    int initialDmgMelee; //The initial dmg of the melee mode
-    int initialDmgMage; //The initial dmg of the mage mode
+    float initialDmgMelee; //The initial dmg of the melee mode
+    float initialDmgMage; //The initial dmg of the mage mode
 
     public enum State { NORMAL = 0, MASACRE = 1, SLAYER = 2 };
 
-    [Serializable]
-    public struct RageBoost
-    {
-        public int vel;
-        public int dmgMelee;
-        public int dmgMage;
-    }
-
-    [SerializeField]
     public State rageState, oldState;
-    public RageBoost[] rageBoost;
 
     private void Start()
     {
@@ -49,6 +39,7 @@ public class Rage : MonoBehaviour
     }
     void Update()
     {
+
         percentage = (currentRage * 100) / rageMax;
         currentRage -= decreaseRageRate * Time.deltaTime;
 
@@ -59,10 +50,7 @@ public class Rage : MonoBehaviour
         else if (percentage >= 40 && percentage < 90) rageState = State.MASACRE;
         else if (percentage >= 90 && percentage <= 100) rageState = State.SLAYER;
 
-        if (oldState != rageState)
-        {
-            AddBoost();
-        }
+        AddBoost();
     }
 
     /// <summary>
@@ -76,8 +64,8 @@ public class Rage : MonoBehaviour
 
     public void AddBoost()
     {
-        walker.velocity = initialVel + rageBoost[(int)rageState].vel;
-        melee.damage = initialDmgMelee + rageBoost[(int)rageState].dmgMelee;
-        mageProjectile.damage = initialDmgMage + rageBoost[(int)rageState].dmgMage;
+        walker.velocity = initialVel + (initialVel * percentage/100);
+        melee.damage = initialDmgMelee + (initialDmgMelee * percentage/100);
+        mageProjectile.damage = initialDmgMage + (initialDmgMage * percentage / 100);
     }
 }
