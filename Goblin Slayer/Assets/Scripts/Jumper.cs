@@ -6,7 +6,7 @@ public class Jumper : MonoBehaviour
 {
     public float jumpForce;
     public Rigidbody2D rb {  get; set; }
-    public Toes toes { get; set; }
+    public Toes toes { get; private set; }
     private Animator animator;
     private PlayerBaseSounds playerBase;
 
@@ -18,15 +18,13 @@ public class Jumper : MonoBehaviour
         playerBase = GetComponentInChildren<PlayerBaseSounds>();
     }
 
-    public void Jump()
+    public virtual void Jump()
     {
-        if (toes.onGound)
-        {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            playerBase.PlayEffect(playerBase.jump);
-            JumpAnimator();
-        }
-            
+        if (!toes.OnGround) return;
+
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        playerBase.PlayEffect(playerBase.jump);
+        JumpAnimator();
     }
 
 

@@ -24,7 +24,7 @@ public class SkillHealing : MonoBehaviour
         playerAnim = transform.GetChild(0).GetComponent<Animator>();
         attackSounds = GetComponentInChildren<AttackSounds>();
     }
-
+    
     private void Update()
     {
 

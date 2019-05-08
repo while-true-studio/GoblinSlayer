@@ -6,7 +6,7 @@ public class Walker_FacingFront : Walker {
     private SpriteRenderer spriteRenderer;
     private void Start()
     {
-        SetupDependences();
+        SetupDependencies();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         Assert.IsNotNull(spriteRenderer, "ERROR: Couldn't find component of type 'SpriteRenderer' in object \"" + gameObject.name + "\" or any of its childs");

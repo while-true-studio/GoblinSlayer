@@ -18,13 +18,13 @@ public class ModeBehaviour : MonoBehaviour {
     }
     public void CurrentMode()
     {
-        switch (mode.currentMode)
+        switch (mode.CurrentMode)
         {
-            case PlayerAttackManager.Mode.Melee:
+            case PlayerAttackManager.Mode.MELEE:
                 transform.GetChild(0).gameObject.SetActive(true);
                 transform.GetChild(1).gameObject.SetActive(false);
                 break;
-            case PlayerAttackManager.Mode.Mage:
+            case PlayerAttackManager.Mode.MAGE:
                 transform.GetChild(0).gameObject.SetActive(false);
                 transform.GetChild(1).gameObject.SetActive(true);
                 break;
