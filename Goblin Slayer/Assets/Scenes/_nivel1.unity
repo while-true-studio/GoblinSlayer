@@ -3307,7 +3307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f12bfd108c67cb4bb9d31515bb61d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onGound: 0
 --- !u!1 &553862841
 GameObject:
   m_ObjectHideFlags: 0
@@ -4969,7 +4968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49415591d7f7b25498b2a7a2bc5b993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincible: 1
+  invincible: 0
   maxHealth: 1000
   currentHealth: 0
 --- !u!114 &964782612
@@ -5014,7 +5013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ebd30ee6e2af8946b926f1a49905f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMode: 0
   player: {fileID: 1949628000}
   aura: {fileID: 1539794965}
 --- !u!114 &964782615
@@ -5085,7 +5083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d613e6a8e3da64d8c2993f313cca33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infiniteMana: 1
+  infiniteMana: 0
   maxMana: 250
   currentMana: 125
   autoManaRegenRate: 5
@@ -5147,7 +5145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 4
-  distanceToWall: 0.5
 --- !u!114 &964782623
 MonoBehaviour:
   m_ObjectHideFlags: 0
