@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FreeCameraMovement : MonoBehaviour
+public class CameraFreeMovement : MonoBehaviour
 {
     public float velocity= 1.0f;
 

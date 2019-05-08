@@ -10,7 +10,7 @@ public class CheatsManager : MonoBehaviour
     private GameObject player = null;
     private Health playerHealth = null;
     private Mana playerMana = null;
-    private CameraManager cameraManager = null;
+    private CameraMovementManager cameraMovementManager = null;
     private KillOnClick killOnClick = null;
     private SpawnOnMouse spawnOnMouse = null;
 
