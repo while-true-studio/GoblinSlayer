@@ -14,6 +14,7 @@ public class PlayerAttackManager : MonoBehaviour
     public IsPlayer currentPlayer;
     public Transform player;
 
+    private IncreaseAttack inc;
     private MouseCursor cursor;
     private MeleeAttacker meleeAttacker;
     private Shooter shooter;
@@ -30,6 +31,7 @@ public class PlayerAttackManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        inc = GetComponent<IncreaseAttack>();
         cursor = GetComponent<MouseCursor>();
         shooter = GetComponent<Shooter>();
         if (!shooter)
@@ -120,6 +122,22 @@ public class PlayerAttackManager : MonoBehaviour
                 break;
         }
     }
+    public void AttackControl(bool Increase)
+    {
+       // Debug.Log("hola");
+        switch (currentMode)
+        {
+            case Mode.Mage:
+                
+                break;
+            case Mode.Melee:
+                inc.MeleeControl(Increase);
+              
+                break;
+        }
+       
+    }
+
 
 
 }
