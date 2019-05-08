@@ -12,7 +12,7 @@ public class SpawnOnMouse : MonoBehaviour
 
     public void Update()
     {
-        for (int i = (int)KeyCode.Alpha1; i < (int)KeyCode.Alpha1 + goblins.Length; i++)
+        for (int i = (int)KeyCode.Alpha1, iterations = (int)KeyCode.Alpha1 + goblins.Length; i < iterations; i++)
             if (Input.GetKeyDown((KeyCode) i))
             {
                 Vector2 rawWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -11,9 +11,9 @@ public class Walker_FacingFront : Walker {
         //spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         Assert.IsNotNull(spriteRenderer, "ERROR: Couldn't find component of type 'SpriteRenderer' in object \"" + gameObject.name + "\" or any of its childs");
     }
-    public override void Walk(WalkDirection direction)
+    public override void Walk(Direction direction)
     {
-        spriteRenderer.flipX = direction == WalkDirection.LEFT;
+        spriteRenderer.flipX = direction == Direction.LEFT;
         base.Walk(direction);
     }
 

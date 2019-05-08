@@ -34,13 +34,13 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(leftKey))
             {
                 lastDirectionKeyPressed = leftKey;
-                walker.Walk(Walker.WalkDirection.LEFT);
+                walker.Walk(Walker.Direction.LEFT);
             }
             //Walk to the right
             else if (Input.GetKey(rightKey))
             {
                 lastDirectionKeyPressed = rightKey;
-                walker.Walk(Walker.WalkDirection.RIGHT);
+                walker.Walk(Walker.Direction.RIGHT);
             }
             //Stop walking
             if ((Input.GetKeyUp(leftKey) && lastDirectionKeyPressed == leftKey)

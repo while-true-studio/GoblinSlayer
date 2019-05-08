@@ -5,23 +5,23 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Walker : MonoBehaviour
 {
+    public enum Direction { LEFT = -1, RIGHT = 1 };
 
     public float velocity;
-    public WalkingState walkingState { get; private set; }
 
-    private float velocityStart;
+    private float initialVelocity;
     private Rigidbody2D rb;
     private Animator animator;
     private PlayerBaseSounds sounds;
     private Toes toes;
-    [SerializeField]
+    //[SerializeField]uncomment for debug
     private bool canGoRight = true;
-    [SerializeField]
+    //[SerializeField]
     private bool canGoLeft = true;
 
     private void Start()
     {
-        velocityStart = velocity;
+        initialVelocity = velocity;
         SetupDependencies();
     }
 
@@ -36,18 +36,14 @@ public class Walker : MonoBehaviour
             "ERROR: Couldn't find component of type 'toes' in object \"" + gameObject.name + "\" or any of its children");
     }
 
-    public enum WalkingState { STOP = 0, RIGHT = 1, LEFT = -1 };
-    public enum WalkDirection { RIGHT = WalkingState.RIGHT, LEFT = WalkingState.LEFT };
 
 
     /// <summary>
     /// Makes the gameObject move in the given direction
     /// </summary>
     /// <param name="direction">The direction in which the gameObject should move</param>
-    public virtual void Walk(WalkDirection direction)
+    public virtual void Walk(Direction direction)
     {
-        walkingState = (WalkingState)direction;
-
         if (toes.OnGround || CanGoTo(direction))
         {
             var vel = rb.velocity;
@@ -64,13 +60,13 @@ public class Walker : MonoBehaviour
     }
     private void PlaySounds()
     {
-        //Math.Abs(Mathf.Abs(rb.velocity.x) - velocityStart) < float.Epsilon <=>
-        //rb.velocity.x == velocityStart, but prevent floating-point error
-        if (Math.Abs(Mathf.Abs(rb.velocity.x) - velocityStart) < float.Epsilon && Mathf.Abs(rb.velocity.x) > 0.25f)
+        //Math.Abs(Mathf.Abs(rb.velocity.x) - initialVelocity) < float.Epsilon <=>
+        //rb.velocity.x == initialVelocity, but prevent floating-point error
+        if (Math.Abs(Mathf.Abs(rb.velocity.x) - initialVelocity) < float.Epsilon && Mathf.Abs(rb.velocity.x) > 0.25f)
         {
             sounds.PlayEffect(sounds.walk);
         }
-        else if (Mathf.Abs(rb.velocity.x) > velocityStart)
+        else if (Mathf.Abs(rb.velocity.x) > initialVelocity)
         {
             sounds.PlayEffect(sounds.run);
         }
@@ -78,7 +74,6 @@ public class Walker : MonoBehaviour
 
     public void Stop()
     {
-        walkingState = WalkingState.STOP;
         {
             var vel = rb.velocity;
             vel.x = 0;
@@ -93,16 +88,16 @@ public class Walker : MonoBehaviour
         animator.SetFloat("speedWalk", Mathf.Abs(rb.velocity.x));
     }
 
-    bool CanGoTo(WalkDirection direction)
+    bool CanGoTo(Direction direction)
     {
-        return (direction == WalkDirection.LEFT && canGoLeft) ||
-               (direction == WalkDirection.RIGHT && canGoRight);
+        return (direction == Direction.LEFT && canGoLeft) ||
+               (direction == Direction.RIGHT && canGoRight);
     }
 
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.tag != "Blocks" ) return;
+        if (!collision.collider.CompareTag("Blocks") ) return;
 
         ContactPoint2D[] contactPoints = new ContactPoint2D[collision.contactCount];
         collision.GetContacts(contactPoints);
