@@ -23,7 +23,6 @@ public class CheatsManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-
     // Update is called once per frame
 	void Update ()
     {
