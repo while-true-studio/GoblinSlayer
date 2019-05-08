@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 114762974492028830}
   - component: {fileID: 114152899390069698}
   - component: {fileID: 114337981495411050}
+  - component: {fileID: 114291113646702976}
   - component: {fileID: 114921080306769548}
   - component: {fileID: 114814119565102772}
   - component: {fileID: 114959010785801816}
@@ -85,6 +86,7 @@ GameObject:
   - component: {fileID: 114303174827053334}
   - component: {fileID: 114842279600585308}
   - component: {fileID: 114967909596771006}
+  - component: {fileID: 114768259482971590}
   m_Layer: 10
   m_Name: Hobgoblin
   m_TagString: Enemy
@@ -488,6 +490,17 @@ MonoBehaviour:
   range: 2
   damage: 50
   cooldownTime: 2
+--- !u!114 &114291113646702976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1775118918264960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87781a9cb6cbf1845aeb50882ecb33aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114303174827053334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -551,6 +564,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 2
+--- !u!114 &114768259482971590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1775118918264960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a531d3677b00c4bae596953eaec0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 50
+  CooldownTime: 1500
+  Velocity: 5
 --- !u!114 &114814119565102772
 MonoBehaviour:
   m_ObjectHideFlags: 1
