@@ -24,14 +24,14 @@ public class SkillHealing : MonoBehaviour
         playerAnim = transform.GetChild(0).GetComponent<Animator>();
         attackSounds = GetComponentInChildren<AttackSounds>();
     }
-    
+
     private void Update()
     {
 
         if (healingMode)
         {
             timerHeal = Time.deltaTime * healingTime;
-            if (hp.currentHealth < hp.maxHealth && mn.UseMana(manaCost))
+            if (hp.currentHealth < hp.maxHealth && mn.UseMana(manaCost) && mn.currentMana > manaCost * 30)
             {
                 hp.RestoreHP((int)timerHeal);
             }
@@ -48,7 +48,7 @@ public class SkillHealing : MonoBehaviour
     /// </summary>
     public void Healing(bool status)
     {
-        if (hp.currentHealth == hp.maxHealth) { status = false; }
+        if (hp.currentHealth == hp.maxHealth || mn.currentMana < manaCost * 30) { status = false; }
         if (status) { attackSounds.PlayEffect(attackSounds.healingEffect); }
 
         healingMode = status;
