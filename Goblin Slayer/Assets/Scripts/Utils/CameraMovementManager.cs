@@ -25,7 +25,7 @@ public class CameraMovementManager : MonoBehaviour
 
     public void ToggleCameraMovement()
     {
-        currentCameraMovement = (CameraMovement) ((int) currentCameraMovement + 1);
+        currentCameraMovement = (CameraMovement) (((int)currentCameraMovement + 1)%2);
         SetCameraMovement(currentCameraMovement);
     }
 
