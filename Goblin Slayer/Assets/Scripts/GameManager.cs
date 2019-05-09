@@ -3,7 +3,104 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using System.Security.Permissions;
 
+
+
+public enum Scene
+{
+    MAIN_MENU,
+    SELECT_LEVEL,
+    LEVEL_1,
+    LEVEL_2,
+    LEVEL_3
+}
+
+public class GameManager : MonoBehaviour
+{
+
+    #region Singleton
+    private static GameManager self = null;
+
+    private void Awake()
+    {
+        if (self == null)
+        {
+            self = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+    }
+    #endregion
+
+    #region API
+
+    public static int GetLevelsCount()
+    {
+        return self.levelsCount;
+    }
+
+    public static void ResetLevel()
+    {
+        //FIX-ME: Make this nicer instead of reloading all scene again
+        SceneManager.LoadScene((int)self.currentScene);
+    }
+    public static void ChangeScene(Scene scene)
+    {
+        self.currentScene = scene;
+        SceneManager.LoadScene((int)self.currentScene);
+    }
+
+    public static void Save()
+    {
+        PlayerInfoManager.SaveData();
+    }
+
+    public static bool Load(string playerName)
+    {
+        return PlayerInfoManager.LoadData(playerName);
+    }
+
+    #region Events
+
+    public static void OnEnemySpawn()
+    {
+        self.EnemiesAlive++;
+    }
+    public static void OnEnemyDead()
+    {
+        if (--self.EnemiesAlive <= 0)
+            ChangeScene(Scene.SELECT_LEVEL);
+    }
+
+    public static void OnGameOver()
+    {
+    }
+
+
+
+    #endregion
+    #endregion
+
+    #region Members
+    
+    private Scene currentScene;
+    public int levelsCount;
+    private int EnemiesAlive { get; set; }
+
+    #endregion
+
+
+    #region Implementation
+
+   
+
+    #endregion
+
+}
+
+
+/*
 public class GameManager : MonoBehaviour
 {
     public static GameManager instancia = null;
@@ -288,3 +385,4 @@ public class GameManager : MonoBehaviour
     }
 
 }
+*/
