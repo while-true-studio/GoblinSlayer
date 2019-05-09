@@ -20,7 +20,7 @@
 //    |                         |   Una vez desbloqueada se  puede mover con las flechas del|
 //    |                         |   teclado                                                 |
 //    |:-----------------------:|:---------------------------------------------------------:|
-//    |     LCtrl + T           |   Teletrasporta al juagador a la posición del ratón       |                         |
+//    |     LCtrl + T           |   Teletrasporta al jugador a la posición del ratón        |
 //    |:-----------------------:|:---------------------------------------------------------:|
 //    |     LCtrl + N           |   Desbloquea todos los niveles (TODAVÍA NO IMPLEMENTADO)  |
 //    |:-----------------------:|:---------------------------------------------------------:|

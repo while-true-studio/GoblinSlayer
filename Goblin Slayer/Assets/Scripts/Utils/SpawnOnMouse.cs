@@ -17,7 +17,7 @@ public class SpawnOnMouse : MonoBehaviour
             {
                 Vector2 rawWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 pos = new Vector3(rawWorldPoint.x, rawWorldPoint.y, 0);
-                Instantiate(goblins[i - (int) KeyCode.Alpha1].gameObject, pos, Quaternion.identity, transform)
+                Instantiate(goblins[i - (int) KeyCode.Alpha1].gameObject, pos, Quaternion.identity)
                     .SetActive(true);
             }
     }
