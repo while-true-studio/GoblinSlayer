@@ -5401,7 +5401,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1030102261
 Prefab:
@@ -5523,11 +5523,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4650904222140126, guid: 641b82db802e45344a9b5b20c749c604, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -13.79
+      value: 69.6
       objectReference: {fileID: 0}
     - target: {fileID: 4650904222140126, guid: 641b82db802e45344a9b5b20c749c604, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 4.9
       objectReference: {fileID: 0}
     - target: {fileID: 4650904222140126, guid: 641b82db802e45344a9b5b20c749c604, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5556,12 +5556,17 @@ Prefab:
     - target: {fileID: 114768259482971590, guid: 641b82db802e45344a9b5b20c749c604,
         type: 2}
       propertyPath: Velocity
-      value: 8
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 114768259482971590, guid: 641b82db802e45344a9b5b20c749c604,
         type: 2}
       propertyPath: CooldownTime
-      value: 2
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114768259482971590, guid: 641b82db802e45344a9b5b20c749c604,
+        type: 2}
+      propertyPath: Damage
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 641b82db802e45344a9b5b20c749c604, type: 2}
@@ -41990,7 +41995,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1287039210
 MonoBehaviour:
