@@ -65,7 +65,7 @@ public class Rage : MonoBehaviour
     public void AddBoost()
     {
         walker.velocity = initialVel *(1.0f + (percentage/100));
-        melee.damage = initialDmgMelee *(1.0f + p(ercentage/100));
+        melee.damage = initialDmgMelee *(1.0f + (percentage/100));
         mageProjectile.damage = initialDmgMage *(1.0f + (percentage/100));
     }
 }
