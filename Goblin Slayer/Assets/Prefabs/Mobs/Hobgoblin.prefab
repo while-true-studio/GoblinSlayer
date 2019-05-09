@@ -144,7 +144,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1775118918264960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.79, y: 0.75, z: 0}
+  m_LocalPosition: {x: 69.6, y: 4.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4475750026061286}
@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49415591d7f7b25498b2a7a2bc5b993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincible: 0
   maxHealth: 270
   currentHealth: 200
 --- !u!114 &114450854570840924
@@ -536,7 +537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f12bfd108c67cb4bb9d31515bb61d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onGound: 0
 --- !u!114 &114698341916929364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -575,9 +575,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a531d3677b00c4bae596953eaec0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 50
-  CooldownTime: 1500
-  Velocity: 5
+  Damage: 75
+  CooldownTime: 10
+  Velocity: 200
+  Impulse: 50
+  charging: 0
+  nextAvailableChargeTime: 0
 --- !u!114 &114814119565102772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rageAmount: 30
-  rageDoll: {fileID: 114621548711393978, guid: 554d4e69bafb4764a8d71c088be15947, type: 2}
+  rageDoll: {fileID: 114621548711393978, guid: d7704d2a4f6960c4c8c9f94dc33ea485, type: 2}
 --- !u!114 &114888374266298406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -675,7 +678,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 3.2
-  distanceToWall: 0.5
 --- !u!212 &212121227422433686
 SpriteRenderer:
   m_ObjectHideFlags: 1
