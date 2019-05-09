@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Mana))]
 public class SkillHealing : MonoBehaviour
 {
-    public int heal = 1;
+   
     public float manaCost = 0.0f;
     private Health hp;
     private Mana mn;
@@ -25,11 +25,12 @@ public class SkillHealing : MonoBehaviour
         attackSounds = GetComponentInChildren<AttackSounds>();
     }
 
-    private void Update()
+    /*void Update()
     {
 
         if (healingMode)
         {
+         
             timerHeal = Time.deltaTime * healingTime;
             if (hp.currentHealth < hp.maxHealth && mn.UseMana(manaCost) && mn.currentMana > manaCost * 30)
             {
@@ -41,14 +42,25 @@ public class SkillHealing : MonoBehaviour
         {
             timerHeal = 0.0f;
         }
-    }
+    }*/
 
+    public void Heal()
+    {
+        timerHeal = healingTime * Time.deltaTime;
+        if (mn.currentMana > manaCost * 2 && hp.currentHealth < hp.maxHealth   && mn.UseMana(manaCost) )
+        {
+           
+            mn.currentMana = mn.currentMana-manaCost;
+            hp.RestoreHP((int)timerHeal);
+        }
+
+    }
     /// <summary>
     /// Heal health points
     /// </summary>
     public void Healing(bool status)
     {
-        if (hp.currentHealth == hp.maxHealth || mn.currentMana < manaCost * 30) { status = false; }
+        if (hp.currentHealth == hp.maxHealth || mn.currentMana < manaCost *2) { status = false; }
         if (status) { attackSounds.PlayEffect(attackSounds.healingEffect); }
 
         healingMode = status;
