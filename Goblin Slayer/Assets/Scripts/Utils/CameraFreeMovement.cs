@@ -15,8 +15,9 @@ public class CameraFreeMovement : MonoBehaviour
 
     void Move(Vector2 direction)
     {
-        Vector2 position = transform.position;
-        position += direction * velocity * Time.deltaTime;
+        Vector3 position = transform.position;
+        position.x += direction.x * velocity * Time.deltaTime;
+        position.y += direction.y * velocity * Time.deltaTime;
         transform.position = position;
     }
 }
