@@ -28,19 +28,30 @@ public class Charge : MonoBehaviour
     {
         if (charging || Time.time < nextAvailableChargeTime) return;
         Debug.Log("Charging");
-        StartCoroutine(ChargeDirection(transform.position.x > other.transform.position.x
-            ? Direction.Left
-            : Direction.Right));
+        StartCoroutine(ChargeTowards(other));
     }
 
-    private IEnumerator ChargeDirection(Direction direction)
+    private IEnumerator ChargeTowards(Transform other)
     {
         charging = true;
+
+        var direction = transform.position.x > other.transform.position.x
+            ? Direction.Left
+            : Direction.Right;
         var vector = (direction == Direction.Left ? Vector2.left : Vector2.right) * Velocity;
-        Debug.Log(vector);
         while (charging)
         {
-            rb.AddForce(vector, ForceMode2D.Force);
+            if (direction == Direction.Left
+                ? transform.position.x < other.transform.position.x
+                : transform.position.x > other.transform.position.x)
+            {
+                FinishCharge();
+            }
+            else
+            {
+                rb.AddForce(vector, ForceMode2D.Force);
+            }
+            
             yield return null;
         }
     }
@@ -55,9 +66,14 @@ public class Charge : MonoBehaviour
         if (!attackable) return;
 
         attackable.OnAttack(Damage);
-        
+
         var impulse = new Vector2(other.GetContact(0).normal.x * -Impulse, 0.5f * Impulse);
         attackable.GetComponent<Rigidbody2D>().AddForce(impulse, ForceMode2D.Impulse);
+        FinishCharge();
+    }
+
+    private void FinishCharge()
+    {
         charging = false;
         nextAvailableChargeTime = Time.time + CooldownTime;
     }
