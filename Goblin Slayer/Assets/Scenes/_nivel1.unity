@@ -5121,7 +5121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2.5
-  damage: 75
+  damage: 100
   cooldownTime: 0.8
 --- !u!114 &964782616
 MonoBehaviour:
@@ -5137,20 +5137,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rageMax: 100
   currentRage: 0
-  decreaseRageRate: 0.5
+  decreaseRageRate: 1
   percentage: 0
   rageState: 0
   oldState: 0
-  rageBoost:
-  - vel: 0
-    dmgMelee: 0
-    dmgMage: 0
-  - vel: 5
-    dmgMelee: 5
-    dmgMage: 5
-  - vel: 10
-    dmgMelee: 10
-    dmgMage: 10
 --- !u!114 &964782617
 MonoBehaviour:
   m_ObjectHideFlags: 0

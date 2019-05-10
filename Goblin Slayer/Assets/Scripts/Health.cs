@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
 {
     public bool invincible = false;
     public int maxHealth;
-    public int currentHealth;
+    public float currentHealth;
     public bool Alive { get; private set; }
     private Animator animator;
 
@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
     /// Applies damage and updates the gameObject's status (alive/dead)
     /// </summary>
     /// <param name="amount"> Amount of damage </param>
-    public void LoseHealth(int amount)
+    public void LoseHealth(float amount)
     {
         if (invincible) return;
         HitAnimator();
@@ -64,7 +64,7 @@ public class Health : MonoBehaviour
     /// Get current HP
     /// </summary>
     /// <returns></returns>
-    public int GetHP()
+    public float GetHP()
     {
         return currentHealth;
     }

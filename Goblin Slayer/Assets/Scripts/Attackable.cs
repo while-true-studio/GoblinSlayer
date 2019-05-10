@@ -19,7 +19,7 @@ public class Attackable : MonoBehaviour
     /// Called to deal damage to the gameObject
     /// </summary>
     /// <param name="damage">The amount of damage</param>
-    public void OnAttack(int damage)
+    public void OnAttack(float damage)
     {
         health.LoseHealth(damage);
 
