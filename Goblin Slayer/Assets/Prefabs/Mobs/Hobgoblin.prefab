@@ -131,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1775118918264960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.89, y: 1.31, z: 0}
+  m_LocalPosition: {x: -21.16, y: 1.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4871392969442726}
@@ -549,8 +549,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dead: {fileID: 8300000, guid: 811e0060e668ed742862a6e2fd2d06ba, type: 3}
-  walk: {fileID: 0}
-  run: {fileID: 0}
+  walk: {fileID: 8300000, guid: 4db957e65ba74cc42988d3d44d3fc33c, type: 3}
+  run: {fileID: 8300000, guid: b8c3c022da0c9784d8ff54ff64f25153, type: 3}
   jump: {fileID: 8300000, guid: 553a0fdbf71d7b445a8e8da7cece3c13, type: 3}
 --- !u!114 &114762974492028830
 MonoBehaviour:
@@ -593,9 +593,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noMaxRange: 0
-  maxRange: 1.5
+  maxRange: 3
   noMinRange: 0
-  minRange: 0.8
+  minRange: 2
 --- !u!114 &114842279600585308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -718,7 +718,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.9, y: 6.06}
+  m_Size: {x: 7.67, y: 5.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

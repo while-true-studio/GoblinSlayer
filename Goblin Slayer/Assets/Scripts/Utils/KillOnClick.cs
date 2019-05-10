@@ -15,7 +15,7 @@ public class KillOnClick : MonoBehaviour
                 if (goblin != null)
                 {
                     Debug.Log("Killing " + goblin.gameObject.name);
-                    goblin.ForcefullKill();
+                    //goblin.ForcefullKill();
                 }
             }
         }

@@ -7,6 +7,8 @@ public class Charge : MonoBehaviour
     public int CooldownTime = 1500;
     public int Velocity = 5;
     public int Impulse = 50;
+    private AttackSounds attackSounds;
+    private PlayerBaseSounds playerBaseSounds;
 
     private enum Direction
     {
@@ -22,6 +24,7 @@ public class Charge : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         nextAvailableChargeTime = Time.time;
+        attackSounds = GetComponentInChildren<AttackSounds>();
     }
 
     public void ChargeAt(Transform other)
@@ -34,6 +37,7 @@ public class Charge : MonoBehaviour
     private IEnumerator ChargeTowards(Transform other)
     {
         charging = true;
+        attackSounds.PlayEffect((attackSounds.ChargeActive));
 
         var direction = transform.position.x > other.transform.position.x
             ? Direction.Left
@@ -66,7 +70,7 @@ public class Charge : MonoBehaviour
         if (!attackable) return;
 
         attackable.OnAttack(Damage);
-
+        attackSounds.PlayEffect((attackSounds.changeMode));
         var impulse = new Vector2(other.GetContact(0).normal.x * -Impulse, 0.5f * Impulse);
         attackable.GetComponent<Rigidbody2D>().AddForce(impulse, ForceMode2D.Impulse);
         FinishCharge();
