@@ -131,6 +131,8 @@ public class GameManager : MonoBehaviour
     /// <param name="scene"></param>
     public void ChangeScene(int scene)
     {
+        EnemyDefeated = 0;
+        TotalEnemy = 0;
         SceneManager.LoadScene(scene);
     }
 
