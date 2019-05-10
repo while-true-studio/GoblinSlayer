@@ -21699,7 +21699,7 @@ Tilemap:
   - first: {x: 57, y: 4, z: 0}
     second:
       m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -41525,10 +41525,10 @@ Tilemap:
     m_Data: {fileID: 21300002, guid: 94b9aae5592f1fa48a1f78e8ed6f50f7, type: 3}
   - m_RefCount: 728
     m_Data: {fileID: 21300000, guid: 94b9aae5592f1fa48a1f78e8ed6f50f7, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300006, guid: 53034c021f827d645aefda9c7c9a93e2, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300006, guid: 53034c021f827d645aefda9c7c9a93e2, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 21300002, guid: 53034c021f827d645aefda9c7c9a93e2, type: 3}
   - m_RefCount: 4
@@ -42752,41 +42752,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114098873689277766, guid: 641b82db802e45344a9b5b20c749c604,
-        type: 2}
-      propertyPath: changeMode
-      value: 
-      objectReference: {fileID: 8300000, guid: ee0dca52c4245924dab0212b98531236, type: 3}
-    - target: {fileID: 114098873689277766, guid: 641b82db802e45344a9b5b20c749c604,
-        type: 2}
-      propertyPath: ChargeActive
-      value: 
-      objectReference: {fileID: 8300000, guid: 9885de9f74551f848947d160a0512f8f, type: 3}
-    - target: {fileID: 114098873689277766, guid: 641b82db802e45344a9b5b20c749c604,
-        type: 2}
-      propertyPath: meleeAttack
-      value: 
-      objectReference: {fileID: 8300000, guid: 143f387d4f4c53044b9701203bff831e, type: 3}
-    - target: {fileID: 114098873689277766, guid: 641b82db802e45344a9b5b20c749c604,
-        type: 2}
-      propertyPath: healingEffect
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098873689277766, guid: 641b82db802e45344a9b5b20c749c604,
-        type: 2}
-      propertyPath: cast
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098873689277766, guid: 641b82db802e45344a9b5b20c749c604,
-        type: 2}
-      propertyPath: blockEffect
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098873689277766, guid: 641b82db802e45344a9b5b20c749c604,
-        type: 2}
-      propertyPath: doubleJump
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 641b82db802e45344a9b5b20c749c604, type: 2}
   m_IsPrefabAsset: 0
@@ -43164,7 +43129,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 964782610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 1.45, z: 0}
+  m_LocalPosition: {x: 6.11, y: 1.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1449988554}

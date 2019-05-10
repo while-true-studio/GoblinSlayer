@@ -459,12 +459,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ed22dc023509747af9d0f180604e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cast: {fileID: 8300000, guid: d3dc320178a4b3d49b16c0b286467208, type: 3}
-  meleeAttack: {fileID: 8300000, guid: 7fd055503dfb7264da718c1c156bc3ca, type: 3}
-  healingEffect: {fileID: 8300000, guid: 607bae50c5d256e49a6d52be402fcc69, type: 3}
-  blockEffect: {fileID: 8300000, guid: e75b92ccfc9c0b44fa3d47a567159d6f, type: 3}
-  doubleJump: {fileID: 8300000, guid: 48c8166341486ef4cbc63f960768d150, type: 3}
-  changeMode: {fileID: 0}
+  cast: {fileID: 0}
+  meleeAttack: {fileID: 8300000, guid: 143f387d4f4c53044b9701203bff831e, type: 3}
+  healingEffect: {fileID: 0}
+  blockEffect: {fileID: 0}
+  doubleJump: {fileID: 0}
+  changeMode: {fileID: 8300000, guid: ee0dca52c4245924dab0212b98531236, type: 3}
+  ChargeActive: {fileID: 8300000, guid: 9885de9f74551f848947d160a0512f8f, type: 3}
 --- !u!114 &114100022666681806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -487,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bb6cb91de616e4fb15a22b897265de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 2
+  range: 4
   damage: 50
   cooldownTime: 2
 --- !u!114 &114291113646702976
