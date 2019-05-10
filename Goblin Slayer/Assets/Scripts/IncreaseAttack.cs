@@ -34,15 +34,17 @@ public class IncreaseAttack : MonoBehaviour {
     public void MageControl()
     {
        
-       
             Shooter += meleeIncrease * Time.deltaTime;
+
 
     }
     public void MageStop()
     {
-        projectile = GetComponent<Projectile>();
+        projectile =GameObject.Find("playerFireBall(Clone)").GetComponent<Projectile>();
         projectile.damage += Shooter;
+        projectile.transform.localScale = new Vector3(2.5f+Shooter, 2.5f+Shooter,1f+Shooter);
         Debug.Log(projectile.damage);
+        Shooter = 0f;
     }
 
 
