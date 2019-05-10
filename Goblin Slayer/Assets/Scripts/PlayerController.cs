@@ -63,16 +63,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(defendKey))
+        if(Input.GetKey(defendKey))
         {
             defending = true;
             playerAttackManager.Defend();
         }
-        if (Input.GetKeyUp(defendKey))
+       else
         {
             defending = false;
             playerAttackManager.StopDefending();
         }
+
         if(Input.GetKeyDown(menuKey))
         {
             pauseHUD.ActivePause();
