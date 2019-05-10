@@ -10,12 +10,12 @@ public class PlayerAttackManager : MonoBehaviour
 {
     public enum Mode { Melee, Mage };
     public Mode currentMode;// { set; get; }
-    public enum IsPlayer { Player,Enemy};
+    public enum IsPlayer { Player, Enemy };
     public IsPlayer currentPlayer;
     public Transform player;
 
+
     private IncreaseAttack inc;
-    private MouseCursor cursor;
     private MeleeAttacker meleeAttacker;
     private Shooter shooter;
     private Shield shield;
@@ -28,11 +28,10 @@ public class PlayerAttackManager : MonoBehaviour
     private AttackSounds sounds;
     private Animator animator;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         inc = GetComponent<IncreaseAttack>();
-        cursor = GetComponent<MouseCursor>();
         shooter = GetComponent<Shooter>();
         if (!shooter)
             Debug.Log("Dependence not found: shooter");
@@ -47,9 +46,8 @@ public class PlayerAttackManager : MonoBehaviour
         jumper = GetComponent<Jumper>();
         sounds = GetComponentInChildren<AttackSounds>();
         animator = transform.GetChild(1).GetComponent<Animator>();
-        cursor.ChangueCursor((int)(Mode)currentMode);
     }
-    public  int GetMode()
+    public int GetMode()
     {
         return (int)currentMode;
     }
@@ -66,7 +64,6 @@ public class PlayerAttackManager : MonoBehaviour
         sounds.PlayEffect(sounds.changeMode);
         currentMode = (Mode)((int)++currentMode % 2);
 
-        cursor.ChangueCursor((int)(Mode)currentMode);
 
         if (currentMode == Mode.Mage) { aura.gameObject.SetActive(true); }
         else aura.gameObject.SetActive(false);
@@ -74,7 +71,7 @@ public class PlayerAttackManager : MonoBehaviour
 
     public void Attack()
     {
-        switch(currentMode)
+        switch (currentMode)
         {
             case Mode.Melee:
                 meleeAttacker.MakeAttack(GetLookAt());
@@ -122,22 +119,36 @@ public class PlayerAttackManager : MonoBehaviour
                 break;
         }
     }
-    public void AttackControl(bool Increase)
+    public void AttackControl( )
     {
-       // Debug.Log("hola");
+        // Debug.Log("hola");
+        switch (currentMode)
+        {
+            case Mode.Mage:
+
+                break;
+            case Mode.Melee:
+                inc.MeleeControl();
+
+                break;
+        }
+
+    }
+    public void StopControl()
+    {
         switch (currentMode)
         {
             case Mode.Mage:
                 
                 break;
             case Mode.Melee:
-                inc.MeleeControl(Increase);
-              
+                inc.MeleeStop();
+
                 break;
         }
-       
     }
-
-
-
 }
+
+
+
+

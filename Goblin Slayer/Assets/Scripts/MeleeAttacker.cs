@@ -12,7 +12,7 @@ public class MeleeAttacker : MonoBehaviour
     /// </summary>
     public float range = 3;
 
-    public int damage = 10;
+    public float damage = 10f;
     public float cooldownTime = 0.8f;
     private Cooldown cooldown;
     private AttackSounds sounds;

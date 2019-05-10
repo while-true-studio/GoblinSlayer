@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private PauseBehaviour pauseHUD;
     private Animator animator;
     public bool defending = false;
-
+    
 
 	void Start () {
         walker = GetComponent<Walker>();
@@ -60,13 +60,13 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(attackKey))
             { 
 
-                playerAttackManager.AttackControl(false);
+                playerAttackManager.AttackControl();
 
             }
             else if (Input.GetKeyUp(attackKey))
             {
                 playerAttackManager.Attack();
-                playerAttackManager.AttackControl(true);
+                playerAttackManager.StopControl();
             }
         }
         

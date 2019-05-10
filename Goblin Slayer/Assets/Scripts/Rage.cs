@@ -18,7 +18,7 @@ public class Rage : MonoBehaviour
     MeleeAttacker melee; //The script that contains the dmg melee of the player character
     Projectile mageProjectile; //The script that contains the dmg mage of the player character
     float initialVel; //The initial velocity of the script Walker
-    int initialDmgMelee; //The initial dmg of the melee mode
+    float initialDmgMelee; //The initial dmg of the melee mode
     int initialDmgMage; //The initial dmg of the mage mode
 
     public enum State { NORMAL = 0, MASACRE = 1, SLAYER = 2 };
