@@ -11,7 +11,7 @@ public class IncreaseAttack : MonoBehaviour {
     public float meleeIncrease;
     public float maxMelee;
     public float maxShooter;
-   
+    private float Shooter=0f;
     float contador;
 	void Awake()
     {
@@ -30,17 +30,19 @@ public class IncreaseAttack : MonoBehaviour {
 
         melee.damage =meleeNormal;
     }
-
-    public void MageControl(bool Increase)
-    {projectile = GetComponent<Projectile>();
-        if (projectile.damage < maxShooter)
-            projectile.damage += meleeIncrease * Time.deltaTime;
+    
+    public void MageControl()
+    {
+       
+       
+            Shooter += meleeIncrease * Time.deltaTime;
 
     }
     public void MageStop()
     {
-
-        melee.damage = meleeNormal;
+        projectile = GetComponent<Projectile>();
+        projectile.damage += Shooter;
+        Debug.Log(projectile.damage);
     }
 
 

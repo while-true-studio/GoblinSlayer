@@ -125,7 +125,7 @@ public class PlayerAttackManager : MonoBehaviour
         switch (currentMode)
         {
             case Mode.Mage:
-
+                inc.MageControl();
                 break;
             case Mode.Melee:
                 inc.MeleeControl();
@@ -139,7 +139,7 @@ public class PlayerAttackManager : MonoBehaviour
         switch (currentMode)
         {
             case Mode.Mage:
-                
+                inc.MageStop();
                 break;
             case Mode.Melee:
                 inc.MeleeStop();
