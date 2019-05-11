@@ -68,18 +68,11 @@ public class GameManager : MonoBehaviour
         PlayerInfoManager.SaveData();
     }
 
-    public static bool Load(string playerName)
+    public static void Load(string playerName)
     {
-        return PlayerInfoManager.LoadData(playerName);
+        PlayerInfoManager.LoadData(playerName);
     }
 
-    #region Events
-
-    
-
-
-
-    #endregion
     #endregion
 
     #region Members
@@ -102,6 +95,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         sceneLoader = GetComponentInChildren<SceneLoader>();
+    }
+
+    private void OnDestroy()
+    {
+        Save();
     }
 
     #endregion

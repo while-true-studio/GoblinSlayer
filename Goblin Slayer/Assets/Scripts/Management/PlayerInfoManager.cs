@@ -16,10 +16,22 @@ public struct PlayerInfo
 
     }
 
+    /// <summary>
+    /// Initializes PlayerInfo
+    /// </summary>
+    /// <param name="name">Player's name used to be the file handle</param>
+    /// <param name="levels">The data of the levels. If null, a default counstructor will make one with the forst level unlocked</param>
+
     public PlayerInfo(string name, Level[] levels)
     {
         this.name = name;
+        if (levels == null)
+        {
+            levels = new Level[GameManager.GetLevelsCount()];
+            levels[0].unlocked = true;
+        }
         this.levels = levels;
+            
     }
 
     public string Serialize()
@@ -100,9 +112,9 @@ public class PlayerInfoManager
         return self.currentPlayerInfo;
     }
 
-    public static bool LoadData(string name)
+    public static void LoadData(string name)
     {
-        return self._LoadData(name);
+        self._LoadData(name);
     }
     
 
@@ -130,21 +142,24 @@ public class PlayerInfoManager
     /// </summary>
     /// <param name="name">The name of the player</param>
     /// <returns>true if the save file existed, false if not</returns>
-    private bool _LoadData(string name)
+    private void _LoadData(string name)
     {
         string fullPath = path + name + ".save";
+        Debug.Log("Trying to load file: " + fullPath);
+        if (File.Exists(fullPath))
+        {
 
-        if (!File.Exists(fullPath)) return false;
-
-        var stream = new StreamReader(fullPath);
-        string data = stream.ReadToEnd();
-        currentPlayerInfo = new PlayerInfo(data);
-
-        return true;
+            var stream = new StreamReader(fullPath);
+            currentPlayerInfo = new PlayerInfo(stream.ReadToEnd());
+            stream.Close();
+        }
+        else
+            currentPlayerInfo = new PlayerInfo(name, null);
     }
     private void _SaveData()
     {
         string fullPath = path + currentPlayerInfo.Name + ".save";
+        Debug.Log("Trying to save file: " + fullPath);
         string serializedInfo = "";
         //si ya se ha guardado esta partida 
         if (File.Exists(fullPath))
@@ -160,7 +175,8 @@ public class PlayerInfoManager
                 var level = currentPlayerInfo.Levels[i];
                 var fileLevel = fileInfo.Levels[i];
                 if (!level.unlocked) continue;
-
+                //TODO: comprobar si la comprobación es correcta o si siempre coge la del
+                //fichero porque 0 (valor por defecto del timepo)< cualquier otro número
                 if (fileLevel.unlocked)
                     fileLevel.time = level.time < fileLevel.time ? level.time : fileLevel.time;
                 else
@@ -174,6 +190,7 @@ public class PlayerInfoManager
         }
         else //Creamos un nuevo fichero de guardado
         {
+            Directory.CreateDirectory(path);
             serializedInfo = currentPlayerInfo.Serialize();
         }
         //Guardamos la partida
