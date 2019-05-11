@@ -19,7 +19,7 @@ public class PlayerDead : MonoBehaviour, IDead
     void IDead.OnDead()
     {
         baseSounds.PlayEffect(baseSounds.dead);
-        GameManager.instancia.GameOver();
+        GameplayManager.OnGameOver();
         Instantiate(rageDoll, transform.position, transform.rotation);
         transform.GetChild(0).gameObject.SetActive(false);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;

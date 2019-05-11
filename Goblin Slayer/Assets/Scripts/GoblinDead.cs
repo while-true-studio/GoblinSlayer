@@ -29,7 +29,7 @@ public class GoblinDead : MonoBehaviour, IDead
         goblinDead = true;
         sounds.PlayEffect(sounds.dead);
         GetComponent<GoblinState>().GoblinIsDead();
-        GameManager.instancia.AddEnemy();
+        GameplayManager.OnEnemyDead();
         playerRage.AddRage(rageAmount);
         Instantiate(rageDoll, transform.position, transform.rotation);
         Destroy(gameObject);
@@ -41,7 +41,7 @@ public class GoblinDead : MonoBehaviour, IDead
             //Debug.Log("The destroy function");
             sounds.PlayEffect(sounds.dead);
             GetComponent<GoblinState>().GoblinIsDead();
-            GameManager.instancia.AddEnemy();
+            GameplayManager.OnEnemyDead();
             playerRage.AddRage(rageAmount);
             Instantiate(rageDoll, transform.position, transform.rotation);
             Destroy(gameObject);

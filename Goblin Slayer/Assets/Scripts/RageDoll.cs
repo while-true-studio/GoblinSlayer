@@ -6,17 +6,20 @@ public class RageDoll : MonoBehaviour
 {
     private Animator animator;
 
-    public void Die()
-    {
-        //Destroy(gameObject);
-    }
+    // ANTES MUERTO QUE ASUMIR QUE ESTE CÓDIGO EXISTE
 
-	void Start ()
-    {
-        if (CompareTag("Player"))
-        {
-            GameManager.instancia.ResetScene(4);
-        }
 
-	}
+ //   public void Die()
+ //   {
+ //       //Destroy(gameObject);
+ //   }
+
+	//void Start ()
+ //   {
+ //       if (CompareTag("Player"))
+ //       {
+ //           GameManager.instancia.ResetScene(4);
+ //       }
+
+	//}
 }

@@ -1257,7 +1257,6 @@ GameObject:
   m_Component:
   - component: {fileID: 777766749}
   - component: {fileID: 777766751}
-  - component: {fileID: 777766750}
   m_Layer: 0
   m_Name: Lvl1
   m_TagString: Untagged
@@ -1279,18 +1278,6 @@ Transform:
   m_Father: {fileID: 1830077722}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &777766750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 777766748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 131b944986b1d7f4baeeb8be4a86ec25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnterInLevel: {fileID: 8300000, guid: ce99a81aaa1e8804aa559ba49f0ef2ba, type: 3}
 --- !u!61 &777766751
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1325,11 +1312,8 @@ GameObject:
   m_Component:
   - component: {fileID: 815162142}
   - component: {fileID: 815162141}
-  - component: {fileID: 815162143}
-  - component: {fileID: 815162144}
-  - component: {fileID: 815162145}
   m_Layer: 0
-  m_Name: LvlSelecter
+  m_Name: LevelSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,13 +1327,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 815162140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27cd376140939f47874b2531f47d870, type: 3}
+  m_Script: {fileID: 11500000, guid: e638f42d2bf3cd545970ba42d703abf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  next: 115
-  back: 119
-  Enter: 13
-  levelController: {fileID: 1830077723}
+  next: 100
+  previous: 97
+  enter: 13
+  levelsPosition:
+  - {fileID: 777766749}
+  - {fileID: 1226766982}
+  - {fileID: 991713867}
+  enterInLevelAudioClip: {fileID: 8300000, guid: 1fa3d10f4dab4bb4fab4a80e01b0bbc6,
+    type: 3}
 --- !u!4 &815162142
 Transform:
   m_ObjectHideFlags: 0
@@ -1364,52 +1353,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &815162143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 815162140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46ff06871ee9e0f46aae3c2282a54ee8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!58 &815162144
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 815162140}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
---- !u!50 &815162145
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 815162140}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &911933282
 Prefab:
   m_ObjectHideFlags: 0
@@ -1494,6 +1437,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131b944986b1d7f4baeeb8be4a86ec25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputController: {fileID: 0}
+  hud: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   EnterInLevel: {fileID: 8300000, guid: ce99a81aaa1e8804aa559ba49f0ef2ba, type: 3}
 --- !u!61 &991713869
 BoxCollider2D:
@@ -1915,6 +1861,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131b944986b1d7f4baeeb8be4a86ec25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputController: {fileID: 0}
+  hud: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   EnterInLevel: {fileID: 8300000, guid: ce99a81aaa1e8804aa559ba49f0ef2ba, type: 3}
 --- !u!61 &1226766984
 BoxCollider2D:
@@ -2508,6 +2457,7 @@ MonoBehaviour:
   panel: {fileID: 1724432053}
   close: {fileID: 258771165}
   pageBook: {fileID: 8300000, guid: 76adac000b93b6d4dbe6aed269a5c0ab, type: 3}
+  levelSelector: {fileID: 815162141}
 --- !u!1 &1549060723
 GameObject:
   m_ObjectHideFlags: 0
@@ -5601,9 +5551,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e638f42d2bf3cd545970ba42d703abf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSelect: {fileID: 815162143}
-  activeLvls: {fileID: 1646317155}
-  maxLevelActive: 0
+  next: 0
+  previous: 0
+  enter: 0
+  levelsPosition: []
+  enterInLevelAudioClip: {fileID: 0}
 --- !u!1 &2009865701
 GameObject:
   m_ObjectHideFlags: 0
