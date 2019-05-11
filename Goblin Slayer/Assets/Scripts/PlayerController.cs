@@ -64,9 +64,9 @@ public class PlayerController : MonoBehaviour
 
             }
             else if (Input.GetKeyUp(attackKey))
-            {
+            { 
                 playerAttackManager.Attack();
-                playerAttackManager.StopControl();
+               playerAttackManager.StopControl();
             }
         }
         
