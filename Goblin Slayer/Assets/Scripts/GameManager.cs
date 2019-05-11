@@ -51,10 +51,16 @@ public class GameManager : MonoBehaviour
         //FIX-ME: Make this nicer instead of reloading all scene again
         SceneManager.LoadScene((int)self.currentScene);
     }
+
+
     public static void ChangeScene(Scene scene)
     {
-        self.currentScene = scene;
-        SceneManager.LoadScene((int)self.currentScene);
+        self._ChangeScene(scene);
+    }
+
+    public void ChangeSceneByIndex(int index)
+    {
+        ChangeScene((Scene)index);
     }
 
     public static void Save()
@@ -79,11 +85,24 @@ public class GameManager : MonoBehaviour
     #region Members
     
     private Scene currentScene;
+    private SceneLoader sceneLoader;
 
     #endregion
 
 
     #region Implementation
+
+    public void _ChangeScene(Scene scene)
+    {
+        currentScene = scene;
+
+        sceneLoader.LoadScene(scene);
+    }
+
+    private void Start()
+    {
+        sceneLoader = GetComponentInChildren<SceneLoader>();
+    }
 
     #endregion
 
