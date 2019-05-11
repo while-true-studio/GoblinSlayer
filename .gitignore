@@ -3,6 +3,7 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+[Sa]aves/
 Assets/AssetStoreTools*
 
 # Visual Studio cache directory
@@ -37,4 +38,6 @@ sysinfo.txt
 
 Goblin Slayer/\.idea/
 
-.bashsrc
+*.bashsrc
+*.save
+*.save.meta

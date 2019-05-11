@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class LevelSelector : MonoBehaviour
 {
@@ -22,13 +23,14 @@ public class LevelSelector : MonoBehaviour
     private int currentLevelIndex = 0;
     private bool moving = false;
     private SoundEffectsMenu soundEffects;
-    private PlayerInfo.Level[] levelsInfo;
+    private PlayerInfo.Level[] levelsInfo = null;
 
     private void Start()
     {
         CurrentLevelIndex = 0;
         soundEffects = Camera.main.GetComponent<SoundEffectsMenu>();
         levelsInfo = PlayerInfoManager.GetCurrentPlayerInfo().Levels;
+        Assert.IsNotNull(levelsInfo, "Error: Couldn't find te levelsInfo in LevelSalector");
     }
 
     private void Update()
@@ -48,7 +50,8 @@ public class LevelSelector : MonoBehaviour
         else if (Input.GetKeyDown(enter))
         {
             soundEffects.PlayEffect(enterInLevelAudioClip);
-            GameManager.ChangeScene(GameManager.LevelIndexToScene(CurrentLevelIndex));
+            if(levelsInfo[currentLevelIndex].unlocked)
+                GameManager.ChangeScene(GameManager.LevelIndexToScene(CurrentLevelIndex));
         }
     }
 
