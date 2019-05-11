@@ -12,7 +12,9 @@ public class GameplayManager : MonoBehaviour
     public Timer timer;
     public Scene scene;
     private int levelIndex;
+    [SerializeField]
     private int enemiesAlive = 0;
+    [SerializeField]
     private int spawnsAlive = 0;
 
     private void Awake()
