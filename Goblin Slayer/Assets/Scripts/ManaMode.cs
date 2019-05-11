@@ -27,7 +27,7 @@ public class ManaMode : MonoBehaviour
         {
             case ManaState.Normal:
                 mn.autoManaRegenRate = autoManaNormal;
-                if (health.GetHP() < health.maxHealth * 3 / 4)
+                if (health.GetHP() < health.maxHealth * 3.0f / 4.0f)
 
                 { ModeState = ManaState.Battle; }
 
@@ -36,11 +36,11 @@ public class ManaMode : MonoBehaviour
             case ManaState.Battle:
                 mn.autoManaRegenRate = autoManaBattle;
 
-                if (health.GetHP() < health.maxHealth * 1 / 4)
+                if (health.GetHP() < health.maxHealth * 1.0f / 4.0f)
                 {
                     ModeState = ManaState.Critic;
                 }
-                else if (health.GetHP() >= health.maxHealth * 3 / 4) ModeState = ManaState.Normal;
+                else if (health.GetHP() >= health.maxHealth * 3.0f / 4.0f) ModeState = ManaState.Normal;
 
                 break;
             case ManaState.Critic:
