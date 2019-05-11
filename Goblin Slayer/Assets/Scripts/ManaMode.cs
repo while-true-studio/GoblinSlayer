@@ -6,7 +6,7 @@ public class ManaMode : MonoBehaviour
 {
     public ManaState ModeState;
     private PlayerAttackManager pl;
-
+    public enum ManaState { Normal, Battle, Critic }
     private Mana mn;
     private Health health;
     public float autoManaNormal;
@@ -20,9 +20,8 @@ public class ManaMode : MonoBehaviour
         health = GetComponent<Health>();
     }
 
-    void Update()
+    public void ChangueRegenMana()
     {
-        
         switch (ModeState)
         {
             case ManaState.Normal:
@@ -30,8 +29,6 @@ public class ManaMode : MonoBehaviour
                 if (health.GetHP() < health.maxHealth * 3.0f / 4.0f)
 
                 { ModeState = ManaState.Battle; }
-
-
                 break;
             case ManaState.Battle:
                 mn.autoManaRegenRate = autoManaBattle;
@@ -41,7 +38,6 @@ public class ManaMode : MonoBehaviour
                     ModeState = ManaState.Critic;
                 }
                 else if (health.GetHP() >= health.maxHealth * 3.0f / 4.0f) ModeState = ManaState.Normal;
-
                 break;
             case ManaState.Critic:
                 mn.autoManaRegenRate = autoManaCritic;
@@ -50,19 +46,14 @@ public class ManaMode : MonoBehaviour
 
                     ModeState = ManaState.Battle;
                 }
-
                 break;
         }
         if (pl.GetMode() == 0)
         {
-            mn.autoManaRegenRate*=IncrementoModoGuerrero;
+            mn.autoManaRegenRate *= IncrementoModoGuerrero;
         }
     }
-
-    public enum ManaState
-    {
-        Normal,
-        Battle,
-        Critic
-    }
 }
+
+    
+
