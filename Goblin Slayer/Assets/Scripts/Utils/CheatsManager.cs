@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -39,7 +40,6 @@
 
 public class CheatsManager : MonoBehaviour
 {
-    private static CheatsManager _self = null;
     public bool cheatsEnabled;
 
     private GameObject player = null;
@@ -47,7 +47,10 @@ public class CheatsManager : MonoBehaviour
     private Mana playerMana = null;
     private CameraMovementManager cameraMovementManager = null;
     private SpawnOnMouse spawnOnMouse = null;
+    private Image cheatsEnabledImage = null;
 
+    #region Singleton
+    private static CheatsManager _self = null;
     private void Awake()
     {
         if (_self == null)
@@ -57,7 +60,16 @@ public class CheatsManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-    // Update is called once per frame
+    #endregion
+
+    private void Start()
+    {
+        if (cheatsEnabledImage == null)
+            cheatsEnabledImage = GameObject.Find("Cheetos").GetComponent<Image>();
+        if (cheatsEnabledImage != null)
+            cheatsEnabledImage.enabled = cheatsEnabled;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F3))
@@ -79,7 +91,7 @@ public class CheatsManager : MonoBehaviour
                 KillOnClick();
             if (Input.GetKeyDown(KeyCode.U))
                 ToggleCameraMovement();
-            if(Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.T))
                 TeletrasportPlayer();
         }
     }
@@ -89,7 +101,10 @@ public class CheatsManager : MonoBehaviour
         cheatsEnabled = true;
         if (spawnOnMouse == null)
             spawnOnMouse = GetComponent<SpawnOnMouse>();
+        if (cheatsEnabledImage == null)
+            cheatsEnabledImage = GameObject.Find("Cheetos").GetComponent<Image>();
         spawnOnMouse.enabled = true;
+        cheatsEnabledImage.enabled = true;
     }
 
     private void DisableCheats()
@@ -99,6 +114,11 @@ public class CheatsManager : MonoBehaviour
 
         if (spawnOnMouse == null)
             spawnOnMouse = GetComponent<SpawnOnMouse>();
+
+        if (cheatsEnabledImage == null)
+            cheatsEnabledImage = GameObject.Find("Cheetos").GetComponent<Image>();
+        if (cheatsEnabledImage != null)
+            cheatsEnabledImage.enabled = false;
         spawnOnMouse.enabled = false;
 
     }
@@ -150,9 +170,9 @@ public class CheatsManager : MonoBehaviour
 
     private void ToggleCameraMovement()
     {
-        if(cameraMovementManager == null)
+        if (cameraMovementManager == null)
             cameraMovementManager = Camera.main.gameObject.GetComponent<CameraMovementManager>();
-        if(cameraMovementManager != null)
+        if (cameraMovementManager != null)
             cameraMovementManager.ToggleCameraMovement();
     }
 
