@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +13,8 @@ public class HUD : MonoBehaviour
     public GameObject panel;
     private string playerName;
     public Button close;
-
     public AudioClip pageBook;
+    public LevelSelector levelSelector;
 
 
     /// <summary>
@@ -40,10 +41,10 @@ public class HUD : MonoBehaviour
     /// Writes in HUD player´s best time
     /// </summary>
     /// <param name="bestTime"></param>
-    private void BestTime(int bestTime)
+    private void BestTime(TimeSpan bestTime)
     {
-        if(bestTime!=0)
-        info.text = "Your best time :" + bestTime;
+        if(bestTime.TotalSeconds > 0)
+            info.text = "Your best time :" + bestTime;
         else info.text = "You have not played this level yet";
     }
 
@@ -59,9 +60,9 @@ public class HUD : MonoBehaviour
         info.gameObject.SetActive(status);
         nameTxt.gameObject.SetActive(status);
         record.gameObject.SetActive(status);
-        playerName = GameManager.instancia.playerName;
+        playerName = string.IsNullOrEmpty(PlayerInfoManager.GetCurrentPlayerInfo().Name) ? "Player": PlayerInfoManager.GetCurrentPlayerInfo().Name;
         TextName(playerName);
-        BestTime(GameManager.instancia.BestTime(GameManager.instancia.currLevel));
-        TextRecord(GameManager.instancia.BestRecord(GameManager.instancia.currLevel),GameManager.instancia.BestRecordMan(GameManager.instancia.currLevel));
+        BestTime(PlayerInfoManager.GetCurrentPlayerInfo().Levels[levelSelector.CurrentLevelIndex].time);
+        //TextRecord(GameManager.instancia.BestRecord(GameManager.instancia.currLevel),GameManager.instancia.BestRecordMan(GameManager.instancia.currLevel));
     }
 }

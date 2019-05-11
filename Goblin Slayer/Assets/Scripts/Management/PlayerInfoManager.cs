@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using UnityEngine;
+// ReSharper disable All
 
 public struct PlayerInfo
 {
@@ -70,7 +71,12 @@ public struct PlayerInfo
     private Level[] levels;
     private readonly string name;
 }
-
+/*
+public struct Record
+{
+    private PlayerInfo.Level[] levels;
+}
+*/
 public class PlayerInfoManager
 {
     #region Singleton
@@ -88,6 +94,11 @@ public class PlayerInfoManager
     }
     #endregion
     #region API
+
+    public static PlayerInfo GetCurrentPlayerInfo()
+    {
+        return self.currentPlayerInfo;
+    }
 
     public static bool LoadData(string name)
     {
@@ -112,8 +123,8 @@ public class PlayerInfoManager
         path += "/Saves/";
     }
 
-    public PlayerInfo playerInfo;
-
+    private PlayerInfo currentPlayerInfo;
+    private PlayerInfo record;
     /// <summary>
     /// Loads the player data
     /// </summary>
@@ -127,16 +138,13 @@ public class PlayerInfoManager
 
         var stream = new StreamReader(fullPath);
         string data = stream.ReadToEnd();
-        playerInfo = new PlayerInfo(data);
+        currentPlayerInfo = new PlayerInfo(data);
 
         return true;
     }
-
-
-
     private void _SaveData()
     {
-        string fullPath = path + playerInfo.Name + ".save";
+        string fullPath = path + currentPlayerInfo.Name + ".save";
         string serializedInfo = "";
         //si ya se ha guardado esta partida 
         if (File.Exists(fullPath))
@@ -147,9 +155,9 @@ public class PlayerInfoManager
             reader.Close();
             //Actualizar con los mejores tiempos
 
-            for (int i = 0; i < playerInfo.Levels.Length; i++)
+            for (int i = 0; i < currentPlayerInfo.Levels.Length; i++)
             {
-                var level = playerInfo.Levels[i];
+                var level = currentPlayerInfo.Levels[i];
                 var fileLevel = fileInfo.Levels[i];
                 if (!level.unlocked) continue;
 
@@ -166,7 +174,7 @@ public class PlayerInfoManager
         }
         else //Creamos un nuevo fichero de guardado
         {
-            serializedInfo = playerInfo.Serialize();
+            serializedInfo = currentPlayerInfo.Serialize();
         }
         //Guardamos la partida
         var writer = new StreamWriter(fullPath, false);

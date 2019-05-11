@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,7 @@ public enum Scene
     SELECT_LEVEL,
     LEVEL_1,
     LEVEL_2,
-    LEVEL_3
+    //LEVEL_3 Not yet ;D
 }
 
 public class GameManager : MonoBehaviour
@@ -37,7 +38,12 @@ public class GameManager : MonoBehaviour
 
     public static int GetLevelsCount()
     {
-        return self.levelsCount;
+        return Enum.GetValues(typeof(Scene)).Length - (int)Scene.LEVEL_1;
+    }
+
+    public static Scene LevelIndexToScene(int index)
+    {
+        return Scene.LEVEL_1 + index;
     }
 
     public static void ResetLevel()
@@ -63,19 +69,7 @@ public class GameManager : MonoBehaviour
 
     #region Events
 
-    public static void OnEnemySpawn()
-    {
-        self.EnemiesAlive++;
-    }
-    public static void OnEnemyDead()
-    {
-        if (--self.EnemiesAlive <= 0)
-            ChangeScene(Scene.SELECT_LEVEL);
-    }
-
-    public static void OnGameOver()
-    {
-    }
+    
 
 
 
@@ -85,15 +79,11 @@ public class GameManager : MonoBehaviour
     #region Members
     
     private Scene currentScene;
-    public int levelsCount;
-    private int EnemiesAlive { get; set; }
 
     #endregion
 
 
     #region Implementation
-
-   
 
     #endregion
 
@@ -110,9 +100,9 @@ public class GameManager : MonoBehaviour
     public int currLevel;
     public int totalLevel = 3;
     public int maxLevel = 0;
-    private playerInfo[] allInfoLevels;
+    private currentPlayerInfo[] allInfoLevels;
     public bool IsGateOpen { get; private set; }
-    struct playerInfo
+    struct currentPlayerInfo
     {
         public string recordMan;
         public int level;
@@ -138,7 +128,7 @@ public class GameManager : MonoBehaviour
     {
         IsGateOpen = false;
         currLevel = 0;
-        allInfoLevels = new playerInfo[totalLevel];
+        allInfoLevels = new currentPlayerInfo[totalLevel];
     }
 
 
@@ -200,7 +190,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(3.0f);
         if (currLevel > maxLevel) { maxLevel++;  }
-        LevelController Go = GameObject.Find("Lvlpositions").GetComponent<LevelController>();
+        LevelSelector Go = GameObject.Find("Lvlpositions").GetComponent<LevelSelector>();
         Go.ActiveLvl(currLevel);
 
     }
@@ -315,7 +305,7 @@ public class GameManager : MonoBehaviour
                         allInfoLevels[index].time = num;
                         break;
                     case 'C':
-                        //LevelController lvl = GameObject.Find("Lvlpositions").GetComponent<LevelController>();
+                        //LevelSelector lvl = GameObject.Find("Lvlpositions").GetComponent<LevelSelector>();
                         //lvl.FastActive((int)cadena[1]);
                         break;
                 }

@@ -28,15 +28,13 @@ public class Spawner : MonoBehaviour
     /// </summary>
     public void Spawn()
     {
+        GameplayManager.OnSpawnActivated();
         StartCoroutine(OnSpawn());
     }
 
     private void Start()
     {
-        for(int i = 0;i<unitTypes.Count;i++)
-        {
-            GameManager.instancia.AddTotalEnemy((int)unitTypes[i].Amount);
-        }
+        GameplayManager.OnSpawnCreated();
     }
 
     /// <summary>
@@ -52,6 +50,7 @@ public class Spawner : MonoBehaviour
             for (int i = 0; i < unitType.Amount; i++)
             {
                 Instantiate(unitType.GameObject, transform.position, Quaternion.identity, transform);
+                GameplayManager.OnEnemySpawn();
                 yield return new WaitForSeconds(spawnInterval);
             }
         }

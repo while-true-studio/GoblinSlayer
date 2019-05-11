@@ -13,7 +13,7 @@ public class Informer : MonoBehaviour
     {
         informerText.gameObject.SetActive(true);
 
-        if (collision.CompareTag("Player") && !GameManager.instancia.IsGateOpen)
+        if (collision.CompareTag("Player") && !GameplayManager.IsLevelClear())
         {
             informerText.text = stillGoblinsAliveMessage;
         }

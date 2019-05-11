@@ -39,7 +39,7 @@ public class GetPlayerInfo : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        GameManager.instancia.CurrentPlayer(nameEntered);
+        GameManager.Load(nameEntered);
     }
 
     private void Update()

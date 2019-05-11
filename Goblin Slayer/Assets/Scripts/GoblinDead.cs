@@ -5,7 +5,6 @@ using UnityEngine;
 public class GoblinDead : MonoBehaviour, IDead
 {
     private Rage playerRage;
-    private Rigidbody2D rb;
     public int rageAmount = 2;
     public RageDoll rageDoll;
     private PlayerBaseSounds sounds;
@@ -22,7 +21,7 @@ public class GoblinDead : MonoBehaviour, IDead
     {
         sounds.PlayEffect(sounds.dead);
         GetComponent<GoblinState>().GoblinIsDead();
-        GameManager.instancia.AddEnemy();
+        GameplayManager.OnEnemyDead();
         playerRage.AddRage(rageAmount);
         Instantiate(rageDoll, transform.position, transform.rotation,rageDollPool);
         Destroy(gameObject);
