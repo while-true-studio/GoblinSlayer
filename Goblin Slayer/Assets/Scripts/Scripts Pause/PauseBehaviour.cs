@@ -29,4 +29,8 @@ public class PauseBehaviour : MonoBehaviour
         gameScreen.SetActive(true);
         Time.timeScale = 1f;
     }
+    public void ChangeAudio()
+    {
+        AudioListener.pause = !AudioListener.pause;
+    }
 }
