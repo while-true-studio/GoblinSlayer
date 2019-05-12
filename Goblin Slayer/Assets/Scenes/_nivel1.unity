@@ -5070,8 +5070,8 @@ GameObject:
   - component: {fileID: 964782613}
   - component: {fileID: 964782612}
   - component: {fileID: 964782626}
-  - component: {fileID: 964782629}
   - component: {fileID: 964782630}
+  - component: {fileID: 964782631}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -5416,6 +5416,14 @@ MonoBehaviour:
   maxMelee: 120
   maxShooter: 30
   mageNormal: 250
+--- !u!114 &964782631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 964782610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37b13c79552f2da46901c994009f2f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
