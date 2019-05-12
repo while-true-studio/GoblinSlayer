@@ -8,7 +8,7 @@ public class Caster : Shooter
 {
     private Animator effectAnim;
     private Mana mana;
-    private SpriteRenderer spriteRenderer;
+    //private SpriteRenderer spriteRenderer;
     private AttackSounds attackSounds;
 
     private void Awake()
@@ -17,7 +17,7 @@ public class Caster : Shooter
     }
     private void Start()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         attackSounds = GetComponentInChildren<AttackSounds>();
         Init();
     }

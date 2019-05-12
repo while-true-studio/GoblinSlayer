@@ -23,17 +23,7 @@ public class Rage : MonoBehaviour
 
     public enum State { NORMAL = 0, MASACRE = 1, SLAYER = 2 };
 
-    [Serializable]
-    public struct RageBoost
-    {
-        public int vel;
-        public int dmgMelee;
-        public int dmgMage;
-    }
-
-    [SerializeField]
     public State rageState, oldState;
-    public RageBoost[] rageBoost;
 
     private void Start()
     {
@@ -49,6 +39,7 @@ public class Rage : MonoBehaviour
     }
     void Update()
     {
+
         percentage = (currentRage * 100) / rageMax;
         currentRage -= decreaseRageRate * Time.deltaTime;
 
@@ -59,10 +50,7 @@ public class Rage : MonoBehaviour
         else if (percentage >= 40 && percentage < 90) rageState = State.MASACRE;
         else if (percentage >= 90 && percentage <= 100) rageState = State.SLAYER;
 
-        if (oldState != rageState)
-        {
-            AddBoost();
-        }
+        AddBoost();
     }
 
     /// <summary>
@@ -76,8 +64,8 @@ public class Rage : MonoBehaviour
 
     public void AddBoost()
     {
-        walker.velocity = initialVel + rageBoost[(int)rageState].vel;
-        melee.damage = initialDmgMelee + rageBoost[(int)rageState].dmgMelee;
-        mageProjectile.damage = initialDmgMage + rageBoost[(int)rageState].dmgMage;
+        walker.velocity = initialVel *(1.0f + (percentage/100));
+        melee.damage = initialDmgMelee *(1.0f + (percentage/100));
+        mageProjectile.damage = initialDmgMage *(1.0f + (percentage/100));
     }
 }

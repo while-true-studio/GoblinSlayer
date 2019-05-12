@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-
+    public bool invincible = false;
     public int maxHealth;
     public float currentHealth;
     public bool Alive { get; private set; }
@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
         animator = transform.GetChild(0).GetComponent<Animator>();
+        Alive = true;
     }
 
     /// <summary>
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
     /// <param name="amount"> Amount of damage </param>
     public void LoseHealth(float amount)
     {
+        if (invincible) return;
         HitAnimator();
         currentHealth -= amount;
         Alive = !Dead();

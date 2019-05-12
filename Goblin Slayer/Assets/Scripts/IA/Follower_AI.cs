@@ -23,7 +23,7 @@ public class Follower_AI : MonoBehaviour {
     /// </summary>
     public void Follow()
     {
-        Walker.WalkDirection dir = (target.GetTarget().position - transform.position).x > 0 ? Walker.WalkDirection.RIGHT : Walker.WalkDirection.LEFT;
+        Walker.Direction dir = (target.GetTarget().position - transform.position).x > 0 ? Walker.Direction.RIGHT : Walker.Direction.LEFT;
         walker.Walk(dir);
     }
     /// <summary>

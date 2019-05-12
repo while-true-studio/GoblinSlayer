@@ -29,13 +29,13 @@ public class MeleeAttacker : MonoBehaviour
     /// Make an attack on all game objects between the game object that has this component
     /// and the vector it is aiming to inside a range that has no obstacle between both.
     /// </summary>
-    /// <param name="normalVector">The normal vector the game object is aiming to.</param>
-    public void MakeAttack(Vector2 normalVector)
+    /// <param name="direction">The vector director the game object is aiming to. Must be normalized</param>
+    public void MakeAttack(Vector2 direction)
     {
         if (!cooldown.CanUse()) return;
         sounds.PlayEffect(sounds.meleeAttack);
         AttackAnimator();
-        var targets = FindGameObjects(normalVector);
+        var targets = FindGameObjects(direction);
         foreach (var target in targets)
         {
             target.OnAttack(damage);
@@ -43,7 +43,7 @@ public class MeleeAttacker : MonoBehaviour
 
 //if UNITY_EDITOR
         var hit = targets.Count > 0;
-        Debug.DrawRay(transform.position, normalVector * range, hit ? Color.green : Color.red);
+        Debug.DrawRay(transform.position, direction * range, hit ? Color.green : Color.red);
 //#endif
     }
 
