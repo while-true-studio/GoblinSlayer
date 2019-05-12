@@ -5049,9 +5049,6 @@ GameObject:
   - component: {fileID: 1949628000}
   - component: {fileID: 964782625}
   - component: {fileID: 964782624}
-  - component: {fileID: 964782611}
-  - component: {fileID: 964782618}
-  - component: {fileID: 964782629}
   - component: {fileID: 964782623}
   - component: {fileID: 964782622}
   - component: {fileID: 964782621}
@@ -5059,12 +5056,14 @@ GameObject:
   - component: {fileID: 964782628}
   - component: {fileID: 964782620}
   - component: {fileID: 964782619}
+  - component: {fileID: 964782618}
   - component: {fileID: 964782617}
   - component: {fileID: 964782616}
   - component: {fileID: 964782615}
   - component: {fileID: 964782614}
   - component: {fileID: 964782613}
   - component: {fileID: 964782612}
+  - component: {fileID: 964782611}
   - component: {fileID: 964782626}
   - component: {fileID: 964782629}
   - component: {fileID: 964782630}
@@ -5412,14 +5411,6 @@ MonoBehaviour:
   maxMelee: 120
   maxShooter: 30
   mageNormal: 250
-  m_Script: {fileID: 11500000, guid: 37b13c79552f2da46901c994009f2f55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ModeState: 0
-  autoManaNormal: 10
-  autoManaBattle: 5
-  autoManaCritic: 15
-  IncrementoModoGuerrero: 1.25
 --- !u!1 &965847207
 GameObject:
   m_ObjectHideFlags: 0

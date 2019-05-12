@@ -18,19 +18,16 @@ public class PlayerController : MonoBehaviour
     private PauseBehaviour pauseHUD;
     private Animator animator;
     public bool defending = false;
-    private ManaMode ManaMode;
-
+    
 
 	void Start () {
         walker = GetComponent<Walker>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
         pauseHUD = GameObject.Find("HUD").GetComponent<PauseBehaviour>();
-        ManaMode = GameObject.Find("Player").GetComponent<ManaMode>();
     }
 
 	// Update is called once per frame
 	void Update () {
-        ManaMode.ChangueRegenMana();
         if (!defending)
         {
             //Walk to the left
