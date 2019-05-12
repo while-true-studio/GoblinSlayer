@@ -5,4 +5,6 @@ using UnityEngine;
 public class MagicProjectile : Projectile {
 
     public float manaCost;
+   
+    
 }

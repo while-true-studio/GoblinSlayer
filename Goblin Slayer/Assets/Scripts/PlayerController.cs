@@ -56,18 +56,23 @@ public class PlayerController : MonoBehaviour
                 playerAttackManager.SwitchMode();
             }
 
-           
-            if (Input.GetKey(attackKey))
-            { 
+            if (Input.GetKeyDown(attackKey))
+            {
+                playerAttackManager.InitDamageDefault();
+            }
+            else if (Input.GetKey(attackKey))
+            {
 
-                playerAttackManager.AttackControl();
+                playerAttackManager.CalculeDamage();
 
             }
             else if (Input.GetKeyUp(attackKey))
-            { 
+            {
+                playerAttackManager.UseControl();
                 playerAttackManager.Attack();
-               playerAttackManager.StopControl();
+
             }
+            
         }
         
 

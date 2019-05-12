@@ -5297,10 +5297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6040f187eb6ba449e28e70f646a0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proyectileIncrease: 0
+  MageIncrease: 2
   meleeIncrease: 1
   maxMelee: 120
-  maxShooter: 0
+  maxShooter: 30
+  mageNormal: 250
 --- !u!1 &965847207
 GameObject:
   m_ObjectHideFlags: 0

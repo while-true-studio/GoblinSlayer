@@ -119,9 +119,21 @@ public class PlayerAttackManager : MonoBehaviour
                 break;
         }
     }
-    public void AttackControl( )
+    public  void InitDamageDefault()
     {
-        // Debug.Log("hola");
+        switch (currentMode)
+        {
+            case Mode.Mage:
+                inc.MageInit();
+                break;
+            case Mode.Melee:
+                inc.MeleeInit();
+
+                break;
+        }
+    }
+    public void CalculeDamage( )
+    {
         switch (currentMode)
         {
             case Mode.Mage:
@@ -134,17 +146,13 @@ public class PlayerAttackManager : MonoBehaviour
         }
 
     }
-    public void StopControl()
+    public void UseControl()
     {
-        switch (currentMode)
+        if (currentMode==Mode.Mage)
         {
-            case Mode.Mage:
+            
                 inc.MageStop();
-                break;
-            case Mode.Melee:
-                inc.MeleeStop();
-
-                break;
+             
         }
     }
 }

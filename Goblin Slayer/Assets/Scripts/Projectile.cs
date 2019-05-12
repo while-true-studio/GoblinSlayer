@@ -83,6 +83,7 @@ public class Projectile : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         Destroy(gameObject, 0.5f);
         animator.SetTrigger("Destroy");
+        
     }
 
     public void OnCollisionEnter(Collision collision)

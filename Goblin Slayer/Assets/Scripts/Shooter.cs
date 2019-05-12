@@ -8,9 +8,11 @@ public class Shooter : MonoBehaviour
     private Animator playerAnim;
     private Cooldown cooldown;
     private AttackSounds sounds;
-
+     IncreaseAttack inc;
+    
     private void Start()
-    {
+    {inc = GetComponent<IncreaseAttack>();
+    
         sounds = GetComponentInChildren<AttackSounds>();
         Init();
     }
@@ -46,6 +48,7 @@ public class Shooter : MonoBehaviour
         {
             sounds.PlayEffect(sounds.cast);
             ShootWork(direction);
+            
         }
     }
 
