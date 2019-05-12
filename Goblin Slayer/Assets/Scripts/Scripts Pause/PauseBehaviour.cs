@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 public class PauseBehaviour : MonoBehaviour
 {
-    
+
     public GameObject pauseScreen, gameScreen;
     public PlayerController playerController;
     public LookingMouse playerLook;
@@ -28,10 +28,5 @@ public class PauseBehaviour : MonoBehaviour
         pauseScreen.SetActive(false);
         gameScreen.SetActive(true);
         Time.timeScale = 1f;
-    }
-    public void MuteMusic()
-    {
-        AudioListener.pause = !AudioListener.pause;
-        
     }
 }
