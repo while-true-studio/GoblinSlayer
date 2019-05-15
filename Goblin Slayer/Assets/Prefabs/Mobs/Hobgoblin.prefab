@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 4
-  damage: 50
+  damage: 100
   cooldownTime: 2
 --- !u!114 &114291113646702976
 MonoBehaviour:
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincible: 0
-  maxHealth: 270
+  maxHealth: 1000
   currentHealth: 200
 --- !u!114 &114450854570840924
 MonoBehaviour:
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a531d3677b00c4bae596953eaec0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 75
+  Damage: 150
   CooldownTime: 10
   Velocity: 200
   Impulse: 50
