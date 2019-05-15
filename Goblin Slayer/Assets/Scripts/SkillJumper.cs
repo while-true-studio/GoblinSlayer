@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SkillJumper :  Jumper
 {
@@ -19,20 +17,19 @@ public class SkillJumper :  Jumper
     }
 	
 
-    public void MakeADoubleJump(Vector2 dir)
+    public void MakeADoubleJump(Vector2 direction)
     {
-        if ( mana.UseMana(manaCost) && !toes.IsOverGround())
-        {
-            DoubleJumpAnimation();
-            rb.velocity = Vector2.zero;
-            rb.AddForce(dir * jumpForce * 2, ForceMode2D.Impulse);
-            AnimatorFalling();
-        }
+        if (!mana.UseMana(manaCost)) return;
+
+        DoubleJumpAnimation();
+        rb.velocity = Vector2.zero;
+        rb.AddForce(direction * jumpForce * 2, ForceMode2D.Impulse);
+        AnimatorFalling();
     }
 
     private void AnimatorFalling()
     {
-        fallingAnimator.SetFloat("Falling",rb.velocity.y);
+        fallingAnimator.SetFloat("Falling", rb.velocity.y);
     }
 
     private void DoubleJumpAnimation()

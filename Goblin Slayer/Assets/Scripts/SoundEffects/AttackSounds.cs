@@ -12,6 +12,7 @@ public class AttackSounds : MonoBehaviour {
     public AudioClip blockEffect;
     public AudioClip doubleJump;
     public AudioClip changeMode;
+    public AudioClip ChargeActive;
 
 	void Start ()
     {

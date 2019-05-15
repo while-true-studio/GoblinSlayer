@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class Brain_AI : MonoBehaviour
 {
+    private void Start()
+    {
+        RegisterCallbacks();
+    }
+
     private void OnDestroy()
     {
         UnRegisterCallbacks();
@@ -12,5 +17,4 @@ public abstract class Brain_AI : MonoBehaviour
 
     protected abstract void RegisterCallbacks();
     protected abstract void UnRegisterCallbacks();
-
 }

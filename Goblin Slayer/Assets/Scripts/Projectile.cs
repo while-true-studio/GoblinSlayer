@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public float projectileSpeed = 1.0f;
     private Rigidbody2D rb;
     private Vector2 shootDirection;
-    public int damage = 45;
+    public float damage = 45;
     public float projectileRotation = 1.5f;
     private Animator animator;
     private string ownerTag;

@@ -19,10 +19,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4999837130189112}
+  - component: {fileID: 50103247590114296}
   - component: {fileID: 114621548711393978}
+  - component: {fileID: 82150152730070764}
+  - component: {fileID: 70013489322796882}
   - component: {fileID: 95835725319296658}
   - component: {fileID: 212704715935079976}
-  - component: {fileID: 82150152730070764}
   m_Layer: 0
   m_Name: InfantryRD
   m_TagString: Untagged
@@ -37,12 +39,47 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400526975033826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.191278, y: 1.9401973, z: 0.0055289296}
+  m_LocalPosition: {x: -20.4, y: 7.17, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50103247590114296
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400526975033826}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!70 &70013489322796882
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400526975033826}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -2.5}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
 --- !u!82 &82150152730070764
 AudioSource:
   m_ObjectHideFlags: 1
@@ -52,7 +89,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 929bc35cbacde8b468e5fbc2a736eb0c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ae5508551c5712740a7d363f25ec5138, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -147,7 +184,7 @@ Animator:
   m_GameObject: {fileID: 1400526975033826}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 39b82015b912d4142925a5b8193adfc4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0da941b8af50f304198161b843523644, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

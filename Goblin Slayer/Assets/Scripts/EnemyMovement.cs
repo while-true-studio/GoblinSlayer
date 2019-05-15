@@ -20,10 +20,10 @@ public class EnemyMovement : MonoBehaviour
 
         // Player .. Enemy
         if (playerX < startX)
-            walker.Walk(Walker.WalkDirection.LEFT);
+            walker.Walk(Walker.Direction.LEFT);
         // Enemy .. Player
         else if (playerX > startX)
-            walker.Walk(Walker.WalkDirection.RIGHT);
+            walker.Walk(Walker.Direction.RIGHT);
     }
 
 }

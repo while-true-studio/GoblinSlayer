@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDead : MonoBehaviour, IDead
 {
-    private Animator animator;
+    //private Animator animator;
     private Rigidbody2D rb;
     private Collider2D coll;
     public RageDoll rageDoll;
@@ -12,7 +12,7 @@ public class PlayerDead : MonoBehaviour, IDead
 
     private void Start()
     {
-        animator = transform.GetChild(0).GetComponent<Animator>();
+        //animator = transform.GetChild(0).GetComponent<Animator>();
         baseSounds = GetComponentInChildren<PlayerBaseSounds>();
     }
 

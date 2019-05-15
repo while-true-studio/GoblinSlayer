@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(MeleeAttacker))]
@@ -8,26 +9,26 @@ using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
 {
-    public enum Mode { Melee, Mage };
-    public Mode currentMode;// { set; get; }
-    public enum IsPlayer { Player,Enemy};
-    public IsPlayer currentPlayer;
+    public enum Mode { MELEE, MAGE };
+    public Mode CurrentMode { get; set; }
     public Transform player;
 
+    private MouseCursor cursor;
     private MeleeAttacker meleeAttacker;
     private Shooter shooter;
     private Shield shield;
     private SkillHealing skillHealing;
-    private SkillJumper skillJumper;
-    public AnimatorControllerParameter warriorController;
-    public AnimatorControllerParameter mageController;
-    private Jumper jumper;
+    private SkillJumper jumper;
+    //public AnimatorControllerParameter warriorController;
+    //public AnimatorControllerParameter mageController;
     public Animator aura;
     private AttackSounds sounds;
+    //private Animator animator;
 
 	// Use this for initialization
-	void Start ()
+    private void Start ()
     {
+        cursor = GetComponent<MouseCursor>();
         shooter = GetComponent<Shooter>();
         if (!shooter)
             Debug.Log("Dependence not found: shooter");
@@ -38,76 +39,84 @@ public class PlayerAttackManager : MonoBehaviour
             Debug.Log("Dependence not found: shield");
 
         skillHealing = GetComponent<SkillHealing>();
-        skillJumper = GetComponent<SkillJumper>();
-        jumper = GetComponent<Jumper>();
+        jumper = GetComponent<SkillJumper>();
         sounds = GetComponentInChildren<AttackSounds>();
+        //animator = transform.GetChild(1).GetComponent<Animator>();
+        cursor.ChangueCursor((int)CurrentMode);
     }
-
+    public  int GetMode()
+    {
+        return (int)CurrentMode;
+    }
     public Vector2 GetLookAt()
     {
-        Vector3 aux = currentPlayer == IsPlayer.Player
-            ? Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position
-            : player.transform.position - transform.position;
+        //Vector3 aux = currentPlayer == IsPlayer.Player
+        //    ? Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position
+        //    : player.transform.position - transform.position;
+        Vector3 aux = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         return new Vector2(aux.x, aux.y).normalized;
     }
 
     public void SwitchMode()
     {
         sounds.PlayEffect(sounds.changeMode);
-        currentMode = (Mode)((int)++currentMode%2);
-        if (currentMode == Mode.Mage) { aura.gameObject.SetActive(true); }
-        else aura.gameObject.SetActive(false);
+        CurrentMode = (Mode)((int)++CurrentMode % 2);
+
+        cursor.ChangueCursor((int)CurrentMode);
+
+        aura.gameObject.SetActive(CurrentMode == Mode.MAGE);
     }
-    public Mode GetMode()
-    {
-        return currentMode;
-    }
+
     public void Attack()
     {
-        switch(currentMode)
+        switch(CurrentMode)
         {
-            case Mode.Melee:
+            case Mode.MELEE:
                 meleeAttacker.MakeAttack(GetLookAt());
                 break;
-            case Mode.Mage:
+            case Mode.MAGE:
                 shooter.Shoot(GetLookAt());
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
     public void Defend()
     {
-        switch (currentMode)
+        switch (CurrentMode)
         {
-            case Mode.Melee:
+            case Mode.MELEE:
                 shield.ActiveShield(true);
                 break;
-            case Mode.Mage:
+            case Mode.MAGE:
+                skillHealing.Heal();
                 skillHealing.Healing(true);
+               
                 break;
         }
     }
     public void StopDefending()
     {
-        switch (currentMode)
+        switch (CurrentMode)
         {
-            case Mode.Melee:
+            case Mode.MELEE:
                 shield.ActiveShield(false);
                 break;
-            case Mode.Mage:
+            case Mode.MAGE:
                 skillHealing.Healing(false);
                 break;
         }
     }
     public void JumpController()
     {
-        switch (currentMode)
+        switch (CurrentMode)
         {
-            case Mode.Mage:
-                if (jumper.toes.onGound) jumper.Jump();
-                else skillJumper.MakeADoubleJump(GetLookAt());
+            case Mode.MAGE:
+                if (jumper.toes.OnGround) jumper.Jump();
+                else jumper.MakeADoubleJump(GetLookAt());
                 break;
-            case Mode.Melee:
+            case Mode.MELEE:
                 jumper.Jump();
                 break;
         }
