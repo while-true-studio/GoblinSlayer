@@ -31,15 +31,20 @@ public struct PlayerInfo
             levels[0].unlocked = true;
         }
         this.levels = levels;
-            
+         Debug.Log("Player info created!");   
+         Debug.Log("Name: " + this.Name);
+         string s ="";
+         foreach (Level level in this.levels)
+             s += level.Serialize() + "\n---\n";
+         Debug.Log("Levels("+ this.levels.Length+ "): " + s);
     }
 
     public string Serialize()
     {
         string sLevels = "";
         foreach (var level in levels)
-            sLevels += level.Serialize() + '\n';
-        return name + '\n' + sLevels;
+            sLevels += '\n' + level.Serialize() ;
+        return name + sLevels;
 
     }
 
@@ -50,7 +55,8 @@ public struct PlayerInfo
         public Level(string serialized)
         {
             string[] data = serialized.Split(':');
-            unlocked = data[0] == "true";
+            //unlocked = data[0] == "true";
+            unlocked = data[0].Equals("true", StringComparison.InvariantCultureIgnoreCase);
             time = TimeSpan.FromSeconds(double.Parse(data[1]));
         }
 
@@ -83,12 +89,14 @@ public struct PlayerInfo
     private Level[] levels;
     private readonly string name;
 }
+
 /*
 public struct Record
 {
     private PlayerInfo.Level[] levels;
 }
 */
+
 public class PlayerInfoManager
 {
     #region Singleton
@@ -145,16 +153,21 @@ public class PlayerInfoManager
     private void _LoadData(string name)
     {
         string fullPath = path + name + ".save";
-        Debug.Log("Trying to load file: " + fullPath);
-        if (File.Exists(fullPath))
+        bool found = File.Exists(fullPath);
+        
+        if (found)
         {
-
             var stream = new StreamReader(fullPath);
-            currentPlayerInfo = new PlayerInfo(stream.ReadToEnd());
+            string data = stream.ReadToEnd();
+            currentPlayerInfo = new PlayerInfo(data);
             stream.Close();
         }
         else
+        {
             currentPlayerInfo = new PlayerInfo(name, null);
+        }
+        Debug.LogFormat("Trying to load file: {0}\n{1}", fullPath, found? "<color=green>Found</color>" : "<color=red>Not found</color> -> Creating a default PlayerInfo");
+        Debug.LogFormat("Loaded data:\n{0}", currentPlayerInfo.Serialize());
     }
     private void _SaveData()
     {
@@ -193,6 +206,7 @@ public class PlayerInfoManager
             Directory.CreateDirectory(path);
             serializedInfo = currentPlayerInfo.Serialize();
         }
+        Debug.LogFormat("Saved data:\n{0}", serializedInfo);
         //Guardamos la partida
         var writer = new StreamWriter(fullPath, false);
         writer.Write(serializedInfo);
