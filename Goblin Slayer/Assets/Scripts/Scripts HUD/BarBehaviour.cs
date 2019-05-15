@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Health))]
-[RequireComponent(typeof(Mana))]
-[RequireComponent(typeof(Rage))]
 public class BarBehaviour : MonoBehaviour
 {
 
