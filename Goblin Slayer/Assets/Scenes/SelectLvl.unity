@@ -1339,6 +1339,9 @@ MonoBehaviour:
   - {fileID: 991713867}
   enterInLevelAudioClip: {fileID: 8300000, guid: 1fa3d10f4dab4bb4fab4a80e01b0bbc6,
     type: 3}
+  iconVelocity: 5
+  allLevelsUnlocked: 0
+  currentLevelIndex: 0
 --- !u!4 &815162142
 Transform:
   m_ObjectHideFlags: 0
@@ -1392,6 +1395,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 224453269261417764, guid: b3656324ee1c79f44ba2e09633b127ab,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224847217787498622, guid: b3656324ee1c79f44ba2e09633b127ab,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -13.900024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
   m_IsPrefabAsset: 0
@@ -1404,7 +1417,6 @@ GameObject:
   m_Component:
   - component: {fileID: 991713867}
   - component: {fileID: 991713869}
-  - component: {fileID: 991713868}
   m_Layer: 0
   m_Name: Lvl3
   m_TagString: Untagged
@@ -1426,21 +1438,6 @@ Transform:
   m_Father: {fileID: 1830077722}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &991713868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 991713866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 131b944986b1d7f4baeeb8be4a86ec25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputController: {fileID: 0}
-  hud: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  EnterInLevel: {fileID: 8300000, guid: ce99a81aaa1e8804aa559ba49f0ef2ba, type: 3}
 --- !u!61 &991713869
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1828,7 +1825,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1226766982}
   - component: {fileID: 1226766984}
-  - component: {fileID: 1226766983}
   m_Layer: 0
   m_Name: Lvl2
   m_TagString: Untagged
@@ -1850,21 +1846,6 @@ Transform:
   m_Father: {fileID: 1830077722}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1226766983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1226766981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 131b944986b1d7f4baeeb8be4a86ec25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputController: {fileID: 0}
-  hud: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  EnterInLevel: {fileID: 8300000, guid: ce99a81aaa1e8804aa559ba49f0ef2ba, type: 3}
 --- !u!61 &1226766984
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5556,6 +5537,9 @@ MonoBehaviour:
   enter: 0
   levelsPosition: []
   enterInLevelAudioClip: {fileID: 0}
+  iconVelocity: 0
+  allLevelsUnlocked: 0
+  currentLevelIndex: 0
 --- !u!1 &2009865701
 GameObject:
   m_ObjectHideFlags: 0

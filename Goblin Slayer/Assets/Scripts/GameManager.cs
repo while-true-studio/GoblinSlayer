@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviour
     
     private Scene currentScene;
     private SceneLoader sceneLoader;
-
     #endregion
 
 

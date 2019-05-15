@@ -13,6 +13,8 @@ public class LevelSelector : MonoBehaviour
 
     public Transform[] levelsPosition;
     public AudioClip enterInLevelAudioClip;
+    public float iconVelocity;
+    public bool allLevelsUnlocked = false;
 
     public int CurrentLevelIndex
     {
@@ -20,7 +22,17 @@ public class LevelSelector : MonoBehaviour
         set { currentLevelIndex = (value % GameManager.GetLevelsCount()); }
     }
 
-    private int currentLevelIndex = 0;
+    public int NextLevelIndex()
+    {
+        return (currentLevelIndex + GameManager.GetLevelsCount() + 1) % GameManager.GetLevelsCount();
+    }
+
+    public int PreviousLevelIndex()
+    {
+        return (currentLevelIndex + GameManager.GetLevelsCount() - 1) % GameManager.GetLevelsCount();
+    }
+
+    public int currentLevelIndex = 0;
     private bool moving = false;
     private SoundEffectsMenu soundEffects;
     private PlayerInfo.Level[] levelsInfo = null;
@@ -30,27 +42,27 @@ public class LevelSelector : MonoBehaviour
         CurrentLevelIndex = 0;
         soundEffects = Camera.main.GetComponent<SoundEffectsMenu>();
         levelsInfo = PlayerInfoManager.GetCurrentPlayerInfo().Levels;
-        Assert.IsNotNull(levelsInfo, "Error: Couldn't find te levelsInfo in LevelSalector");
+        Assert.IsNotNull(levelsInfo, "Error: Couldn't find the levelsInfo in LevelSelector\n<color=yellow>Tip: is PlayerInfoManager initialized?</color>");
     }
 
     private void Update()
     {
         if (moving) return;
 
-        if (Input.GetKeyDown(next) /*&& levelsInfo[CurrentLevelIndex + 1].unlocked*/)
+        if (Input.GetKeyDown(previous)  && (levelsInfo[PreviousLevelIndex()].unlocked || allLevelsUnlocked))
         {
-            CurrentLevelIndex++;
+            CurrentLevelIndex = PreviousLevelIndex();
             GoToLevel();
         }
-        else if (Input.GetKeyDown(previous) /*&& levelsInfo[CurrentLevelIndex - 1].unlocked*/)
+        else if (Input.GetKeyDown(next) && (levelsInfo[NextLevelIndex()].unlocked     || allLevelsUnlocked))
         {
-            CurrentLevelIndex--;
+            CurrentLevelIndex = NextLevelIndex();
             GoToLevel();
         }
         else if (Input.GetKeyDown(enter))
         {
             soundEffects.PlayEffect(enterInLevelAudioClip);
-            if(levelsInfo[currentLevelIndex].unlocked)
+            if (levelsInfo[currentLevelIndex].unlocked)
                 GameManager.ChangeScene(GameManager.LevelIndexToScene(CurrentLevelIndex));
         }
     }
@@ -63,7 +75,9 @@ public class LevelSelector : MonoBehaviour
 
         while (Vector3.Distance(from.position, to.position) > 0.1)
         {
-            Vector3 pos = Vector3.Lerp(from.position, to.position, Time.deltaTime);
+            Vector3 pos = from.position;
+            Vector3 dir = (to.position - from.position).normalized;
+            pos += dir * iconVelocity * Time.deltaTime;
             from.position = pos;
             yield return null;
         }
