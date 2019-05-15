@@ -52,12 +52,12 @@ public class LevelSelector : MonoBehaviour
         if (Input.GetKeyDown(previous)  && (levelsInfo[PreviousLevelIndex()].unlocked || allLevelsUnlocked))
         {
             CurrentLevelIndex = PreviousLevelIndex();
-            GoToLevel();
+            MoveIcon();
         }
         else if (Input.GetKeyDown(next) && (levelsInfo[NextLevelIndex()].unlocked     || allLevelsUnlocked))
         {
             CurrentLevelIndex = NextLevelIndex();
-            GoToLevel();
+            MoveIcon();
         }
         else if (Input.GetKeyDown(enter))
         {
@@ -67,6 +67,10 @@ public class LevelSelector : MonoBehaviour
         }
     }
 
+    private void MoveIcon()
+    {
+        StartCoroutine(Move(transform, levelsPosition[currentLevelIndex]));
+    }
 
     private IEnumerator Move(Transform from, Transform to)
     {
@@ -84,14 +88,6 @@ public class LevelSelector : MonoBehaviour
         from.position = to.position;
         moving = false;
     }
-
-    private void GoToLevel()
-    {
-        IEnumerator move = Move(transform, levelsPosition[currentLevelIndex]);
-        StartCoroutine(move);
-    }
-    //private bool 
-
 
 }
 
