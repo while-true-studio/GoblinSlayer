@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 5
-  damage: 110
+  damage: 70.45532
   projectileRotation: 1.5
   manaCost: 20
 --- !u!212 &212884490172764548

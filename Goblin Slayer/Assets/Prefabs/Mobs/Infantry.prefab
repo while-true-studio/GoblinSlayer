@@ -457,7 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f12bfd108c67cb4bb9d31515bb61d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onGound: 0
 --- !u!114 &114017483705994248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -559,7 +558,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 3.2
-  distanceToWall: 0.5
 --- !u!114 &114627076535033224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -600,6 +598,7 @@ MonoBehaviour:
   blockEffect: {fileID: 8300000, guid: e75b92ccfc9c0b44fa3d47a567159d6f, type: 3}
   doubleJump: {fileID: 8300000, guid: 48c8166341486ef4cbc63f960768d150, type: 3}
   changeMode: {fileID: 0}
+  ChargeActive: {fileID: 0}
 --- !u!114 &114720443148438166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -634,6 +633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49415591d7f7b25498b2a7a2bc5b993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincible: 0
   maxHealth: 270
   currentHealth: 200
 --- !u!114 &114921213477947158
