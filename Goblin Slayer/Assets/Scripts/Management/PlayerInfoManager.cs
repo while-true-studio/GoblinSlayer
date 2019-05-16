@@ -30,17 +30,8 @@ public struct PlayerInfo
         {
             levels = new Level[GameManager.GetLevelsCount()];
             levels[0].unlocked = true;
-            //for(int i = 0; i < levels.Length; i++)
-            //    levels[i].time = TimeSpan.MinValue;
         }
         this.levels = levels;
-
-        Debug.Log("Player info created!");
-        Debug.Log("Name: " + this.Name);
-        string s = "";
-        foreach (Level level in this.levels)
-            s += level.Serialize() + "\n---\n";
-        Debug.Log("Levels(" + this.levels.Length + "): " + s);
     }
 
     public string Serialize()
@@ -174,14 +165,14 @@ public class PlayerInfoManager
         {
             currentPlayerInfo = new PlayerInfo(name, null);
         }
-        Debug.LogFormat("Trying to load file: {0}\n{1}", fullPath, found ? "<color=green>Found</color>" : "<color=red>Not found</color> -> Creating a default PlayerInfo");
-        Debug.LogFormat("Loaded data:\n{0}", currentPlayerInfo.Serialize());
+        //Debug.LogFormat("Trying to load file: {0}\n{1}", fullPath, found ? "<color=green>Found</color>" : "<color=red>Not found</color> -> Creating a default PlayerInfo");
+        //Debug.LogFormat("Loaded data:\n{0}", currentPlayerInfo.Serialize());
     }
 
     private void _SaveData()
     {
         string fullPath = path + currentPlayerInfo.Name + ".save";
-        Debug.Log("Trying to save file: " + fullPath);
+        //Debug.Log("Trying to save file: " + fullPath);
         string serializedInfo = "";
         //si ya se ha guardado esta partida 
         if (File.Exists(fullPath))
@@ -215,7 +206,7 @@ public class PlayerInfoManager
             Directory.CreateDirectory(path);
             serializedInfo = currentPlayerInfo.Serialize();
         }
-        Debug.LogFormat("Saved data:\n{0}", serializedInfo);
+        //Debug.LogFormat("Saved data:\n{0}", serializedInfo);
         //Guardamos la partida
         var writer = new StreamWriter(fullPath, false);
         writer.Write(serializedInfo);
