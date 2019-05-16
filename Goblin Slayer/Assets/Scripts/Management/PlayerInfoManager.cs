@@ -169,6 +169,7 @@ public class PlayerInfoManager
         Debug.LogFormat("Trying to load file: {0}\n{1}", fullPath, found? "<color=green>Found</color>" : "<color=red>Not found</color> -> Creating a default PlayerInfo");
         Debug.LogFormat("Loaded data:\n{0}", currentPlayerInfo.Serialize());
     }
+
     private void _SaveData()
     {
         string fullPath = path + currentPlayerInfo.Name + ".save";

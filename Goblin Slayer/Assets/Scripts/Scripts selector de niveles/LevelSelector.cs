@@ -11,38 +11,49 @@ public class LevelSelector : MonoBehaviour
     public KeyCode previous = KeyCode.A;
     public KeyCode enter = KeyCode.Return;
 
-    public Transform[] levelsPosition;
+    public Transform[] levelsPositions;
+
+    public ActivateLevels activateLevels;
+   
     public AudioClip enterInLevelAudioClip;
+
+    public HUD hud;
+
+
     public float iconVelocity;
     public bool allLevelsUnlocked = false;
 
+    public int currentLevelIndex = 0;
     public int CurrentLevelIndex
     {
         get { return currentLevelIndex; }
         set { currentLevelIndex = (value % GameManager.GetLevelsCount()); }
     }
-
     public int NextLevelIndex()
     {
-        return (currentLevelIndex + GameManager.GetLevelsCount() + 1) % GameManager.GetLevelsCount();
+        return (currentLevelIndex + 1) % GameManager.GetLevelsCount();
     }
-
     public int PreviousLevelIndex()
     {
         return (currentLevelIndex + GameManager.GetLevelsCount() - 1) % GameManager.GetLevelsCount();
     }
 
-    public int currentLevelIndex = 0;
     private bool moving = false;
     private SoundEffectsMenu soundEffects;
     private PlayerInfo.Level[] levelsInfo = null;
-
     private void Start()
     {
         CurrentLevelIndex = 0;
         soundEffects = Camera.main.GetComponent<SoundEffectsMenu>();
         levelsInfo = PlayerInfoManager.GetCurrentPlayerInfo().Levels;
-        Assert.IsNotNull(levelsInfo, "Error: Couldn't find the levelsInfo in LevelSelector\n<color=yellow>Tip: is PlayerInfoManager initialized?</color>");
+        Assert.IsNotNull(levelsInfo, "Error: Couldn't find the levelsInfo in LevelSelector\n<color=yellow>Tip: is PlayerInfoManager initialized?(Have you used/created GameManager?)</color>");
+
+        int index = 0;
+        foreach (var level in levelsInfo)
+            if(level.unlocked)
+                activateLevels.FastActiveSprite(index++);
+
+        hud.ActivePanel(true);
     }
 
     private void Update()
@@ -69,7 +80,7 @@ public class LevelSelector : MonoBehaviour
 
     private void MoveIcon()
     {
-        StartCoroutine(Move(transform, levelsPosition[currentLevelIndex]));
+        StartCoroutine(Move(transform, levelsPositions[CurrentLevelIndex]));
     }
 
     private IEnumerator Move(Transform from, Transform to)
@@ -96,7 +107,7 @@ public class LevelSelector : MonoBehaviour
 {
     public Nivel[] levels;
     public LevelSelect levelSelect;
-    public ActiveLvls activeLvls;
+    public ActivateLevels activeLvls;
     public enum MOVEMENT { BACK = -1,FORWARD = 1}
     public int maxLevelActive;
 

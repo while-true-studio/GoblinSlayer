@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
 {
-
     private static GameplayManager _self = null;
 
     public Timer timer;
@@ -21,11 +20,6 @@ public class GameplayManager : MonoBehaviour
     {
         _self = this;
         levelIndex = scene - Scene.LEVEL_1;
-    }
-
-    private void Start()
-    {
-
     }
 
     public static void OnSpawnCreated()
