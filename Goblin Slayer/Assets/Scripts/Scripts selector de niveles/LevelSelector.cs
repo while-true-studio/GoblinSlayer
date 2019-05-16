@@ -49,8 +49,8 @@ public class LevelSelector : MonoBehaviour
         Assert.IsNotNull(levelsInfo, "Error: Couldn't find the levelsInfo in LevelSelector\n<color=yellow>Tip: is PlayerInfoManager initialized?(Have you used/created GameManager?)</color>");
 
         int index = 0;
-        foreach (var level in levelsInfo)
-            if(level.unlocked)
+        for (int i = 1; i< levelsInfo.Length; i++)
+            if(levelsInfo[i].unlocked)
                 activateLevels.FastActiveSprite(index++);
 
         hud.ActivePanel(true);
