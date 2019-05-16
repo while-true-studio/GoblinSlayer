@@ -15,24 +15,22 @@ public class PlayerController : MonoBehaviour
 
     private KeyCode lastDirectionKeyPressed;
     private PlayerAttackManager playerAttackManager;
-    private PauseBehaviour pauseHUD;
     private Animator animator;
     public bool defending = false;
-    private ManaMode ManaMode;
+    private ManaMode manaMode;
 
 
     void Start()
     {
         walker = GetComponent<Walker>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
-        pauseHUD = GameObject.Find("HUD").GetComponent<PauseBehaviour>();
-        ManaMode = GameObject.Find("Player").GetComponent<ManaMode>();
+        manaMode = GetComponent<ManaMode>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ManaMode.ChangueRegenMana();
+        manaMode.ChangueRegenMana();
         if (!defending)
         {
             //Walk to the left
@@ -77,11 +75,6 @@ public class PlayerController : MonoBehaviour
         {
             defending = false;
             playerAttackManager.StopDefending();
-        }
-
-        if (Input.GetKeyDown(menuKey))
-        {
-            pauseHUD.ActivePause();
         }
     }
 

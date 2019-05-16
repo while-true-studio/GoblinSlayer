@@ -4,14 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PauseBehaviour : MonoBehaviour
 {
-    
+    public KeyCode pauseCode = KeyCode.Escape;
     public GameObject pauseScreen, gameScreen;
     public PlayerController playerController;
     public LookingMouse playerLook;
+
+    private bool paused = false;
+
     private void Start()
     {
-        DesactivePause();
+        DeactivePause();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(pauseCode))
+        {
+            if (paused)
+                DeactivePause();
+            else
+                ActivePause();
+
+            paused = !paused;
+
+        }
+    }
+
     public void ActivePause()
     {
         playerController.enabled = false;
@@ -21,7 +39,7 @@ public class PauseBehaviour : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void DesactivePause()
+    public void DeactivePause()
     {
         playerController.enabled = true;
         playerLook.enabled = true;
@@ -32,6 +50,6 @@ public class PauseBehaviour : MonoBehaviour
     public void MuteMusic()
     {
         AudioListener.pause = !AudioListener.pause;
-        
+
     }
 }
