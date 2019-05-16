@@ -10,6 +10,8 @@ public class GameplayManager : MonoBehaviour
 
     public Timer timer;
     public Scene scene;
+    public DoorKeeper doorKeeper;
+
     private int levelIndex;
     [SerializeField]
     private int enemiesAlive = 0;
@@ -39,6 +41,8 @@ public class GameplayManager : MonoBehaviour
     public static void OnEnemyDead()
     {
         _self.enemiesAlive--;
+        if(IsLevelClear())
+            _self.doorKeeper.OpenNextLvl();
     }
 
     public static void OnGameOver()
