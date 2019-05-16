@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c130b4234b6d1469e18faea9ae49f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rageAmount: 30
+  rageAmount: 20
   rageDoll: {fileID: 114560459434635334, guid: 74b369ad89010ca4fab22ab24496ab2d, type: 2}
 --- !u!114 &114379858907337692
 MonoBehaviour:

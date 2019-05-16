@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c130b4234b6d1469e18faea9ae49f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rageAmount: 10
+  rageAmount: 7
   rageDoll: {fileID: 114621548711393978, guid: 554d4e69bafb4764a8d71c088be15947, type: 2}
 --- !u!212 &212148152948504944
 SpriteRenderer:

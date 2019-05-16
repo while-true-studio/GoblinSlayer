@@ -511,7 +511,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 4
-  distanceToWall: 0.5
 --- !u!114 &114333239828531482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -552,6 +551,7 @@ MonoBehaviour:
   blockEffect: {fileID: 8300000, guid: e75b92ccfc9c0b44fa3d47a567159d6f, type: 3}
   doubleJump: {fileID: 8300000, guid: 48c8166341486ef4cbc63f960768d150, type: 3}
   changeMode: {fileID: 0}
+  ChargeActive: {fileID: 0}
 --- !u!114 &114498854235968446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -578,7 +578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f12bfd108c67cb4bb9d31515bb61d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onGound: 0
 --- !u!114 &114546223154368724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -590,6 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49415591d7f7b25498b2a7a2bc5b993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincible: 0
   maxHealth: 75
   currentHealth: 0
 --- !u!114 &114574032825297374
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c130b4234b6d1469e18faea9ae49f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rageAmount: 7
+  rageAmount: 4
   rageDoll: {fileID: 114448262772225040, guid: 1a3c74c31ddb4e6498eb47b380b42383, type: 2}
 --- !u!114 &114886445582720698
 MonoBehaviour:
