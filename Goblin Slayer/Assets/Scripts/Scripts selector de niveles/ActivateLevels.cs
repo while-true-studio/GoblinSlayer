@@ -22,6 +22,7 @@ public class ActivateLevels : MonoBehaviour
 
     public void FastActiveSprite(int index)
     {
+        activePaths[index].gameObject.SetActive(true);
         activePaths[index].material.SetColor("_Color", Color.white);
     }
 
