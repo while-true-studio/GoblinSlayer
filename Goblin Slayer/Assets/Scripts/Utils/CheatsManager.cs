@@ -23,7 +23,7 @@ using UnityEngine.UI;
 //    |:-----------------------:|:---------------------------------------------------------:|
 //    |     LCtrl + T           |   Teletrasporta al jugador a la posición del ratón        |
 //    |:-----------------------:|:---------------------------------------------------------:|
-//    |     LCtrl + N           |   Desbloquea todos los niveles (TODAVÍA NO IMPLEMENTADO)  |
+//    |     LCtrl + L           |   Desbloquea todos los niveles (TODAVÍA NO IMPLEMENTADO)  |
 //    |:-----------------------:|:---------------------------------------------------------:|
 //    |     1                   |   Spawnea un goblin* Kamikaze* en la posición del ratón   |
 //    |:-----------------------:|:---------------------------------------------------------:|
@@ -48,7 +48,7 @@ public class CheatsManager : MonoBehaviour
     private CameraMovementManager cameraMovementManager = null;
     private SpawnOnMouse spawnOnMouse = null;
     private Image cheatsEnabledImage = null;
-
+    private LevelSelector levelSelector = null;
     #region Singleton
     private static CheatsManager _self = null;
     private void Awake()
@@ -64,8 +64,18 @@ public class CheatsManager : MonoBehaviour
 
     private void Start()
     {
+        ToggleCheatsIconIfExist();
+    }
+
+    private void ToggleCheatsIconIfExist()
+    {
         if (cheatsEnabledImage == null)
-            cheatsEnabledImage = GameObject.Find("Cheetos").GetComponent<Image>();
+        {
+            var cheetos = GameObject.Find("Cheetos");
+            if (cheetos != null)
+                cheatsEnabledImage = cheetos.GetComponent<Image>();
+        }
+
         if (cheatsEnabledImage != null)
             cheatsEnabledImage.enabled = cheatsEnabled;
     }
@@ -81,7 +91,7 @@ public class CheatsManager : MonoBehaviour
 
         if (!cheatsEnabled) return;
 
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
         {
             if (Input.GetKeyDown(KeyCode.I))
                 TogglePlayerInvincibility();
@@ -93,6 +103,8 @@ public class CheatsManager : MonoBehaviour
                 ToggleCameraMovement();
             if (Input.GetKeyDown(KeyCode.T))
                 TeletrasportPlayer();
+            if (Input.GetKeyDown(KeyCode.L))
+                ToggleUnlockAllLevels();
         }
     }
 
@@ -101,10 +113,9 @@ public class CheatsManager : MonoBehaviour
         cheatsEnabled = true;
         if (spawnOnMouse == null)
             spawnOnMouse = GetComponent<SpawnOnMouse>();
-        if (cheatsEnabledImage == null)
-            cheatsEnabledImage = GameObject.Find("Cheetos").GetComponent<Image>();
+        
         spawnOnMouse.enabled = true;
-        cheatsEnabledImage.enabled = true;
+        ToggleCheatsIconIfExist();
     }
 
     private void DisableCheats()
@@ -115,10 +126,8 @@ public class CheatsManager : MonoBehaviour
         if (spawnOnMouse == null)
             spawnOnMouse = GetComponent<SpawnOnMouse>();
 
-        if (cheatsEnabledImage == null)
-            cheatsEnabledImage = GameObject.Find("Cheetos").GetComponent<Image>();
-        if (cheatsEnabledImage != null)
-            cheatsEnabledImage.enabled = false;
+        ToggleCheatsIconIfExist();
+        
         spawnOnMouse.enabled = false;
 
     }
@@ -153,6 +162,22 @@ public class CheatsManager : MonoBehaviour
         playerMana.infiniteMana = !playerMana.infiniteMana;
     }
 
+    private void ToggleUnlockAllLevels()
+    {
+        if (levelSelector == null)
+        {
+            Debug.Log("Finding LevelSelector");
+            levelSelector = GameObject.FindObjectOfType<LevelSelector>();
+            Debug.Log(levelSelector == null ? "Not Found" : "Found");
+        }
+
+        if (levelSelector != null)
+        {
+            levelSelector.allLevelsUnlocked = !levelSelector.allLevelsUnlocked;
+        }
+
+    }
+
     private void KillOnClick()
     {
         RaycastHit2D[] hits =
@@ -163,7 +188,7 @@ public class CheatsManager : MonoBehaviour
             if (goblin != null)
             {
                 Debug.Log("Killing " + goblin.gameObject.name);
-                // goblin.ForcefullKill();
+                goblin.OnDead();
             }
         }
     }

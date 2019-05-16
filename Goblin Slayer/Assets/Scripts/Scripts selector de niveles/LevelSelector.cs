@@ -73,7 +73,7 @@ public class LevelSelector : MonoBehaviour
         else if (Input.GetKeyDown(enter))
         {
             soundEffects.PlayEffect(enterInLevelAudioClip);
-            if (levelsInfo[currentLevelIndex].unlocked)
+            if (levelsInfo[currentLevelIndex].unlocked || allLevelsUnlocked)
                 GameManager.ChangeScene(GameManager.LevelIndexToScene(CurrentLevelIndex));
         }
     }

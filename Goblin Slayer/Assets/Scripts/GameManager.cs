@@ -98,7 +98,6 @@ public class GameManager : MonoBehaviour
     public void _ChangeScene(Scene scene)
     {
         currentScene = scene;
-
         sceneLoader.LoadScene(scene);
     }
 
