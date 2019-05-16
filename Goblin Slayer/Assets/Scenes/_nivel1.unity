@@ -2419,6 +2419,7 @@ MonoBehaviour:
   timer: {fileID: 1671116285}
   scene: 2
   doorKeeper: {fileID: 1708451635}
+  ForceLevelClear: 0
   enemiesAlive: 0
   spawnsAlive: 0
 --- !u!4 &333269208
@@ -4972,10 +4973,6 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: -13.900024
-      objectReference: {fileID: 0}
-    - target: {fileID: 1353192238006346, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}

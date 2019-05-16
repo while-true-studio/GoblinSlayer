@@ -96,10 +96,10 @@ public class GameManager : MonoBehaviour
         sceneLoader = GetComponentInChildren<SceneLoader>();
     }
 
-    private void OnDestroy()
-    {
-        Save();
-    }
+    //private void OnDestroy()
+    //{
+    //    Save();
+    //}
 
     #endregion
 
