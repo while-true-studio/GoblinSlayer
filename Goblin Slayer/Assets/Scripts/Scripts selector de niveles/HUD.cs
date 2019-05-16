@@ -56,13 +56,13 @@ public class HUD : MonoBehaviour
     /// Set panel whit all player´s info
     /// </summary>
     /// <param name="status"></param>
-    public void ActivePanel(bool status)
+    public void UpdateHUD()
     {
         Camera.main.GetComponent<SoundEffectsMenu>().PlayEffect(pageBook);
-        close.gameObject.SetActive(status);
-        panel.SetActive(status);
-        info.gameObject.SetActive(status);
-        nameTxt.gameObject.SetActive(status);
+        close.gameObject.SetActive(true);
+        panel.SetActive(true);
+        info.gameObject.SetActive(true);
+        nameTxt.gameObject.SetActive(true);
         playerName = string.IsNullOrEmpty(PlayerInfoManager.GetCurrentPlayerInfo().Name) ? "Player": PlayerInfoManager.GetCurrentPlayerInfo().Name;
         TextName();
         BestTime(PlayerInfoManager.GetCurrentPlayerInfo().Levels[levelSelector.CurrentLevelIndex].time);

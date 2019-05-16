@@ -53,7 +53,7 @@ public class LevelSelector : MonoBehaviour
             if(levelsInfo[i].unlocked)
                 activateLevels.FastActiveSprite(index++);
 
-        hud.ActivePanel(true);
+        hud.UpdateHUD();
     }
 
     private void Update()
@@ -98,104 +98,7 @@ public class LevelSelector : MonoBehaviour
         }
         from.position = to.position;
         moving = false;
+        hud.UpdateHUD();
     }
 
 }
-
-/*
-public class LevelSelector : MonoBehaviour
-{
-    public Nivel[] levels;
-    public LevelSelect levelSelect;
-    public ActivateLevels activeLvls;
-    public enum MOVEMENT { BACK = -1,FORWARD = 1}
-    public int maxLevelActive;
-
-
-    public struct Nivel
-    {
-        public Vector2 levelPosition;
-        public bool levelPass;
-    }
-
-
-    void Start ()
-    {
-        levels = new Nivel[transform.childCount];
-        for(int i = 0; i<levels.Length;i++)
-        {
-            levels[i].levelPass = false;
-            levels[i].levelPosition = transform.GetChild(i).position;
-        }
-        if(GameManager.instancia.currLevel>1)
-            ActiveLvl(GameManager.instancia.currLevel);
-
-        WhatLevelIsActive();
-    }
-
-    /// <summary>
-    /// Add or remove positions in the level´s selection
-    /// </summary>
-    /// <param name="direction"></param>
-    public void MakeMovement(MOVEMENT direction)
-    {
-        if (GameManager.instancia.currLevel + (int)direction < 0 && GameManager.instancia.currLevel + (int)direction > levels.Length) return;
-
-
-        if (direction == MOVEMENT.BACK && GameManager.instancia.currLevel>0)//&& levels[GameManager.instancia.currLevel + (int)direction].levelPass
-        {
-            GameManager.instancia.NextLevel((int)direction);
-            levelSelect.ActiveLerp(levels[GameManager.instancia.currLevel].levelPosition);
-        }
-        else if(direction == MOVEMENT.FORWARD && levels[GameManager.instancia.currLevel].levelPass)
-        {
-            GameManager.instancia.NextLevel((int)direction);
-            levelSelect.ActiveLerp(levels[GameManager.instancia.currLevel].levelPosition);
-        }
-        else print("Nivel bloqueado");
-
-    }
-
-    /// <summary>
-    /// Activates everything necessary to activate a level
-    /// </summary>
-    /// <param name="index"></param>
-    public void ActiveLvl(int index)
-    {
-        levels[index].levelPass = true;
-        activeLvls.ActiveSpriteLevel(index);
-    }
-
-    public void FastActive(int index)
-    {
-        for(int i = 0; i<index;i++)
-        {
-            levels[i].levelPass = true;
-            activeLvls.FastActiveSprite(index);
-        }
-    }
-
-    /// <summary>
-    /// When player choice level
-    /// </summary>
-    public void SelectLevel()
-    {
-        GameManager.instancia.ChangeScene(GameManager.instancia.currLevel+1 );
-    }
-
-    /// <summary>
-    /// activate all levels that have saved time
-    /// </summary>
-    public void WhatLevelIsActive()
-    {
-        int cont = 1;
-        while(GameManager.instancia.BestTime(cont)>0.0f)
-        {
-            ActiveLvl(cont);
-            cont++;
-        }
-    }
-
-
-}
-*/
