@@ -959,10 +959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d45e7d76c18b141b7f08516b9dcee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manaCost: 0.4
-  healingMode: 0
-  healingTime: 125
-  timerHeal: 0
+  healingPerSecond: 200
+  manaPerHP: 0.5
+  minMana: 50
 --- !u!114 &114933360586781642
 MonoBehaviour:
   m_ObjectHideFlags: 1

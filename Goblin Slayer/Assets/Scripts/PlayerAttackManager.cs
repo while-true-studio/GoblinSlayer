@@ -91,7 +91,6 @@ public class PlayerAttackManager : MonoBehaviour
                 break;
             case Mode.MAGE:
                 skillHealing.Heal();
-                skillHealing.Healing(true);
                
                 break;
         }
@@ -104,7 +103,7 @@ public class PlayerAttackManager : MonoBehaviour
                 shield.ActiveShield(false);
                 break;
             case Mode.MAGE:
-                skillHealing.Healing(false);
+                skillHealing.StopHealing();
                 break;
         }
     }

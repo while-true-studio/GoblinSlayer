@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public bool invincible = false;
-    public int maxHealth;
+    public float maxHealth;
     public float currentHealth;
     public bool Alive { get; private set; }
     private Animator animator;
@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
     /// Recover HP and check if life is in the parameters
     /// </summary>
     /// <param name="amount"> Amount of HP recovered </param>
-    public void RestoreHP(int amount)
+    public void RestoreHP(float amount)
     {
         if (currentHealth < maxHealth)
         {

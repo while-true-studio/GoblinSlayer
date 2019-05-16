@@ -5,67 +5,67 @@ using UnityEngine;
 [RequireComponent(typeof(Mana))]
 public class SkillHealing : MonoBehaviour
 {
-   
-    public float manaCost = 0.0f;
-    private Health hp;
-    private Mana mn;
+    public float healingPerSecond;
+    public float manaPerHP;
+    public float minMana;
+
+
+    private Health health;
+    private Mana mana;
     private Animator healingAnim;
     private Animator playerAnim;
     private AttackSounds attackSounds;
-    public bool healingMode;
-    public float healingTime;
-    public float timerHeal = 0.0f;
+
+    private bool healing = false;
 
     private void Start()
     {
-        hp = GetComponent<Health>();
-        mn = GetComponent<Mana>();
+        health = GetComponent<Health>();
+        mana = GetComponent<Mana>();
         healingAnim = transform.GetChild(1).GetComponent<Animator>();
         playerAnim = transform.GetChild(0).GetComponent<Animator>();
         attackSounds = GetComponentInChildren<AttackSounds>();
     }
 
-    /*void Update()
-    {
 
-        if (healingMode)
-        {
-         
-            timerHeal = Time.deltaTime * healingTime;
-            if (hp.currentHealth < hp.maxHealth && mn.UseMana(manaCost) && mn.currentMana > manaCost * 30)
-            {
-                hp.RestoreHP((int)timerHeal);
-            }
-
-        }
-        else
-        {
-            timerHeal = 0.0f;
-        }
-    }*/
 
     public void Heal()
     {
-        timerHeal = healingTime * Time.deltaTime;
-        if (mn.currentMana > manaCost * 2 && hp.currentHealth < hp.maxHealth   && mn.UseMana(manaCost) )
+        float hp = healingPerSecond * Time.deltaTime;
+        float manaCost = manaPerHP * hp;
+        //If:
+        // - We have the minimun mana required
+        // - Need to Health
+        if (mana.currentMana > minMana && health.currentHealth < health.maxHealth)
         {
-           
-            mn.currentMana = mn.currentMana-manaCost;
-            hp.RestoreHP((int)timerHeal);
+            mana.UseMana(manaCost);
+            health.RestoreHP(hp);
+            if (!healing)
+            {
+                HealingEffects(true);
+                healing = true;
+            }
         }
-
     }
+
+    public void StopHealing()
+    {
+        if (!healing) return;
+
+        healing = false;
+        HealingEffects(false);
+    }
+
     /// <summary>
     /// Heal health points
     /// </summary>
-    public void Healing(bool status)
+    private void HealingEffects(bool active)
     {
-        if (hp.currentHealth == hp.maxHealth || mn.currentMana < manaCost *2) { status = false; }
-        if (status) { attackSounds.PlayEffect(attackSounds.healingEffect); }
+        if (active)
+            attackSounds.PlayEffect(attackSounds.healingEffect); 
 
-        healingMode = status;
-        healingAnim.SetBool("Healing", status);
-        playerAnim.SetBool("Healing", status);
+        healingAnim.SetBool("Healing", active);
+        playerAnim.SetBool("Healing", active);
 
     }
 }

@@ -21,15 +21,17 @@ public class PlayerController : MonoBehaviour
     private ManaMode ManaMode;
 
 
-	void Start () {
+    void Start()
+    {
         walker = GetComponent<Walker>();
         playerAttackManager = GetComponent<PlayerAttackManager>();
         pauseHUD = GameObject.Find("HUD").GetComponent<PauseBehaviour>();
         ManaMode = GameObject.Find("Player").GetComponent<ManaMode>();
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         ManaMode.ChangueRegenMana();
         if (!defending)
         {
@@ -61,23 +63,23 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(attackKey))
             {
-               
+
                 playerAttackManager.Attack();
             }
         }
 
-        if(Input.GetKey(defendKey))
+        if (Input.GetKey(defendKey))
         {
             defending = true;
             playerAttackManager.Defend();
         }
-       else
+        if (Input.GetKeyUp(defendKey))
         {
             defending = false;
             playerAttackManager.StopDefending();
         }
 
-        if(Input.GetKeyDown(menuKey))
+        if (Input.GetKeyDown(menuKey))
         {
             pauseHUD.ActivePause();
         }
