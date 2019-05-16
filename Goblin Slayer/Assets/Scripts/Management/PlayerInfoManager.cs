@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Security.Policy;
 using UnityEngine;
 // ReSharper disable All
 
@@ -29,29 +30,31 @@ public struct PlayerInfo
         {
             levels = new Level[GameManager.GetLevelsCount()];
             levels[0].unlocked = true;
+            //for(int i = 0; i < levels.Length; i++)
+            //    levels[i].time = TimeSpan.MinValue;
         }
         this.levels = levels;
-         Debug.Log("Player info created!");   
-         Debug.Log("Name: " + this.Name);
-         string s ="";
-         foreach (Level level in this.levels)
-             s += level.Serialize() + "\n---\n";
-         Debug.Log("Levels("+ this.levels.Length+ "): " + s);
+
+        Debug.Log("Player info created!");
+        Debug.Log("Name: " + this.Name);
+        string s = "";
+        foreach (Level level in this.levels)
+            s += level.Serialize() + "\n---\n";
+        Debug.Log("Levels(" + this.levels.Length + "): " + s);
     }
 
     public string Serialize()
     {
         string sLevels = "";
         foreach (var level in levels)
-            sLevels += '\n' + level.Serialize() ;
+            sLevels += '\n' + level.Serialize();
         return name + sLevels;
 
     }
 
-
-
     public struct Level
     {
+
         public Level(string serialized)
         {
             string[] data = serialized.Split(':');
@@ -120,11 +123,16 @@ public class PlayerInfoManager
         return self.currentPlayerInfo;
     }
 
+    public static void SetCurrentPlayerInfo(PlayerInfo playerInfo)
+    {
+        self.currentPlayerInfo = playerInfo;
+    }
+
     public static void LoadData(string name)
     {
         self._LoadData(name);
     }
-    
+
 
     public static void SaveData()
     {
@@ -154,7 +162,7 @@ public class PlayerInfoManager
     {
         string fullPath = path + name + ".save";
         bool found = File.Exists(fullPath);
-        
+
         if (found)
         {
             var stream = new StreamReader(fullPath);
@@ -166,7 +174,7 @@ public class PlayerInfoManager
         {
             currentPlayerInfo = new PlayerInfo(name, null);
         }
-        Debug.LogFormat("Trying to load file: {0}\n{1}", fullPath, found? "<color=green>Found</color>" : "<color=red>Not found</color> -> Creating a default PlayerInfo");
+        Debug.LogFormat("Trying to load file: {0}\n{1}", fullPath, found ? "<color=green>Found</color>" : "<color=red>Not found</color> -> Creating a default PlayerInfo");
         Debug.LogFormat("Loaded data:\n{0}", currentPlayerInfo.Serialize());
     }
 
@@ -179,7 +187,7 @@ public class PlayerInfoManager
         if (File.Exists(fullPath))
         {
             //Abrir el antigua guardado
-            var reader  = new StreamReader(fullPath);
+            var reader = new StreamReader(fullPath);
             PlayerInfo fileInfo = new PlayerInfo(reader.ReadToEnd());
             reader.Close();
             //Actualizar con los mejores tiempos
@@ -191,8 +199,8 @@ public class PlayerInfoManager
                 if (!level.unlocked) continue;
                 //TODO: comprobar si la comprobación es correcta o si siempre coge la del
                 //fichero porque 0 (valor por defecto del timepo)< cualquier otro número
-                if (fileLevel.unlocked)
-                    fileLevel.time = level.time < fileLevel.time ? level.time : fileLevel.time;
+                if (fileLevel.unlocked && (fileLevel.time > level.time || Math.Abs(fileLevel.time.TotalSeconds) < double.Epsilon))
+                    fileLevel.time = level.time;
                 else
                 {
                     fileLevel.unlocked = true;

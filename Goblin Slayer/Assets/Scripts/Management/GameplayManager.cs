@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class GameplayManager : MonoBehaviour
     public Timer timer;
     public Scene scene;
     public DoorKeeper doorKeeper;
-
     private int levelIndex;
     [SerializeField]
     private int enemiesAlive = 0;
@@ -60,17 +60,20 @@ public class GameplayManager : MonoBehaviour
         // Player Won the level
         if (IsLevelClear())
         {
-            //Actualizar récord si se ha batido
+            PlayerInfo playerInfo = PlayerInfoManager.GetCurrentPlayerInfo();
+
             TimeSpan time = TimeSpan.FromSeconds(timer.totalTime);
-            TimeSpan oldTime = 
-                PlayerInfoManager.GetCurrentPlayerInfo().Levels[levelIndex].time;
-            if (time < oldTime)
-                oldTime = time;
+            TimeSpan oldTime = playerInfo.Levels[levelIndex].time;
+            
+            //Actualizar récord si se ha batido o si no existia(oldTime == 0)
+            if (time < oldTime || Math.Abs(oldTime.TotalSeconds) < float.Epsilon)
+                playerInfo.Levels[levelIndex].time = time;
 
-            // Desbloquear siguiente nivel si es necesario
-            // si quedan niveles por desbloquear
-            PlayerInfoManager.GetCurrentPlayerInfo().Levels[levelIndex+1].unlocked = (levelIndex + 1) < GameManager.GetLevelsCount();
-
+            // Desbloquear siguiente nivel si es necesario  si quedan niveles por desbloquear
+            if ((levelIndex + 1) < GameManager.GetLevelsCount())
+                playerInfo.Levels[levelIndex + 1].unlocked = true;
+            PlayerInfoManager.SetCurrentPlayerInfo(playerInfo);
+            GameManager.Save();
         }
         //Ir a la pantalla de selección de nivel
         GameManager.ChangeScene(Scene.SELECT_LEVEL);
