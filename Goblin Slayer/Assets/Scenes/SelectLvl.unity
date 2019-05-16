@@ -450,9 +450,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114825113561526098, guid: b3656324ee1c79f44ba2e09633b127ab,
-          type: 2}
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 911933283}
+        m_MethodName: ChangeSceneByIndex
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1141,6 +1140,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3656324ee1c79f44ba2e09633b127ab, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &911933283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114825113561526098, guid: b3656324ee1c79f44ba2e09633b127ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 911933282}
+  m_Script: {fileID: 11500000, guid: fd6e755d60ff7e149baa4fc89e318de6, type: 3}
 --- !u!1 &991713866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2049,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 558510899}
   nameTxt: {fileID: 1517928059}
-  record: {fileID: 1569090202}
   panel: {fileID: 1724432053}
   close: {fileID: 258771165}
   pageBook: {fileID: 8300000, guid: 76adac000b93b6d4dbe6aed269a5c0ab, type: 3}
