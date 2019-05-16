@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
 
     #region API
 
+    public static void sCloseApp()
+    {
+        Application.Quit();
+    }
+
     public static int GetLevelsCount()
     {
         return Enum.GetValues(typeof(Scene)).Length - (int)Scene.LEVEL_1;
@@ -63,6 +68,11 @@ public class GameManager : MonoBehaviour
         ChangeScene((Scene)index);
     }
 
+    public void CloseApp()
+    {
+        Application.Quit();
+    }
+
     public static void Save()
     {
         PlayerInfoManager.SaveData();
@@ -83,6 +93,7 @@ public class GameManager : MonoBehaviour
 
 
     #region Implementation
+
 
     public void _ChangeScene(Scene scene)
     {
