@@ -35,7 +35,7 @@ using UnityEngine.UI;
 //    |:-----------------------:|:---------------------------------------------------------:|
 //    |     5                   |   Spawnea un goblin* Trasgo* en la posición del ratón     |
 //    |:-----------------------:|:---------------------------------------------------------:|
-//    |     6                   |   Spawnea un goblin* King* en la posición del ratón       |  
+//    |     6                   |   Spawnea un goblin* King* en la posición del ratón (Not implemented yet)    |  
 //    |:-----------------------:|:---------------------------------------------------------:|
 
 public class CheatsManager : MonoBehaviour
