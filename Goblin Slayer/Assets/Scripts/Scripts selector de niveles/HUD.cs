@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour
 
     public Text info;
     public Text nameTxt;
-    public Text record;
+    //public Text record;
     public GameObject panel;
     private string playerName;
     public Button close;
@@ -24,18 +24,22 @@ public class HUD : MonoBehaviour
     /// <param name="recordMan"></param>
     private void TextRecord(int bestRecord,string recordMan)
     {
+    //TODO:Give record support
+    //Code down below doesn't work right now
+        /*
         if (bestRecord != 0)
             record.text = "The record belongs to " + recordMan+" in "+ bestRecord+" seconds";
         else record.text = "You are the first player in this level!";
+        */
     }
 
     /// <summary>
     /// Writes in HUD player´s name
     /// </summary>
-    /// <param name="infoPlayer"></param>
-    private void TextName(string infoPlayer)
+    /// <param name="playerName"></param>
+    private void TextName()
     {
-        nameTxt.text = infoPlayer;
+        nameTxt.text = playerName;
     }
     /// <summary>
     /// Writes in HUD player´s best time
@@ -44,7 +48,7 @@ public class HUD : MonoBehaviour
     private void BestTime(TimeSpan bestTime)
     {
         if(bestTime.TotalSeconds > 0)
-            info.text = "Your best time :" + bestTime;
+            info.text = "Your best time" + bestTime.TotalSeconds + "s";
         else info.text = "You have not played this level yet";
     }
 
@@ -59,10 +63,10 @@ public class HUD : MonoBehaviour
         panel.SetActive(status);
         info.gameObject.SetActive(status);
         nameTxt.gameObject.SetActive(status);
-        record.gameObject.SetActive(status);
         playerName = string.IsNullOrEmpty(PlayerInfoManager.GetCurrentPlayerInfo().Name) ? "Player": PlayerInfoManager.GetCurrentPlayerInfo().Name;
-        TextName(playerName);
+        TextName();
         BestTime(PlayerInfoManager.GetCurrentPlayerInfo().Levels[levelSelector.CurrentLevelIndex].time);
+        //record.gameObject.SetActive(status);
         //TextRecord(GameManager.instancia.BestRecord(GameManager.instancia.currLevel),GameManager.instancia.BestRecordMan(GameManager.instancia.currLevel));
     }
 }
