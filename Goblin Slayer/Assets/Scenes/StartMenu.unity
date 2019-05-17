@@ -923,12 +923,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 316815272}
   m_CullTransparentMesh: 0
---- !u!114 &362632929 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114825113561526098, guid: b3656324ee1c79f44ba2e09633b127ab,
-    type: 2}
-  m_PrefabInternal: {fileID: 1746972516}
-  m_Script: {fileID: 11500000, guid: fd6e755d60ff7e149baa4fc89e318de6, type: 3}
 --- !u!1 &427694914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &598506848
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1822,7 +1816,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 362632929}
+      - m_Target: {fileID: 114825113561526098, guid: b3656324ee1c79f44ba2e09633b127ab,
+          type: 2}
         m_MethodName: ChangeSceneByIndex
         m_Mode: 3
         m_Arguments:
@@ -2172,7 +2167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1361900216
 RectTransform:
   m_ObjectHideFlags: 0
